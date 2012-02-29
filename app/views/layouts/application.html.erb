@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Armory</title>
+  <title><%= content_for?(:title) ? yield(:title) : "Armory" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div class="container">
+	<%= content_tag :h1, yield(:title) if show_title? %>
+    <div class="row">
+    	<div class="span6 pull-right">
+    		<% flash.each do |name, msg| %>
+    			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+		</div>
+		<div class="span6">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>

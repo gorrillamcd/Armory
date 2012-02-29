@@ -1,3 +1,4 @@
 class Course < ActiveRecord::Base
-  belongs_to :lesson
+  attr_accessible :name, :description
+  has_many :lessons
 end
