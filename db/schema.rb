@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(:version => 20120228210812) do
     t.string   "name"
     t.string   "description"
     t.string   "teaching"
-    t.integer  "class_id"
+    t.integer  "course_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "lessons", ["class_id"], :name => "index_lessons_on_class_id"
+  add_index "lessons", ["course_id"], :name => "index_lessons_on_course_id"
 
 end

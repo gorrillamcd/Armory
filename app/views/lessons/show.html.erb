@@ -1,8 +1,9 @@
-<% title "Course" %>
-
+<% title "Lesson" %>
+Bob
+<% if false %>
 <p>
   <strong>Name:</strong>
-  <%= link_to @course.name, detail_course_path(@course) %>
+  <%= link_to @course.name, show_course_path(@course) %>
 </p>
 
 <p>
@@ -10,3 +11,4 @@
   <%= link_to "Destroy", @course, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", courses_path %>
 </p>
+<% end %>

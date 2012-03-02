@@ -4,10 +4,10 @@ class CreateLessons < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.string :teaching
-      t.references :class
+      t.references :course
 
       t.timestamps
     end
-    add_index :lessons, :class_id
+    add_index :lessons, :course_id
   end
 end

@@ -1,0 +1,19 @@
+<% title @course.name %>
+
+<p><h2><%= @course.name %></h2></p>
+<p>
+	<%= @course.description %>
+</p>
+<hr />
+<p><%= link_to "New Lesson", new_lesson_path(@course) %></p>
+<p>
+		<% @course.lessons.each do |lesson| %>
+			<%= link_to lesson.name, show_lesson_path(params[':id']) %><br />
+			<%= lesson.description %>
+		<% end %>
+</p>
+<p>
+  <% if false %><%= link_to "Edit", edit_course_path(@course) %> | <% end %>
+  <%= link_to "Destroy", @course, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", courses_path %>
+</p>
