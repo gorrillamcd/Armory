@@ -5,19 +5,48 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <% render 'layouts/shim' %>
 </head>
 <body>
-	<div class="container">
-	<%= content_tag :h1, yield(:title) if show_title? %>
+<header class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+        <div class="container">
+          <%= link_to yield(:title), '#', :id => "logo" %>
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "Home", root_url %></li>
+              <li><%= link_to "Courses",    '#' %></li>
+              <li><%= link_to "Login", '#' %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+</header>
+
+<div class="container">
     <div class="row">
-    	<div class="span6 pull-right">
-    		<% flash.each do |name, msg| %>
-    			<%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-box" %>
+    	<div class="span5 offset1 pull-right">
+    		<% if flash[:all] == nil %>
+    		<div class="alert alert-info alert-box">
+    		<strong>Todo list for IBCC en linea(immediate future):</strong><br />
+	    		<ul>
+	    			<li>Fix error when adding new lessons</li>
+	    			<li>Complete forms for adding courses and lessons</li>
+	    			<li>Create cohesive site-wide navigation for easier testing</li>
+	    			<li>Create database entries and backend logic for exams</li>
+	    			<li>Add <a href="http://http://activeadmin.info/" target="_blank"><strong>ActiveAdmin</strong></a> support (big step)</li>
+	    		</ul>
+    		</div>
+    		<% else %>
+	    		<% flash.each do |name, msg| %>
+	    			<%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-box" %>
+				<% end %>
 			<% end %>
 		</div>
 		<div class="span6">
 			<%= yield %>
 		</div>
 	</div>
+</div>
 </body>
 </html>

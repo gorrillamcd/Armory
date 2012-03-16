@@ -1,33 +1,30 @@
 class LessonsController < ApplicationController
 
-
-	def index
-		@lesson = Lesson.all
-	end
-
-
 	def new
-		@lesson = Lesson.new
+		@course = Course.find(params[:course_id])
+		@lesson = @course.lessons.new
 	end
 
 	def create
-		#@course = Course.find(params[:id])
-		@lesson = Lesson.create(params[:lesson])
+		@course = Course.find(params[:course_id])
+		@lesson = @course.lessons.create(params[:lesson])
 		if @lesson.save
-			redirect_to url_for(@course), :notice => "Successfully created lesson."
+			redirect_to course_path(@course), :notice => "Successfully created lesson."
 		else
 			render :action => 'new', :error => "Something went wrong."
 		end
 	end
 
 	def show
+		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.find(params[:lesson])
 	end
 
-	private
-
-	def course
+	def destroy
 		@course = Course.find(params[:course_id])
+		@lesson = @course.lessons.find(params[:id])
+		@lesson.destroy
+		redirect_to course_path(@course), :notice => "Successfully destroyed lesson."
 	end
 
 end

@@ -12,6 +12,7 @@ gem 'json'
 group :developement do
 	gem 'rspec'
   	gem 'nifty-generators'
+  	gem 'cucumber'
 end
 
 # Gems used only for assets and not required
@@ -21,7 +22,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer'
-
+  gem 'bootstrap-sass', '~> 2.0.0'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -32,6 +33,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :test do
 	gem 'rspec'
+	gem 'cucumber'
 end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

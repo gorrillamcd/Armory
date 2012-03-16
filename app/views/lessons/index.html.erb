@@ -1,20 +1,23 @@
 <% title "IBCC en linea" %>
 
 <table>
-  <tr>
-    <th>Name</th>
-  </tr>
-  <% for lesson in @lessons %>
+  
+<% for course in @courses %>
+    <tr>
+      <th><% course.name %></th>
+    <tr>
+  <% for lesson in @courses.lesson %>
     <tr>
       <td><%= lesson.name %></td>
-      <% if false %>
+  
       <td><%= link_to "Show", @lesson %></td>
-      <td><%= link_to "Edit", edit_lesson_path(@course) %></td>
+    <% if false %><td><%= link_to "Edit", edit_lesson_path(@lesson) %></td><% end %>
       <td><%= link_to "Destroy", @lesson, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
-    <% end %>
   <% end %>
+<% end %>
 </table>
+
 <% if false %>
 <p><%= link_to "New Course", new_course_path %></p>
 <% end %>

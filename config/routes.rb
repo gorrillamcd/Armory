@@ -6,9 +6,8 @@ Armory::Application.routes.draw do
     member do
       get 'detail'
     end
+    resources :lessons
+    resources :exams
   end
-  
-  resources :lessons
-  resources :exams
 
 end

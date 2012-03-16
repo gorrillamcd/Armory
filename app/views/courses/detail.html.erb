@@ -5,12 +5,36 @@
 	<%= @course.description %>
 </p>
 <hr />
-<p><%= link_to "New Lesson", new_lesson_path(@course) %></p>
+<p><%= link_to "New Lesson", new_course_lesson_path(@course) %></p>
 <p>
-		<% @course.lessons.each do |lesson| %>
-			<%= link_to lesson.name, show_lesson_path(params[':id']) %><br />
-			<%= lesson.description %>
+	<div id="lessons">
+		<hr />
+		<% if @lesson.any? %>
+			<% for lesson in @lesson %>
+			<% if false%><%= render @lesson %><% end %>
+				<strong><%= link_to lesson.name, course_lesson_path(@lesson) %></strong>
+				<ul class="pull-right plain">
+			      <li id="fat-menu" class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			            Options <b class="caret"></b>
+			          </a>
+			          <ul class="dropdown-menu">
+			            <li><%= link_to "Edit", edit_course_lesson_path(@lesson) %></li>
+			            <li class="divider"></li>
+			            <li>
+			              <%= link_to "Delete Lesson", [@course, lesson], :confirm => 'Are you sure? This will be permanent!', :method => :delete %>
+			            </li>
+			          </ul>
+			      </li>
+			    </ul>
+				<br /><%= lesson.description %>
+				<hr />
+			<% end %>
+		<% else %>
+			<strong>No lessons were found for this course! You should make some.</strong>
+			<hr />
 		<% end %>
+	</div>
 </p>
 <p>
   <% if false %><%= link_to "Edit", edit_course_path(@course) %> | <% end %>

@@ -1,12 +1,15 @@
-<%= form_for @lesson do |f| %>
+<%= form_for [@course, @lesson] do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   <br />
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
+  </div>
   </p>
-  	
-  <p><%= f.submit %></p>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
 <% end %>
