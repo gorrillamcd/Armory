@@ -15,9 +15,24 @@ class LessonsController < ApplicationController
 		end
 	end
 
+	def edit
+		@course = Course.find(params[:course_id])
+		@lesson = @course.lessons.find(params[:id])
+	end
+
+	def update
+		@course = Course.find(params[:course_id])
+		@lesson = @course.lessons.find(params[:id])
+		if @lesson.update_attributes(params[:lesson])
+			redirect_to course_path(@course), :notice  => "Successfully updated course."
+		else
+			render :action => 'edit'
+		end
+	end
+
 	def show
 		@course = Course.find(params[:course_id])
-		@lesson = @course.lessons.find(params[:lesson])
+		@lesson = @course.lessons.find(params[:id])
 	end
 
 	def destroy

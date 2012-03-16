@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
 	end
 
 	def update
-		@course = Course.find(params[:id])
+		@course = Course.update(params[:course])
 		if @course.update_attributes(params[:course])
 			redirect_to @course, :notice  => "Successfully updated course."
 		else
