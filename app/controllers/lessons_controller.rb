@@ -24,7 +24,7 @@ class LessonsController < ApplicationController
 		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.find(params[:id])
 		if @lesson.update_attributes(params[:lesson])
-			redirect_to course_path(@course), :notice  => "Successfully updated course."
+			redirect_to course_lesson_path(@course, @lesson), :notice  => "Successfully updated course."
 		else
 			render :action => 'edit'
 		end

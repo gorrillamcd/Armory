@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
+		@lesson = @course.lessons
 	end
 
 	def new
@@ -25,17 +26,12 @@ class CoursesController < ApplicationController
 	end
 
 	def update
-		@course = Course.update(params[:course])
+		@course = Course.find(params[:id])
 		if @course.update_attributes(params[:course])
 			redirect_to @course, :notice  => "Successfully updated course."
 		else
 			render :action => 'edit'
 		end
-	end
-
-	def detail
-		@course = Course.find(params[:id])
-		@lesson = @course.lessons#.find(params[:id])
 	end
 
 	def destroy

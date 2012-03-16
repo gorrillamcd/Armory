@@ -1,14 +1,22 @@
-<% title "Lesson" %>
-<%= link_to "Bob", course_path(@course) %>
-<% if false %>
-<p>
-  <strong>Name:</strong>
-  <%= link_to @course.name, show_course_path(@course) %>
-</p>
+<% title "IBCC en linea" %>
+<div class="row">
+<h3><%= @lesson.name %></h3>
+<%= link_to "Back to #{@course.name}", @course %>
+<ul class="pull-right plain">
+  <li id="fat-menu" class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Options <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Edit", edit_course_lesson_path(@course, @lesson) %></li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Delete Lesson", [@course, @lesson], :confirm => 'Are you sure? This will be permanent!', :method => :delete %>
+        </li>
+      </ul>
+  </li>
+</ul>
+<hr />
+</div>
 
-<p>
-  <%= link_to "Edit", edit_course_path(@course) %> |
-  <%= link_to "Destroy", @course, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", courses_path %>
-</p>
-<% end %>
+<p><%= @lesson.description %></p>

@@ -11,7 +11,7 @@
             Options <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><% if false %><%= link_to "Edit", edit_course_path(@course) %><% end %></li>
+            <li><%= link_to "Edit", edit_course_path(course) %></li>
             <li class="divider"></li>
             <li>
               <%= link_to "Delete Course", course, :confirm => 'Are you sure? This will be permanent!', :method => :delete %>

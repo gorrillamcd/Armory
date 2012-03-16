@@ -3,6 +3,6 @@
 <%= render 'form' %>
 
 <p>
-  <%= link_to "Show", [@course, @lesson] %> |
+  <%= link_to "Show", course_lesson_path(@course, @lesson) %> |
   <%= link_to "View All", course_path(@course) %>
 </p>
