@@ -1,4 +1,4 @@
-<%= form_for [@course, @lesson] do |f| %>
+<%= form_for [@course, @lesson], :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
@@ -8,6 +8,9 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  <br />
+    <%= f.label :teaching %><br />
+    <%= f.file_field :teaching %>
   </p>
   <div class="actions">
     <%= f.submit "Submit" %>

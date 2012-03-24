@@ -1,4 +1,5 @@
 <% title "IBCC en linea" %>
+
 <div class="row">
 <h3><%= @lesson.name %></h3>
 <%= link_to "Back to #{@course.name}", @course %>
@@ -20,3 +21,12 @@
 </div>
 
 <p><%= @lesson.description %></p>
+
+<p>
+<video id="<%= @lesson.teaching_file_name %>" class="video-js vjs-default-skin" controls preload="none" width="800" height="600"
+        data-setup="{}">
+      <source src="<%= @lesson.teaching.url %>" type='<%= @lesson.teaching_content_type %>' />
+</video>
+
+<% if false %><%= raw embed_video(@lesson, :id => 'cheese', :controls => 'true', :size => '800x600') %><% end %>
+</p>

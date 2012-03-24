@@ -9,6 +9,8 @@ gem 'mysql2'
 
 gem 'json'
 
+gem 'paperclip'
+
 group :developement do
 	gem 'rspec'
   	gem 'nifty-generators'

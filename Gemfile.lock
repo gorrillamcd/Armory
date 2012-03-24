@@ -32,6 +32,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.1)
     builder (3.0.0)
+    cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -67,6 +68,11 @@ GEM
     multi_json (1.1.0)
     mysql2 (0.3.11)
     nifty-generators (0.4.6)
+    paperclip (2.7.0)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.1)
@@ -135,6 +141,7 @@ DEPENDENCIES
   json
   mysql2
   nifty-generators
+  paperclip
   rails (= 3.2.1)
   rspec
   sass-rails (~> 3.2.3)
