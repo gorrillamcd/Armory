@@ -10,16 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328223314) do
+ActiveRecord::Schema.define(:version => 20120328230508) do
 
   create_table "books", :force => true do |t|
     t.string   "isbn"
     t.string   "name"
     t.boolean  "required"
-    t.integer  "courses_id"
+    t.integer  "course_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "books", ["course_id"], :name => "index_books_on_course_id"
 
   create_table "courses", :force => true do |t|
     t.string   "name"

@@ -1,15 +1,7 @@
-# These helper methods can be called in your template to set variables to be used in the layout
-# This module should be included in all views globally,
-# to do so you may need to add this line to your ApplicationController
-#   helper :layout
 module LayoutHelper
-  def title(page_title, show_title = true)
-    content_for(:title) { h(page_title.to_s) }
-    @show_title = show_title
-  end
 
-  def show_title?
-    @show_title
+  def title(page_title, show_title = "peanuts")
+    content_for(:title) { h(page_title.to_s) }
   end
 
   def stylesheet(*args)
@@ -60,15 +52,5 @@ module LayoutHelper
 
     puts "</video>"
   end
-
-    # Sample video tag from the dev.html.example file of Video.js
-    #<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
-    #    poster="http://video-js.zencoder.com/oceans-clip.png"
-    #    data-setup="{}">
-    #  <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
-    #  <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
-    #  <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
-    #  <track kind="captions" src="captions.vtt" srclang="en" label="English" />
-    #</video>
 
 end

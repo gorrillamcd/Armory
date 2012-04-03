@@ -15,7 +15,8 @@ class CoursesController < ApplicationController
 	def create
 		@course = Course.new(params[:course])
 		if @course.save
-			redirect_to @course, :notice => "Successfully created course."
+			redirect_to @course#, :success => "Successfully created course."
+			flash[:success] = "Successfully created course."
 		else
 			render :action => 'new'
 		end
@@ -28,7 +29,8 @@ class CoursesController < ApplicationController
 	def update
 		@course = Course.find(params[:id])
 		if @course.update_attributes(params[:course])
-			redirect_to @course, :notice  => "Successfully updated course."
+			redirect_to @course# :notice  => "Successfully updated course."
+			flash[:success] = "Successfuly updated course."
 		else
 			render :action => 'edit'
 		end
@@ -36,7 +38,9 @@ class CoursesController < ApplicationController
 
 	def destroy
 		@course = Course.find(params[:id])
+		coursename = @course.name
 		@course.destroy
-		redirect_to courses_url, :notice => "Successfully destroyed course."
+		redirect_to courses_url#, :notice => "Successfully destroyed course."
+		flash[:error] = "Successfully destroyed #{coursename}"
 	end
 end

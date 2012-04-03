@@ -1,12 +1,25 @@
-<%= form_for @course do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  <br />
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  	
-  <p><%= f.submit %></p>
+<%= title "#{controller.action_name.capitalize} Course" %>
+<%= form_for @course, :html => { :class => 'form-horizontal'} do |f| %>
+<fieldset>
+  <legend><%= controller.action_name.capitalize %> Course</legend>
+
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name, :class => "text-field" %>
+      </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :description, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :description, :class => "text-field" %>
+      </div>
+  </div>
+
+  <div class="form-actions">
+  <%= f.submit nil, :class=>"btn btn-primary" %>
+  <%= link_to "Cancel", courses_path, :class=>"btn" %>
+  </div>
+</fieldset>
 <% end %>
