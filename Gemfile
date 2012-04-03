@@ -11,6 +11,10 @@ gem 'json'
 
 gem 'paperclip'
 
+gem 'simple_form'
+
+gem 'devise'
+
 group :developement do
 	gem 'rspec'
   	gem 'nifty-generators'
