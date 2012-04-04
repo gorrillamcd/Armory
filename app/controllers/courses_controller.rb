@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
 
 	def new
 		@course = Course.new
+		@course.books.build
 	end
 
 	def create

@@ -1,0 +1,7 @@
+<legend>Required/Recommended Texts for this course:</legend>
+
+<%= form.simple_fields_for :books do |fa| %>
+	<%= fa.input :name %>
+	<%= fa.input :isbn %>
+	<%= fa.input :required, :hint => "Is this a required text to complete the course?" %>
+<% end %>
