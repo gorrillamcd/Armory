@@ -15,4 +15,4 @@
 /tmp
 
 # Ignore video files since they will be added after deploy
-/public/*.mp4
+/public/system
