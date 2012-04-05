@@ -2,15 +2,12 @@
 <fieldset>
     <legend><%= controller.action_name.capitalize %> Lesson</legend>
     <%= f.input :name %>
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </div>
-    <%= f.label :teaching %>
-    <%= f.file_field :teaching %>
+    <%= f.input :description, :as => :text %>
+    <%= f.input :teaching, :as => :file %>
 
   <div class="form-actions">
-    <%= f.submit "Submit" %>
+    <%= f.submit nil, :class => "btn btn-primary" %>
+    <%= link_to "Cancel", @course, :class=>"btn" %>
   </div>
 </fieldset>
 <% end %>

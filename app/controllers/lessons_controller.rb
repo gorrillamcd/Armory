@@ -9,7 +9,8 @@ class LessonsController < ApplicationController
 		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.create(params[:lesson])
 		if @lesson.save
-			redirect_to course_path(@course), :notice => "Successfully created lesson."
+			redirect_to course_path(@course)
+			flash[:success] = "Successfully created lesson."
 		else
 			render :action => 'new', :error => "Something went wrong."
 		end
@@ -24,7 +25,8 @@ class LessonsController < ApplicationController
 		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.find(params[:id])
 		if @lesson.update_attributes(params[:lesson])
-			redirect_to course_lesson_path(@course, @lesson), :notice  => "Successfully updated course."
+			redirect_to course_lesson_path(@course, @lesson)
+			flash[:success]  = "Successfully updated course."
 		else
 			render :action => 'edit'
 		end
@@ -39,7 +41,8 @@ class LessonsController < ApplicationController
 		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.find(params[:id])
 		@lesson.destroy
-		redirect_to course_path(@course), :notice => "Successfully destroyed lesson."
+		redirect_to course_path(@course)
+		flash[:error] = "Successfully destroyed lesson."
 	end
 
 end
