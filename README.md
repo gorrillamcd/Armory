@@ -1,7 +1,7 @@
 #Armory
 
 An online learning and student management system specifically tailored for Bible Colleges.
-While this is was originally intended for use in a Bible college, anyone can feel free to use this software for any use.
+While this is was originally intended for use in a Bible college, anyone can feel free to use this software for any use. 
 
 ***********************
 This is currently under active development and is not ready to be used in Production! If you would like to know when it will be ready, signup for the mailing list at [ccbcmexico.com](http://www.ccbcmexico.com/content/index.php?option=com_content&view=article&id=37&Itemid=32&lang=en)
