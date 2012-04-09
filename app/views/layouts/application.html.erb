@@ -38,6 +38,7 @@
       <div class="span8">
   			<%= yield %>
       </div>
+      <% unless @show_sidebar == false %>
       <div class="span4">
         <h3>Welcome!</h3>
         <p>This is <%= link_to "armory", "http://github.com/gorrillamcd/armory", :target => "_blank" %>, a web application for deploying Bible Colleges! It's still under heavy developement, but feel free to look around. If you find an error or have a suggestion, post it to the <%= link_to "issue tracker", "http://github.com/gorrillamcd/armory/issues", :target => "_blank" %>.</p>
@@ -53,6 +54,7 @@
           </ul>
         </p>
       </div>
+      <% end %>
     </div>
 </div>
 </body>

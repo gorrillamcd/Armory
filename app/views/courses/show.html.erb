@@ -4,6 +4,21 @@
 <p>
 	<%= @course.description %>
 </p>
+<p><!-- Need to clean up this logic a lot! It's just to show for the first draft. I'll refactor afterwards -->
+	<% if @book.any? %>
+	<hr />
+		<% for book in @book %>
+			<p><strong><%= book.name %></strong><% if book.isbn.any? %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
+
+			<% if book.required == true %>
+				This book is required.<br />
+			<% else %>
+				This book is recommended by the instructor.<br />
+			<%end %>
+			<hr />
+		<% end %>
+	<% end %>
+</p>
 <p>
 <div id="lessons">
 	<hr />

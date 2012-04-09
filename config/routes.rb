@@ -8,4 +8,6 @@ Armory::Application.routes.draw do
     resources :books
   end
 
+  resources :questions
+
 end

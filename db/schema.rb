@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328230508) do
+ActiveRecord::Schema.define(:version => 20120408234000) do
+
+  create_table "answers", :force => true do |t|
+    t.string   "text"
+    t.boolean  "correct"
+    t.integer  "question_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
 
   create_table "books", :force => true do |t|
     t.string   "isbn"
@@ -33,6 +43,15 @@ ActiveRecord::Schema.define(:version => 20120328230508) do
     t.integer  "credits"
   end
 
+  create_table "exams", :force => true do |t|
+    t.string   "name"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "exams", ["course_id"], :name => "index_exams_on_course_id"
+
   create_table "lessons", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -46,5 +65,16 @@ ActiveRecord::Schema.define(:version => 20120328230508) do
   end
 
   add_index "lessons", ["course_id"], :name => "index_lessons_on_course_id"
+
+  create_table "questions", :force => true do |t|
+    t.string   "text"
+    t.integer  "lesson_id"
+    t.integer  "exam_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "questions", ["exam_id"], :name => "index_questions_on_exam_id"
+  add_index "questions", ["lesson_id"], :name => "index_questions_on_lesson_id"
 
 end

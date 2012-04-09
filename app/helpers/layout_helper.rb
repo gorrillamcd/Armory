@@ -1,7 +1,16 @@
 module LayoutHelper
 
-  def title(page_title, show_title = "peanuts")
+  def title(page_title, show_title = "true")
     content_for(:title) { h(page_title.to_s) }
+  end
+
+  def sidebar(status) # disable the sidebar on certain pages (like the lesson show pages): Could be better :()
+      @show_sidebar = status
+      h(@show_sidebar)
+  end
+
+  def sidebar?
+    "span8" unless yield(@show_sidebar) == false
   end
 
   def stylesheet(*args)
