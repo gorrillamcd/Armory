@@ -14,6 +14,7 @@ gem 'paperclip'
 gem 'simple_form'
 
 gem 'devise'
+gem 'cancan'
 
 group :developement do
     gem 'rspec'
