@@ -8,6 +8,7 @@
   <% render 'layouts/shim' %>
 </head>
 <body>
+<!-- Navigation -->
 <header class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
         <div class="container">
@@ -45,7 +46,7 @@
         </div>
       </div>
 </header>
-
+<!-- Body of Site -->
 <div class="container">
     <div class="row">
     	<div class="span4 offset4">
@@ -61,6 +62,7 @@
       <div class="span8">
   			<%= yield %>
       </div>
+      <%# only show the sidebar if the @show_sidebar variable is true %>
       <% unless @show_sidebar == false %>
       <div class="span4">
         <h3>Welcome!</h3>

@@ -1,24 +1,17 @@
 source 'https://rubygems.org'
-
 gem 'rails', '3.2.1'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'mysql2'
-
 gem 'json'
 
 gem 'paperclip'
-
 gem 'simple_form'
 
+# Authentication and Authorization
 gem 'devise'
 gem 'cancan'
 
 group :developement do
     gem 'rspec'
-  	#gem 'nifty-generators'
   	gem 'cucumber'
 end
 
@@ -27,7 +20,6 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer'
   gem 'bootstrap-sass', '~> 2.0.0'
   gem 'uglifier', '>= 1.0.3'
@@ -42,14 +34,3 @@ group :test do
 	gem 'rspec'
 	gem 'cucumber'
 end
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
