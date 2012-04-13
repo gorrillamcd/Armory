@@ -8,6 +8,7 @@
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up", :class=>"btn btn-primary" %>
