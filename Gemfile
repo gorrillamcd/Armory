@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'mysql2'
 gem 'json'
+gem 'jquery-rails'
+gem 'thin'
 
 gem 'paperclip'
 gem 'simple_form'
@@ -9,10 +11,21 @@ gem 'simple_form'
 # Authentication and Authorization
 gem 'devise'
 gem 'cancan'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
-group :developement do
-    gem 'rspec'
-  	gem 'cucumber'
+
+group :development, :test do
+    gem 'capybara'
+    gem 'factory_girl_rails'
+    gem 'rspec-rails'
+    gem 'cucumber-rails'
+
+    # Gem related to guard
+    gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i#only include gem if on OS10(Mac)
+    gem 'libnotify' # for linux notifications
+    # gem 'growl' # For Mac growl notifications
+    gem 'guard-rspec'
+    gem 'guard-cucumber'
 end
 
 # Gems used only for assets and not required
@@ -23,14 +36,4 @@ group :assets do
   gem 'therubyracer'
   gem 'bootstrap-sass', '~> 2.0.0'
   gem 'uglifier', '>= 1.0.3'
-end
-
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
-
-group :test do
-	gem 'rspec'
-	gem 'cucumber'
 end
