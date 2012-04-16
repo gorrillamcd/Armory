@@ -13,17 +13,21 @@ gem 'devise'
 gem 'cancan'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+group :development do
+    gem 'libnotify' # for linux notifications
+    # gem 'growl' # For Mac growl notifications
+end
+
+gem 'cucumber-rails', :group => :test
 
 group :development, :test do
     gem 'capybara'
+    gem 'launchy'
     gem 'factory_girl_rails'
     gem 'rspec-rails'
-    gem 'cucumber-rails'
 
     # Gem related to guard
     gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i#only include gem if on OS10(Mac)
-    gem 'libnotify' # for linux notifications
-    # gem 'growl' # For Mac growl notifications
     gem 'guard-rspec'
     gem 'guard-cucumber'
 end
