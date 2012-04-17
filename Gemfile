@@ -25,6 +25,7 @@ group :development, :test do
     gem 'launchy'
     gem 'factory_girl_rails'
     gem 'rspec-rails'
+    gem 'forgery'
 
     # Gem related to guard
     gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i#only include gem if on OS10(Mac)

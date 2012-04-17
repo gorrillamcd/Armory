@@ -1,10 +1,10 @@
 FactoryGirl.define do
 	factory :user do
-		sequence(:email) { |n| "foo#{n}@example.com"}
+		email { Forgery::Internet.email_address }
 		password 'secret'
 		
 		factory :admin do
-			role 'student'
+			role 'admin'
 		end
 
 		factory :staff do
@@ -21,12 +21,12 @@ FactoryGirl.define do
 	end
 
 	factory :course do
-		sequence(:name) { |n| "#{n}course"}
-		description 'random description of course'
+		name { Forgery::LoremIpsum.words(3) }
+		description { Forgery::LoremIpsum.sentences(3)}
 
 		factory :book do
-			isbn { 1 + rand(10000) }
-			sequence(:name) { |n| "The book of #{n}" }
+			isbn { Forgery::Basic.number(:at_least => 1000, :at_most => 3000) }
+			name { "The book of #{Forgery::Name.first_name}" }
 		end
 	end
 end
