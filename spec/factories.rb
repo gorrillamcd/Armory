@@ -3,20 +3,10 @@ FactoryGirl.define do
 		email { Forgery::Internet.email_address }
 		password 'secret'
 		
-		factory :admin do
-			role 'admin'
-		end
-
-		factory :staff do
-			role 'staff'
-		end
-
-		factory :teacher do
-			role 'teacher'
-		end
-
-		factory :student do
-			role 'student'
+		User::ROLES.each do |r|
+			factory r.to_sym do
+				role 'r'
+			end
 		end
 	end
 

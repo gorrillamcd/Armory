@@ -8,7 +8,7 @@
 	<% if @book.any? %>
 	<hr />
 		<% for book in @book %>
-			<p><strong><%= book.name %></strong><% if book.isbn.any? %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
+			<p><strong><%= book.name %></strong><% if book.isbn != nil %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
 
 			<% if book.required == true %>
 				This book is required.<br />

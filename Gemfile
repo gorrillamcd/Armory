@@ -7,6 +7,7 @@ gem 'thin'
 
 gem 'paperclip'
 gem 'simple_form'
+gem 'high_voltage'
 
 # Authentication and Authorization
 gem 'devise'
@@ -18,11 +19,8 @@ group :development do
     # gem 'growl' # For Mac growl notifications
 end
 
-#gem 'cucumber-rails', :group => :test
-
 group :development, :test do
     gem 'capybara'
-    gem 'launchy'
     gem 'factory_girl_rails'
     gem 'rspec-rails'
     gem 'forgery'
@@ -30,7 +28,6 @@ group :development, :test do
     # Gem related to guard
     gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i#only include gem if on OS10(Mac)
     gem 'guard-rspec'
-    #gem 'guard-cucumber'
 end
 
 # Gems used only for assets and not required

@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
-
+	load_and_authorize_resource
+	
 	def new
 		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.new

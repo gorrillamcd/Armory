@@ -1,6 +1,9 @@
 Armory::Application.routes.draw do
 
-  devise_for :users
+  get "users/index"
+
+  devise_for :users, :path_prefix => 'd'
+  resources :users
 
   root :to => 'courses#index'
 
