@@ -3,8 +3,11 @@ class UsersController < ApplicationController
 	before_filter :authenticate_user!
 	load_and_authorize_resource
 
-def index
+	def index
     	#@users = user.all
+    	User::ROLES.each do |r|
+    		@r.pluralize = @user.where(:role => r.to_s)
+    	end
 	end
 
 	def show
