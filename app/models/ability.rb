@@ -14,14 +14,13 @@ class Ability
 				can :manage, Course, :except => :destroy
 				can :manage, Lesson, :except => :destroy
 			when "teacher"
-				can :read, :all
-				can [:update, :create], Course
-				can [:update, :create], Lesson
+				can [:read, :update, :create], Course
+				can [:read, :update, :create], Lesson
 			when "student"
 				can :read, Course
 				can :read, Lesson
 			else
-				can :read, Course
+				can :read, Pages
 		end
 
 		# if user.admin?

@@ -1,0 +1,131 @@
+<% title "IBCC en linea" %>
+<% sidebar false %>
+<div class="container">
+
+<header class="hero hero-unit">
+	<div class="inner">
+		<h1>Bienvenidos a IBCC en línea</h1>
+		<p>Somos un instituto biblico en línea para que usted crezca mas cerca a Dios.</p>
+	</div>
+	<div>
+	<blockquote class="pull-right">
+		<ul class="nav nav-pills">
+			<li><%= link_to "Login", new_user_session_path %></li>
+			<li><%= link_to "Project Source Code", "http://github.com/gorrillamcd/armory/", :target => "_blank" %></li>
+			<li><%= link_to "Feedback", "#" %></li>
+		</ul>
+	</blockquote>
+	</div>
+</header>
+
+<div class="container">
+	<div class="row">
+	<div class="span10 offset1">
+	<h2>To login, use the credentials below:</h2>
+		<table class="table table-striped table-condensed">
+			<tr>
+				<td>Administrator</td>
+				<td>admin@awesome.com</td>
+				<td><strong>password:</strong> awesome12</td>
+			</tr>
+			<tr>
+				<td>Staff</td>
+				<td>staff@awesome.com</td>
+				<td><strong>password:</strong> awesome12</td>
+			</tr>
+			<tr>
+				<td>Teacher</td>
+				<td>teacher@awesome.com</td>
+				<td><strong>password:</strong> awesome12</td>
+			</tr>
+			<tr>
+				<td>Student</td>
+				<td>student@awesome.com</td>
+				<td><strong>password:</strong> awesome12</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+
+	<div class="row">
+		<div class="span10 offset1">
+			<h2>Completed Features</h2>
+			<table class="table table-striped">
+				<thead>
+				<tr>
+					<th>Feature</th>
+					<th>Description</th>
+					<th>Status</th>
+				</tr>
+				</thead>
+				<tr>
+					<td>User Login/Logout</td>
+					<td>The user authentication system. I customized an existing system called <a href="http://github.com/plataformatec/devise">Devise</a></td>
+					<td>Complete</td>
+				</tr>
+				<tr>
+					<td>User Groups/Permissions</td>
+					<td>The system for grouping users by role and giving them appropriate permissions. (i.e. a student should not be able to edit grades)</td>
+					<td>Finished, but needs polishing</td>
+				</tr>
+				<tr>
+					<td>Lessons and Videos</td>
+					<td>The ability to create, view, and edit lessons and their videos, including video upload functionality.</td>
+					<td>Finished</td>
+				</tr>
+				<tr>
+					<td>Courses</td>
+					<td>The ability to create, view, and edit courses and assign lessons to each course.</td>
+					<td>Finished, but must be integrated with <a href="#subscriptions">User Subcriptions</a></td>
+				</tr>
+				<tr>
+					<td>Basic Structure</td>
+					<td>Created basic structure for app. Using a template for the look until I program what the final look will be</td>
+					<td>Finished of course. You're looking at it!</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+		<div class="row">
+		<div class="span10 offset1">
+			<h2>Unfinished Features</h2>
+			<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Feature</th>
+					<th>Description</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a name="subscriptions"></a>User-Course Subscriptions and Status Tracking</td>
+					<td>The functionality for Students to be able to subscribe to a course and for the application to track status of payment, dropped(as in the student dropped the course), etc. This is a big feature since the system will be used in several other places as well.</a></td>
+					<td>Not started, but next on the list.</td>
+				</tr>
+				<tr>
+					<td>Exam/Grading Module</td>
+					<td>The ability for students to take exams and be graded, store the grade, and offer a set number of retakes(maybe).</td>
+					<td>Not started.</td>
+				</tr>
+				<tr>
+					<td>Interface Design</td>
+					<td>Design/Program the interface that will be used in the final product. This might be buying a template that is already made or making something myself.</td>
+					<td>Design largely done. Programming not started.</td>
+				</tr>
+				<tr>
+					<td>Payment Module</td>
+					<td>The ability to accept payments from users and update status of their course from "unpaid" to "active"</td>
+					<td>Not started. Preliminary research done.</td>
+				</tr>
+				<tr>
+					<td>Beta Launch</td>
+					<td>Launch the beta version of the site. Also, include a special feedback module for testers to easily submit feedback within the app.</td>
+					<td>Not started. Preliminary research done.</td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</div>

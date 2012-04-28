@@ -5,10 +5,10 @@
 	<%= @course.description %>
 </p>
 <p><!-- Need to clean up this logic a lot! It's just to show for the first draft. I'll refactor afterwards -->
-	<% if @book.any? %>
+	<% unless @book.empty? %>
 	<hr />
 		<% for book in @book %>
-			<p><strong><%= book.name %></strong><% if book.isbn != nil %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
+			<p><strong><%= book.name %></strong><% unless book.isbn.nil? %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
 
 			<% if book.required == true %>
 				This book is required.<br />

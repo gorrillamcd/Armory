@@ -5,9 +5,13 @@ class UsersController < ApplicationController
 
 	def index
     	#@users = user.all
-    	User::ROLES.each do |r|
-    		@r.pluralize = @user.where(:role => r.to_s)
-    	end
+    	@students = @users.where(:role => "student")
+    	@staffs = @users.where(:role => "staff")
+    	@teachers = @users.where(:role => "teacher")
+    	@admins = @users.where(:role => "admin")
+    	# User::ROLES.each do |r|
+    	# 	@r = @users.where(:role => r.to_s)
+    	# end
 	end
 
 	def show

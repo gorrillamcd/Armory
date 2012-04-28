@@ -17,6 +17,7 @@
             <ul class="nav pull-right">
               <li><%= link_to "Home", root_url %></li>
               <li><%= link_to "Courses", courses_path %></li>
+              <li><%= link_to "User Management", users_path %></li>
               <li class="divider-vertical"></li>
                 <% if user_signed_in? %>
                 <li class="dropdown">
@@ -59,9 +60,11 @@
 		  </div>
     </div>
     <div class="row">
-      <div class="span8">
+    <%# Super gross code here. Need to clean it up later %>
+      <% unless @show_sidebar == false %><div class="span8"><% end %>
   			<%= yield %>
-      </div>
+      <% unless @show_sidebar == false %></div><% end %>
+
       <%# only show the sidebar if the @show_sidebar variable is true %>
       <% unless @show_sidebar == false %>
       <div class="span4">
