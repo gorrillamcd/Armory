@@ -8,6 +8,7 @@ gem 'thin'
 gem 'paperclip'
 gem 'simple_form'
 gem 'high_voltage'
+gem 'state_machine'
 
 # Authentication and Authorization
 gem 'devise'

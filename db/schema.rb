@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120412222153) do
+ActiveRecord::Schema.define(:version => 20120501231502) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(:version => 20120412222153) do
 
   add_index "questions", ["exam_id"], :name => "index_questions_on_exam_id"
   add_index "questions", ["lesson_id"], :name => "index_questions_on_lesson_id"
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.string   "state"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
