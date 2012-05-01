@@ -1,40 +1,29 @@
 <div class="hero-unit row"><h1 class="pull-left">Hey guys! I found the users.<br />
-	There over <%= link_to "here!", users_path %></h1>
+	They're over <%= link_to "here!", users_path %></h1>
 </div>
 <div class="row"
 	<div id="userstable">
-	<p><hr />
-		<% unless @admins.empty? %>
-		<h3>Admin Users</h3>
-		<% for admin in @admins %>
-		<%= admin.email %><br />
-		<% end %>
-		<hr />
-		<% end %>
+	<% @users.each_pair do |role, users| %>
+		<% unless users.empty? %>
+		<h3><%= role.to_s.titlelize %></h3>
+			<table class="table table-striped">
+				<thead>
+				<tr>
+					<th>Email</th>
+					<th>Name</th>
+				</tr>
+				</thead>
 
-		<% unless @staffs.empty? %>
-		<h3>Staff</h3>
-		<% for staff in @staffs %>
-		<%= staff.email %><br />
+				<tbody>
+				<% users.each do |user| %>
+				<tr>
+					<td><%= user.email %></td>
+					<td></td>
+				</tr>
+				<% end %>
+				</tbody>
+			</table>
 		<% end %>
-		<hr />
-		<% end %>
-
-		<% unless @teachers.empty? %>
-		<h3>Teachers</h3>
-		<% for teacher in @teachers %>
-		<%= teacher.email %><br />
-		<% end %>
-		<hr />
-		<% end %>
-
-		<% unless @students.empty? %>
-		<h3>Students</h3>
-		<% for student in @students %>
-		<%= student.email %><br />
-		<% end %>
-		<hr />
-		<% end %>
-	</p>
+	<% end %>
 	</div>
 </div>

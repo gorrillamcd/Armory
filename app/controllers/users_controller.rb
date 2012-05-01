@@ -4,14 +4,11 @@ class UsersController < ApplicationController
 	load_and_authorize_resource
 
 	def index
-    	#@users = user.all
-    	@students = @users.where(:role => "student")
-    	@staffs = @users.where(:role => "staff")
-    	@teachers = @users.where(:role => "teacher")
-    	@admins = @users.where(:role => "admin")
-    	# User::ROLES.each do |r|
-    	# 	@r = @users.where(:role => r.to_s)
-    	# end
+    	@users = User.group(:role).all
+    	# @students = @users.where(:role => "student")
+    	# @staffs = @users.where(:role => "staff")
+    	# @teachers = @users.where(:role => "teacher")
+    	# @admins = @users.where(:role => "admin")
 	end
 
 	def show
