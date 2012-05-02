@@ -2,7 +2,7 @@ class Subscription < ActiveRecord::Base
 	belongs_to :course
 	belongs_to :user
 
-	state_machine :state, :initial => :pending do
+	state_machine :initial => :pending do
 		event :subscribe do
 			transition any => :pending
 		end
@@ -27,5 +27,9 @@ class Subscription < ActiveRecord::Base
 			transition :inactive => :active
 		end
 	end
-	
+
+	# def subscribe
+	# 	params[:user_id] = current_user.id
+	# 	@sub = Subscription.create(params[:user_id, :course_id])
+	# end
 end
