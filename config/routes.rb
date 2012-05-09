@@ -1,6 +1,6 @@
 Armory::Application.routes.draw do
 
-  get "users/index"
+  get 'users/index'
 
   devise_for :users, :path_prefix => 'd'
   resources :users
@@ -17,6 +17,8 @@ Armory::Application.routes.draw do
     resources :exams
     resources :books
   end
+
+  resources :subscriptions, :only => [:create, :update]
 
   resources :questions
 

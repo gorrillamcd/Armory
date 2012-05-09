@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
 	before_filter :authenticate_user!
-	load_and_authorize_resource
+	#load_and_authorize_resource
+	skip_authorization_check
 
 	def index
-    	@users = User.group(:role).all
+    	@users = User.all.group_by(&:role)
     	# @students = @users.where(:role => "student")
     	# @staffs = @users.where(:role => "staff")
     	# @teachers = @users.where(:role => "teacher")

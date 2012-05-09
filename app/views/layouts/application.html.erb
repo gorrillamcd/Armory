@@ -17,7 +17,7 @@
             <ul class="nav pull-right">
               <li><%= link_to "Home", root_url %></li>
               <li><%= link_to "Courses", courses_path %></li>
-              <li><%= link_to "User Management", users_path %></li>
+              <% if user_signed_in? %><li><%= link_to "User Management", users_path %></li><% end %>
               <li class="divider-vertical"></li>
                 <% if user_signed_in? %>
                 <li class="dropdown">
@@ -52,7 +52,7 @@
     <div class="row">
     	<div class="span4 offset4">
 	    		<% flash.each do |name, msg| %>
-            <div id="flash_<%= name %>" class="alert alert-<%= name %>">
+            <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
                 <%= msg %>
               <a class="close" data-dismiss="alert">x</a>
             </div>

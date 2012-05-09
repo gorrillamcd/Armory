@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
 		#@course = Course.find(params[:id])
 		@lesson = @course.lessons
 		@book = @course.books
+		@subscription = Subscription.where(:course_id => @course.id, :user_id => current_user.id).find(:first)
 	end
 
 	def new

@@ -20,7 +20,7 @@ class Ability
 				can :read, Course
 				can :read, Lesson
 			else
-				can :read, Pages
+				can :read, Course#Pages
 		end
 
 		# if user.admin?

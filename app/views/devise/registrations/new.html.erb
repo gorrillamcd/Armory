@@ -8,10 +8,13 @@
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
-    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    
+    <%= f.label :role, :html => {:class => "control-label" } %>
+    <div class="controls"><%= f.collection_select :role, User::ROLES, :to_s, :humanize %></div>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up", :class=>"btn btn-primary" %>
+    <%= link_to "Back", :back, :class => "btn" %>
   </div>
 </fieldset>
 <% end %>

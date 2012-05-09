@@ -4,12 +4,12 @@
 <div class="row"
 	<div id="userstable">
 	<% @users.each_pair do |role, users| %>
-		<% unless users.empty? %>
-		<h3><%= role.to_s.titlelize %></h3>
+		<% unless users.blank? %>
+		<h3><%= role.blank? ? "These users don't have a role!" : role.capitalize %></h3>
 			<table class="table table-striped">
 				<thead>
 				<tr>
-					<th>Email</th>
+					<th width="300px" >Email</th>
 					<th>Name</th>
 				</tr>
 				</thead>
@@ -18,7 +18,7 @@
 				<% users.each do |user| %>
 				<tr>
 					<td><%= user.email %></td>
-					<td></td>
+					<td>Placeholder McPhearson</td>
 				</tr>
 				<% end %>
 				</tbody>

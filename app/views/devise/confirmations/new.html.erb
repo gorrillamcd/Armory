@@ -1,15 +1,15 @@
-<h2>Resend confirmation instructions</h2>
+<%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => "form-horizontal" }) do |f| %>
+  <fieldset>
+  	<legend>Resend confirmation instructions</legend>
+  	<%= f.error_notification %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="inputs">
     <%= f.input :email, :required => true %>
-  </div>
 
-  <div class="actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
+	<div class="form-actions">
+	  <%= f.button :submit, "Resend confirmation instructions", :html => { :class => "btn btn-primary"} %>
+	  <%= link_to "Back", :back, :class => "btn" %>
+	</div>
+  </fieldset>
 <% end %>
 
 <%= render "links" %>

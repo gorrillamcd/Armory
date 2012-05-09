@@ -1,22 +1,29 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<fieldset>
+
+  <legend>Edit <%= resource_name.to_s.humanize %></legend>
+
   <%= f.error_notification %>
 
-  <div class="inputs">
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
     <%= f.input :password_confirmation, :required => false %>
     <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-  </div>
 
-  <div class="actions">
-    <%= f.button :submit, "Update" %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Update", :class => "btn btn-primary" %>
+      <%= link_to "Back", :back, :class => "btn" %>
+    </div>
+</fieldset>
+
 <% end %>
-
+<hr />
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+<table class="table">
+  <tr>
+    <td>Do you want to cancel your account?<br />This is permanent (at least for right now)!</td>
+    <td><%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></td>
+  </tr>
+</table>
