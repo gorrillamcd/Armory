@@ -13,15 +13,15 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		#@user = user.find(params[:id])
+		@user = User.find(params[:id])
 	end
 
 	def new
-		#@user = user.new
+		#@user = User.new
 	end
 
 	def create
-		#@user = user.new(params[:user])
+		#@user = User.new(params[:user])
 		if @user.save
 			redirect_to @user
 			flash[:notice] = "Successfully created #{@user.name}."
@@ -31,11 +31,11 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		#@user = user.find(params[:id])
+		#@user = User.find(params[:id])
 	end
 
 	def update
-		#@user = user.find(params[:id])
+		#@user = User.find(params[:id])
 		if @user.update_attributes(params[:user])
 			redirect_to @user
 			flash[:notice] = "Successfuly updated account for #{@user.name}."

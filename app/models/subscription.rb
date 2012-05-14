@@ -3,6 +3,7 @@ class Subscription < ActiveRecord::Base
 	belongs_to :user
 
 	validates_presence_of :course_id, :user_id, :state
+	validates_uniqueness_of :user_id, :scope => :course_id
 
 	state_machine :initial => :pending do
 		
@@ -15,7 +16,9 @@ class Subscription < ActiveRecord::Base
 		# :failed =>		For when the student completes with a failing grade
 		# :inactive =>		Currently unused
 
-		# For info on the helpers to access/update these states, check out the docs for state_machine at	http://rdoc.info/github/pluginaweek/state_machine/master/frames
+		# For info on the helpers to access/update these states, check out the docs for state_machine at
+		# http://rdoc.info/github/pluginaweek/state_machine/master/frames
+		##################################
 
 		event :subscribe do
 			transition any => :pending
