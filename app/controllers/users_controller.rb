@@ -1,19 +1,25 @@
 class UsersController < ApplicationController
 
+### Controller Explanation ###
+#
+# UsersController is for managing users. It's currently pretty self-explanatory, but there are a few things to note:
+# 	The index action groups users by role
+# 	new, create, edit, update, and destroy actions are controlled by Devise.
+# 	It has not been integrated with CanCan yet
 	before_filter :authenticate_user!
+
+	# TODO: integrate with CanCan authorization
+
 	#load_and_authorize_resource
 	skip_authorization_check
 
 	def index
     	@users = User.all.group_by(&:role)
-    	# @students = @users.where(:role => "student")
-    	# @staffs = @users.where(:role => "staff")
-    	# @teachers = @users.where(:role => "teacher")
-    	# @admins = @users.where(:role => "admin")
 	end
 
 	def show
 		@user = User.find(params[:id])
+		@courses = @user.courses
 	end
 
 	def new

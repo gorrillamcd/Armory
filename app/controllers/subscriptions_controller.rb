@@ -1,5 +1,10 @@
 class SubscriptionsController < ApplicationController
 
+### Controller Explanation ###
+#
+# The SubscriptionsController manages subscriptions/relationships between a student and a course. Each subscription should be unique with respect to the :user_id and :course_id. This controller doesn't interact with views directly, but is called when creating a subscription. Destroy is not used and will most likely either be modified to be a tombstone action or removed altogether.
+#
+
 	before_filter :authenticate_user!
 	# TODO: restrict create action to students only but allow staff, admins, and students to drop(destroy) or change status(edit/update)
 	skip_authorization_check

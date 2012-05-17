@@ -4,12 +4,8 @@
 	<h2><%= @course.name %></h2>
 	<% if @subscription.nil? %>
 		<%= button_to "Subscribe!", subscriptions_path(:course_id => @course.id), :class => 'btn btn-primary' %>
-	<% elsif @subscription.state == "pending" %>
-		<p><small>You haven't paid yet for this course.</small></p>
-	<% elsif @subscription.state == "active" %>
-		<p><small>You're attending this course.</small></p>
 	<% else %>
-		<p><small>You have <%= @subscription.state %> this course.</small></p>
+		<%= humanize_state(@subscription.state) %>
 	<% end %>
 	<br />
 </p>

@@ -6,11 +6,19 @@ class Course < ActiveRecord::Base
 	# Associations
 	has_many :lessons, :dependent => :destroy
 	has_many :books, :dependent => :destroy
+	has_many :subscriptions
 	has_many :users, :through => :subscriptions, :uniq => true
 
 	accepts_nested_attributes_for :books, :allow_destroy => :true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
 
 	# Validations
 	validates_presence_of :name, :description
+
+	# Methods
+
+	def find_state
+		@subscription ||= Subscription.find_by_course_id(self.id)
+		return @subscription.state
+	end
 
 end
