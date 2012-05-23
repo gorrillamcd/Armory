@@ -5,10 +5,10 @@ Armory::Application.routes.draw do
   devise_for :users, :path_prefix => 'd'
   resources :users
 
-# To route High-Voltage pages use:
-  #match 'pages/home' => 'high_voltage/pages#show', :id => 'home'
+  # To route High-Voltage pages use:
+  #  match 'pages/home' => 'high_voltage/pages#show', :id => 'home'
   # or for root
-  #root :to => 'high_voltage/pages#show', :id => 'home'
+  #  root :to => 'high_voltage/pages#show', :id => 'home'
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
   root :to => 'pages#show', :id => 'home'
 
