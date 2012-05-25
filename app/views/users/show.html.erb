@@ -2,23 +2,33 @@
 <h2><%= @user.first_name %>&nbsp;<%= @user.last_name %></h2><hr />
 
 <div class="row">
-	<div class="span4">
+	<div class="span5">
 		<div><%= @user.email %><hr /></div>
 		<div>
-		<p>	<strong>Current Courses</strong><br />
+		<p>	<h3>Your Current Courses</h3>
 			<% if @user.has_courses? %>
 			You haven't signed up for any courses yet. Why don't you <%= link_to "take a look at what's offered!", courses_path %>
 			<% else %>
 				<% for course in @courses %>
-					<%= course.name %> | <%= humanize_state(course.find_state) %><br />
-					<p><%= course.description %></p>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th><%= course.name %></th><td><small><%= humanize_state(course.find_state) %></small></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="2"><%= course.description %></td>
+						</tr>
+					</tbody>
+				</table>
 				<% end %>
 			<% end %>
 		</p>
 		</div>
 	</div>
 
-	<div class="span3 offset1">
+	<div class="span3">
 		<p>Second Section of information</p>
 	</div>
 </div>

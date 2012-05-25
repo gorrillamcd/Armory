@@ -9,7 +9,7 @@ This is currently under active development and is not ready to be used in Produc
 
 ##How to Help
 
-There's a lot that needs to be done to make this application happen. If you'd like to contribute, fork the repo and make a pull request with your changes. There's a [non-definitive TODO list][todo] at the end of this readme.
+There's a lot that needs to be done to make this application happen. If you'd like to contribute, fork the repo and make a pull request with your changes. There's a [non-definitive TODO list](todo) at the end of this readme.
 
 ###Contributing Code
 
