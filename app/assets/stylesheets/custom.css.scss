@@ -56,3 +56,33 @@ textarea {
 textarea {
   height:80px;
 }
+
+/* Users Views */
+
+/* I'm playing with SASS here, but will cleanup the rest of my custom styles in the future */
+
+    /* Variables */
+    $base-color: #4F8C32;
+    $grade: lighten($base-color, 40%);
+
+#grade {
+  background-color: $grade;
+  border: 1px solid darken($grade, 10%);
+  padding: 10px;
+}
+
+#grade-text {
+  color: #fff;
+}
+
+#gpa {
+  font-size: 3em;
+  letter-spacing: -1px;
+  font-weight: bold;
+  line-height:1;
+  text-shadow: 0 1px 0 #fff;
+  display: block;
+  color: darken($base-color, 20%);
+  padding-right: 15px;
+  padding-left: 5px;
+}

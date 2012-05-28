@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 # 	The index action groups users by role
 # 	new, create, edit, update, and destroy actions are controlled by Devise.
 # 	It has not been integrated with CanCan yet
+
 	before_filter :authenticate_user!
 
 	# TODO: integrate with CanCan authorization
@@ -50,11 +51,13 @@ class UsersController < ApplicationController
 	# 	end
 	# end
 
-	def destroy
-		#@user = User.find(params[:id])
-		username = @user.name
-		@user.destroy
-		redirect_to users_url
-		flash[:error] = "Successfully destroyed #{username}"
-	end
+# Should create a tombstone action instead of 'destroy'. After a user is inactive for x amount of months, it is tomstoned for x amount of time, before being deleted.
+
+	# def destroy
+	# 	#@user = User.find(params[:id])
+	# 	username = @user.name
+	# 	@user.destroy
+	# 	redirect_to users_url
+	# 	flash[:error] = "Successfully destroyed #{username}"
+	# end
 end
