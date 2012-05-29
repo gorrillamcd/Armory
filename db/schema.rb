@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514221909) do
+ActiveRecord::Schema.define(:version => 20120528223348) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -44,14 +44,16 @@ ActiveRecord::Schema.define(:version => 20120514221909) do
     t.integer  "credits"
   end
 
-  create_table "exams", :force => true do |t|
-    t.string   "name"
-    t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "grades", :force => true do |t|
+    t.integer  "average_grade"
+    t.integer  "subscription_id"
+    t.integer  "lesson_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "exams", ["course_id"], :name => "index_exams_on_course_id"
+  add_index "grades", ["lesson_id"], :name => "index_grades_on_lesson_id"
+  add_index "grades", ["subscription_id"], :name => "index_grades_on_subscription_id"
 
   create_table "lessons", :force => true do |t|
     t.string   "name"
@@ -70,12 +72,10 @@ ActiveRecord::Schema.define(:version => 20120514221909) do
   create_table "questions", :force => true do |t|
     t.string   "text"
     t.integer  "lesson_id"
-    t.integer  "exam_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "questions", ["exam_id"], :name => "index_questions_on_exam_id"
   add_index "questions", ["lesson_id"], :name => "index_questions_on_lesson_id"
 
   create_table "subscriptions", :force => true do |t|

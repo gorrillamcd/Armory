@@ -14,7 +14,6 @@ Armory::Application.routes.draw do
 
   resources :courses do
     resources :lessons
-    resources :exams
     resources :books
   end
 

@@ -2,7 +2,7 @@ class Subscription < ActiveRecord::Base
 	
 	belongs_to :course
 	belongs_to :user
-	#has_many :grades
+	has_many :grades
 
 	validates_presence_of :course_id, :user_id, :state
 	validates_uniqueness_of :user_id, :scope => :course_id
