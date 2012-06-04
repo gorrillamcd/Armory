@@ -1,6 +1,8 @@
 class Question < ActiveRecord::Base
-  belongs_to :lesson
+  attr_accessible :text, :exam_id, :answers_attributes
+
+  belongs_to :exam
   has_many :answers
 
-  accepts_nested_attributes_for :answers, :allow_destroy => :true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+  accepts_nested_attributes_for :answers, :allow_destroy => :true
 end

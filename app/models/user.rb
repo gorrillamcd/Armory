@@ -33,4 +33,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_admin?(user)
+    if user.role == 'admin'
+      return true
+    else
+      return false
+    end
+  end
+  
 end

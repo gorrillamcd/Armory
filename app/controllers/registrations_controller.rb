@@ -6,6 +6,8 @@ class RegistrationsController < Devise::RegistrationsController
 
 	def create
 		# Make something like this for assigning user.role
+		# P.S. I know now this is wrong and I should use if statements instead. But I'll leave this here to remind me it needs to be done.
+		#
 		# case params[role]
 		# when params[role] == "admin" && @user.can?.update_attribute
 		# 	@user.role = params[role]

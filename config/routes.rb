@@ -17,8 +17,14 @@ Armory::Application.routes.draw do
     resources :books
   end
 
-  resources :subscriptions, :only => [:create, :update]
+  resources :lessons do
+    resources :exams
+  end
 
-  resources :questions
+  resources :exams do
+    resources :grades
+  end
+
+  resources :subscriptions, :only => [:create, :update]
 
 end
