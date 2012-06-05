@@ -1,7 +1,7 @@
 #Armory
 
 An online learning and student management system specifically tailored for Bible Colleges.
-While this is was originally intended for use in a Bible college, anyone can feel free to use this software for any use. 
+While this was originally intended for use in a Bible college, anyone can feel free to use this software for any use. 
 
 ***********************
 This is currently under active development and is not ready to be used in Production! If you would like to know when it will be ready, signup for the mailing list at [ccbcmexico.com](http://www.ccbcmexico.com/content/index.php?option=com_content&view=article&id=37&Itemid=32&lang=en)
@@ -37,16 +37,15 @@ While the TODO list is a good place to start, there's a few other things that sh
 Just some quick notes about working with the code:
 
 * Right now, I'm sticking with the gems I have unless there's a really good reason to switch. That means RSpec for testing, Paperclip for uploads, etc.
-* Thin is the server I plan on using for development and production. If you don't know, just do `gem install thin`, clone this repo and cd into the directory, then run `thin start`, it's that easy!
+* `Thin` is the server I plan on using for development and production. If you don't know, just do `gem install thin`, clone this repo and cd into the directory, then run `thin start`, it's that easy!
 * The main roadmap for version 1 is fairly set in stone. It will be functional and secure, but might not have all the bells and whistles(autocomplete, multiple question-types, translation, etc) it could have, that's what version 2 is for.
-* This is free to be used by anyone but cannot be sold (will get a proper license up soon). That said, I will not add functionality for other scriptures(book of mormon, apocrapha, etc) or religions. If you'd like, feel free to fork the repository and you can add them to that yourself.
+* This is free to be used by anyone but cannot be sold (will get a proper license up soon). That said, I will not add functionality for other scriptures(book of mormon, apocrapha, etc) or religions. If you'd like, fork the repository and you can add them yourself.
 
 #TODO
 [todo]: #
 
 * Write Tests for current and any further features (will use rspec/capybara)
-* Add Course subscription feature (state-machine to track relationship between student and course)
 * Create Exam views and logic along with Questions and Answers
 * Finish user CRUD interface for admins to manage users
-* Program User Interface (already designed and looking sweet!; templates will probably come in v3.0)
+* Code User Interface (already designed and looking sweet!; templates will probably come in v3.0)
 * Refactor and general code-cleanup
