@@ -1,6 +1,12 @@
 class LessonsController < ApplicationController
 	load_and_authorize_resource
 	
+
+	def show
+		@course = Course.find(params[:course_id])
+		@lesson = @course.lessons.find(params[:id])
+	end
+
 	def new
 		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.new
@@ -10,8 +16,8 @@ class LessonsController < ApplicationController
 		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.create(params[:lesson])
 		if @lesson.save
-			redirect_to exam_path(@lesson)
-			flash[:notice] = "Successfully created lesson."
+			redirect_to new_lesson_exam_path(@lesson)
+			flash[:notice] = "Successfully created lesson. Now you can make the quiz to go with it!"
 		else
 			render :action => 'new', :error => "Something went wrong."
 		end
@@ -31,11 +37,6 @@ class LessonsController < ApplicationController
 		else
 			render :action => 'edit', :error => "Something went wrong."
 		end
-	end
-
-	def show
-		@course = Course.find(params[:course_id])
-		@lesson = @course.lessons.find(params[:id])
 	end
 
 	def destroy

@@ -1,0 +1,17 @@
+<h2><%= @exam.kind.capitalize %> for <%= @lesson.name %></h2>
+
+<ol class="questions">
+<% @exam.questions.each do |question| %>
+  <li>
+    <%= question.text %>
+
+    <% if question.answers.any? %>
+    <ol class="answers">
+      <% question.answers.each do |answer| %>
+        <li><%= answer.text %></li>
+      <% end %>
+    </ol>
+    <% end %>
+  </li>
+<% end %>
+</ol>

@@ -1,0 +1,9 @@
+<fieldset>
+	<%= f.input :text, :as => :text %>
+	<%= f.hidden_field :_destroy %>
+	<%= link_to "remove", '#', class: "remove_fields" %>
+	<%= f.simple_fields_for :answers do |builder| %>
+		<%= render 'answer_fields', f: builder %>
+	<% end %>
+	<%= link_to_add_fields "Add Answer", f, :answers %>
+</fieldset>

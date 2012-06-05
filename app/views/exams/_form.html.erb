@@ -1,0 +1,21 @@
+<%= simple_form_for [@lesson, @exam], :html => { :class => 'form-horizontal' } do |f| %>
+<fieldset>
+    <legend><%= controller.action_name.capitalize %> Exam for <%= @lesson.name.capitalize %></legend>
+
+	<%= f.input :weight %>
+
+		<div class="controls pad-bottom">
+    <%= f.collection_select :kind, Lesson::LESSON_TYPE, :to_s, :humanize %>
+    	</div>
+
+	<%= f.simple_fields_for :questions do |builder| %>
+		<%= render 'question_fields', f: builder %>
+	<% end %>
+	<%= link_to_add_fields "Add Question", f, :questions %>
+
+  <div class="form-actions">
+  	<%= f.submit "Create Exam", :class => "btn btn-primary" %>
+    <%= link_to "Cancel", @lesson, :class=>"btn" %>
+  </div>
+</fieldset>
+<% end %>
