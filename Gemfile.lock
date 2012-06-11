@@ -83,7 +83,6 @@ GEM
       thor (~> 0.14)
     json (1.6.6)
     libnotify (0.7.2)
-    libv8 (3.3.10.4)
     libwebsocket (0.1.3)
       addressable
     mail (2.4.4)
@@ -92,6 +91,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.2.0)
+    mustang (0.2.2)
     mysql2 (0.3.11)
     nokogiri (1.5.2)
     orm_adapter (0.0.7)
@@ -160,8 +160,6 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     state_machine (1.1.2)
-    therubyracer (0.10.1)
-      libv8 (~> 3.3.10)
     thin (1.3.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -197,6 +195,7 @@ DEPENDENCIES
   jquery-rails
   json
   libnotify
+  mustang
   mysql2
   paperclip
   rails (= 3.2.1)
@@ -204,6 +203,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form
   state_machine
-  therubyracer
   thin
   uglifier (>= 1.0.3)
