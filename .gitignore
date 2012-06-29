@@ -16,3 +16,9 @@
 
 # Ignore video files since they will be added after deploy
 /public/system
+
+# Ignore webfonts (licensing issues)
+*.ttf
+*.eot
+*.woff
+/app/assets/webfonts/*
