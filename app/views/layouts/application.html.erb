@@ -8,6 +8,7 @@
   <% render 'layouts/shim' %>
 </head>
 <body>
+
 <!-- Navigation -->
 <header class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
@@ -49,6 +50,7 @@
 </header>
 <!-- Body of Site -->
 <div class="container">
+  <!-- Show notices if any -->
     <div class="row">
     	<div class="span4 offset4">
 	    		<% flash.each do |name, msg| %>
@@ -59,14 +61,19 @@
 				  <% end %>
 		  </div>
     </div>
+  <!-- END Notices Area -->
+
+  <!-- Main Content Area -->
     <div class="row">
     <%# Super gross code here. Need to clean it up later %>
       <% unless @show_sidebar == false %><div class="span8"><% end %>
   			<%= yield %>
       <% unless @show_sidebar == false %></div><% end %>
+  <!-- END Main Content Area -->
 
       <%# only show the sidebar if the @show_sidebar variable is true %>
       <% unless @show_sidebar == false %>
+      <!-- Right Sidebar Area -->
       <div class="span4">
         <h3>Welcome!</h3>
         <p>This is <%= link_to "armory", "http://github.com/gorrillamcd/armory", :target => "_blank" %>, a web application for deploying Bible Colleges! It's still under heavy developement, but feel free to look around. If you find an error or have a suggestion, post it to the <%= link_to "issue tracker", "http://github.com/gorrillamcd/armory/issues", :target => "_blank" %>.</p>
@@ -82,6 +89,7 @@
           </ul>
         </p>
       </div>
+      <!-- END Right Sidebar Area -->
       <% end %>
     </div>
 </div>

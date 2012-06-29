@@ -30,7 +30,7 @@ module LayoutHelper
 
   def sidebar?
     "span8" unless yield(@show_sidebar) == false
-  end
+  end 
 
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }
