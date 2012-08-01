@@ -108,10 +108,24 @@ textarea {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
   color: #fff;
   font: 14px Trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
-  width: 796px;
+  max-width: 796px;
   float:left;
   padding:8px 7px 0 10px;
   display:block;
+}
+
+.omnibar .content #left-section{
+  position: absolute;
+  left: 5;
+}
+
+.omnibar .content #right-section{
+  position: absolute;
+  right: -80;
+}
+
+.omnibar ul {
+  list-style:none;
 }
 
 /* Center Section */
@@ -156,7 +170,7 @@ a span.esp {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
   -webkit-border-bottom-left-radius: 20px; -moz-border-radius-bottomleft: 20px; border-bottom-left-radius: 20px;
   border-right: 1px solid #777;
-  width: 80px;
+  // width: 80px;
   height: 36px;
   float:left;
   color: #fff;
@@ -214,7 +228,7 @@ a span.esp {
   -moz-border-radius-bottomright: 20px;
   border-bottom-right-radius: 20px;
   border-left: 1px solid #777;
-  width: 80px;
+  // width: 80px;
   height: 36px;
   float:right;
   color: #fff;
@@ -263,6 +277,32 @@ a span.esp {
 
 .open #menu-right {
   left: inherit;
+}
+
+#menu-right {
+  position:absolute;
+  top:20px;
+  padding:40px 10px 10px 10px;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  z-index:-1;
+  line-height: 1.5em;
+}
+
+.dropdown-menu a {
+  text-decoration:none;
+  color:#fff;
+}
+
+#menu-right p {
+  padding: 5px 15px 5px 0px;
+  display: block;
+  color: #aaa;
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+  color: #84bc5e;
+  background-color: #fff;
 }
 
 /* End Omnibar Styles */

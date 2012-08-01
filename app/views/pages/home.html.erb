@@ -16,17 +16,17 @@
 		</div>
 
 	    <div class="content">
-	    	<section id="campus-selection" class="pull-left">
+	    	<section id="left-section">
 	    		Ensenada, Baja California, Mexico
 			</section>
-			<section class="pull-right">
-				<% if user_signed_in? %>Welcome back<% end %> |
+			<section id="right-section">
 				<a href="#"><span class="eng"></span> English</a>
 				<a href="#"><span class="esp"></span> Espa&ntilde;ol</a>
 			</section>
 	    </div>
 
 	    <div class="dropdown">
+	    	<% unless user_signed_in? %>
 			<a id="dropdown-right" class="dropdown-toggle" data-toggle="dropdown" href="#">
 				login <span class="caret"></span>
 			</a>
@@ -42,6 +42,18 @@
 					</fieldset>
 				<% end %>
 			</div>
+			<% else %>
+			<a id="dropdown-right" class="dropdown-toggle" data-toggle="dropdown" href="#">
+				admin@awesome.com <span class="caret"></span>
+			</a>
+			<div id="menu-right" class="dropdown-menu pull-right">
+			<ul>
+				<li><%= link_to "Dashboard", "#" %></li>
+				<li><%= link_to "Mi Cuenta", "#" %></li>
+				<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+			</ul>	
+			</div>
+			<% end %>
 		</div>
 	</nav>
 </div>
@@ -53,12 +65,14 @@
 		<div id="brand"><%= link_to "stuff", root_path, :id => "logo-main" %><h1 id="brand-name">Instituto Biblico<br />Capilla Calvario</h1></div>
 
 		<ul class="pull-right">
-			<li id="alumnos"><a href="#">Alumnos</a></li>
-			<li id="profesores"><a href="#">Profesores y Personal</a></li>
-			<li id="noticias"><a href="#">Noticias</a></li>
-			<li id="quienes-somos"><a href="#">Quienes Somos?</a></li>
+			<li id="alumnos"><%= link_to "Alumnos", "#" %></li>
+			<li id="profesores"><%= link_to "Profesores y Personal", "#" %></li>
+			<li id="noticias"><%= link_to "Noticias", "#" %></li>
+			<li id="quienes-somos"><%= link_to "Quienes Somos?", "#" %></li>
 		</ul>
 	</nav>
+	<!-- Not working yet; will fix later or might change for something else
+
 	<section id="subnav" class="pull-right">
 		<ul id="alumnos">
 			<li><a href="#">A Link |</a></li>
@@ -91,7 +105,7 @@
 			<li><a href="#">A Link |</a></li>
 			<li><a href="#">A Link</a></li>
 		</ul>
-	</section>
+	</section> -->
 </div>
 
 <div class="container">

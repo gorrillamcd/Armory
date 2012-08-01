@@ -12,6 +12,8 @@ Armory::Application.routes.draw do
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
   root :to => 'pages#show', :id => 'home'
 
+  get "/dashboard" => 'dashboard#show'
+  
   resources :courses do
     resources :lessons
     resources :books
