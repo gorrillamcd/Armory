@@ -1,0 +1,14 @@
+<div style="marigin-top: 100px;">
+	Testing<br />
+
+	<% case current_user.role %>
+		<% when "admin" %>
+		You're an admin!
+		<% when "staff" %>
+		You're a staff person!
+		<% when "teacher" %>
+		You're one of them teachers!
+		<% when "student" %>
+		You're a student!
+	<% end %>
+</div>
