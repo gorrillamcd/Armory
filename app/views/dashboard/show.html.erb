@@ -9,6 +9,36 @@
 		<% when "teacher" %>
 		You're one of them teachers!
 		<% when "student" %>
-		You're a student!
+		
+		<div id="my-courses">
+			<% @courses.each_pair do |state, courses| %>
+				<% unless courses.blank? %>
+					<div class="module" id="active-courses">
+						<div class="module-header">
+							<% if state == "active" %><h3>My Currrent Courses</h3>
+							<% elsif state == "pending" %><h3>Unpaid Courses</h3>
+							<% else %><h3>Other Courses</h3>
+							<% end %>
+						</div>
+
+						<div class="module-body">
+							<% courses.each do |course| %>
+								<p><%= course.name %></p>
+							<% end %>
+						</div>
+					</div>
+				<% else %>
+					<div class="module" id="active-courses">
+						<div class="module-header">
+							<h3>My Current Courses</h3>
+						</div>
+
+						<div class="module-body">
+							You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
 	<% end %>
 </div>
