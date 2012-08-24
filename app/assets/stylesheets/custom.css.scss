@@ -73,19 +73,18 @@ textarea {
 
 /* ===== @font-face Declarations ========== */
 
-// The Museo font family is available for free from http://www.myfonts.com/
+// Several weights of the Museo font family are available for free from http://www.myfonts.com/
  @font-face {font-family: 'Museo-700';src: url(asset-path('233C55_1_0.eot', font));src: url(asset-path('233C55_1_0.eot', font)) format('embedded-opentype'),url(asset-path('233C55_1_0.woff', font)) format('woff'),url(asset-path('233C55_1_0.ttf', font)) format('truetype');}
-  
- @font-face {font-family: 'MuseoSlab-500';src: url('webfonts/233C55_4_0.eot');src: url('webfonts/233C55_4_0.eot?#iefix') format('embedded-opentype'),url('webfonts/233C55_4_0.woff') format('woff'),url('webfonts/233C55_4_0.ttf') format('truetype');}
- 
-  
- @font-face {font-family: 'MuseoSlab-500Italic';src: url('webfonts/233C55_5_0.eot');src: url('webfonts/233C55_5_0.eot?#iefix') format('embedded-opentype'),url('webfonts/233C55_5_0.woff') format('woff'),url('webfonts/233C55_5_0.ttf') format('truetype');}
 
  @font-face {font-family: 'Franchise-bold'; src: url(asset-path('Franchise-Bold.ttf', font)) format('truetype');}
 
 /* ===== END @font-face Declarations ========== */
 
-/* ===== Header and Navigation ============ */
+/* ===== Homepage Styles ============ */
+
+/* This section can be DRYed up a lot and simplified.
+I know there are unecessary classes and selectors could be improved.
+Also, the awesome features of SASS should be utilized when I have a chance to learn them well. */
 
 /* Omnibar Styles */
 .omnibar {
@@ -96,7 +95,6 @@ textarea {
   width: 960px;
   height: 36px;
   display: block;
-  /* Only border-radius on bottom corners */
   -webkit-border-bottom-right-radius: 20px;
   -webkit-border-bottom-left-radius: 20px;
   -moz-border-radius-bottomright: 20px;
@@ -108,20 +106,11 @@ textarea {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
   color: #fff;
   font: 14px Trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
-  max-width: 796px;
+  width: 700px;
+  height: 36px;
   float:left;
   padding:8px 7px 0 10px;
   display:block;
-}
-
-.omnibar .content #left-section{
-  position: absolute;
-  left: 5;
-}
-
-.omnibar .content #right-section{
-  position: absolute;
-  right: -80;
 }
 
 .omnibar ul {
@@ -133,11 +122,20 @@ textarea {
   font-weight: 4;
 }
 
-.content section a {
+.content section {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  display: block;
+}
+
+.content #right-section, #right-section a {
   padding-left:5px;
   color:#fff;
   text-decoration:none;
   float:right;
+}
+
+.content #left-section {
+  float: left;
 }
 
 .content section a:hover {
@@ -170,7 +168,6 @@ a span.esp {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
   -webkit-border-bottom-left-radius: 20px; -moz-border-radius-bottomleft: 20px; border-bottom-left-radius: 20px;
   border-right: 1px solid #777;
-  // width: 80px;
   height: 36px;
   float:left;
   color: #fff;
@@ -228,7 +225,6 @@ a span.esp {
   -moz-border-radius-bottomright: 20px;
   border-bottom-right-radius: 20px;
   border-left: 1px solid #777;
-  // width: 80px;
   height: 36px;
   float:right;
   color: #fff;
@@ -325,7 +321,6 @@ a span.esp {
 #mainnav {
   width:100%;
   height:83px;
-  //-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
   position:relative;
   border-top: solid 1px #691111;
   border-bottom: solid 1px #691111;
@@ -408,42 +403,67 @@ a span.esp {
   display:inherit;
 }
 
-#subnav ul {
-  float:right;
-  display:hidden;
+/* ===== UI Styles ===== */
+$dark-grey: #222;
+
+/* Notifications */
+/* These are used only within the UI. They are largely the same as bootstrap alerts, but
+   are fixed to the top and centered, as well as partially transparent. */
+
+$notification-neutral: #FFF7F5;
+$notification-dark: #FF9F67;
+$error: #A84B3A;
+$success-dark: rgba(43,56,27,1);
+$success-dtrans: rgba(43,56,27,0.5);
+$success-light: #9CE38C;
+
+.ui .ui-alert {
+  position:relative;
+  top:-5px;
+  width: 700px;
+  padding: 15px 15px 10px 15px;
 }
 
-#subnav ul li{
-  float:left;
+.ui-alert .close { // Resets the right attribute set by bootstrap
+  right:0px;
 }
 
-#subnav ul li a {
-  color: #333;
-  font: 15px sans-serif;
-  text-decoration:none;
+.ui .ui-alert-error {
+  background: lighten($error, 50%);
+  border: 1px solid $error;
+  color: $error;
+  text-shadow: 0 1px 0 #fff;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
-#subnav ul li a:hover {
-  text-decoration:underline;
+.ui .ui-alert-success {
+  background: lighten($success-dark, 60%);
+  border: 1px solid $success-dtrans;
+  color: lighten($success-dark, 10%);
+  text-shadow: 0 1px 0 lighten($success-light, 20%);
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
-/* Dashboard Styles */
-
-/* .omnibar {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-  background-color: #303030;
-  border: 1px solid #9d9d9d;
-  border-top: 0;
-  width: 960px;
-  height: 36px;
-  display: block;
-  -webkit-border-bottom-right-radius: 20px;
-  -webkit-border-bottom-left-radius: 20px;
-  -moz-border-radius-bottomright: 20px;
-  -moz-border-radius-bottomleft: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-} */
+.ui-nav {
+  height: 100px;
+  color: #FFF;
+  background:$dark-grey;
+  -webkit-box-shadow:0 0 0 10px lighten($dark-grey, 35%), 0 0 0 20px lighten($dark-grey, 60%);
+  -moz-box-shadow:0 0 0 10px lighten($dark-grey, 35%), 0 0 0 20px lighten($dark-grey, 60%);
+  box-shadow:
+    0 0 0 10px lighten($dark-grey, 35%),
+    0 0 0 20px lighten($dark-grey, 60%);
+}
 
 .module {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
@@ -451,17 +471,33 @@ a span.esp {
 
 .module-header {
   background-color: #303030;
+  -webkit-border-top-right-radius: 20px;
+  -webkit-border-top-left-radius: 20px;
+  -moz-border-radius-topright: 20px;
+  -moz-border-radius-topleft: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 3px 20px;
+}
+
+.module-header h3 {
+  color: #fff;
+  font: 25px 'Franchise-bold', serif;
+  letter-spacing: 0.05em;
+  word-spacing: 0.2em;
+}
+
+.module-body {
+  color: #303030;
+  background-color: #ddd;
   -webkit-border-bottom-right-radius: 20px;
   -webkit-border-bottom-left-radius: 20px;
   -moz-border-radius-bottomright: 20px;
   -moz-border-radius-bottomleft: 20px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-}
-
-.module-header h3 {
-  color: #fff;
-  font: 20px 'Museo-700', serif;
+  border: 1px solid #bbb;
+  padding: 15px;
 }
 
 /* forms */

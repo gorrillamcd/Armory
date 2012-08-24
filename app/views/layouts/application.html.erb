@@ -48,49 +48,33 @@
         </div>
       </div>
 </header> -->
+
+<!-- Show notices if any -->
+      <% flash.each do |name, msg| %>
+        <div class="ui fixed-top">
+          <div id="flash_<%= name %>" class="alert centered ui-alert ui-alert-<%= name == :notice ? "success" : name %>">
+              <strong><%= msg %></strong>
+            <a class="close" data-dismiss="alert">x</a>
+          </div>
+        </div>
+      <% end %>
+<!-- END Notices Area -->
+
 <!-- Body of Site -->
+
+<nav class="ui-nav">
+
+</nav>
+
 <div class="container">
-  <!-- Show notices if any -->
-    <div class="row">
-    	<div class="span4 offset4">
-	    		<% flash.each do |name, msg| %>
-            <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
-                <%= msg %>
-              <a class="close" data-dismiss="alert">x</a>
-            </div>
-				  <% end %>
-		  </div>
-    </div>
-  <!-- END Notices Area -->
 
   <!-- Main Content Area -->
     <div class="row">
-    <%# Super gross code here. Need to clean it up later %>
-      <div class="span8">
+      <div class="span8 main-body">
   			<%= yield %>
       </div>
-  <!-- END Main Content Area -->
-
-     <!--  <%# only show the sidebar if the @show_sidebar variable is true %>
-      <% unless @show_sidebar == false %>
-      <div class="span4">
-        <h3>Welcome!</h3>
-        <p>This is <%= link_to "armory", "http://github.com/gorrillamcd/armory", :target => "_blank" %>, a web application for deploying Bible Colleges! It's still under heavy developement, but feel free to look around. If you find an error or have a suggestion, post it to the <%= link_to "issue tracker", "http://github.com/gorrillamcd/armory/issues", :target => "_blank" %>.</p>
-          <hr />
-        <p>Here's what's next on the TODO list:<br />
-          <ul>
-            <li>Complete course and lesson with all necessary fields/logic</li>
-            <li>Add internationalization for translating to other languages</li>
-            <li>Add user authentication(with devise) and authorization(with cancan)</li>
-            <li>Create Exam model/logic/views along with Questions and Answers</li>
-            <li>Catch up with writing tests for various features and switch to writing test <strong>first thing</strong></li>
-            <li>Add validations and attr_accessor to all models</li>
-          </ul>
-        </p>
-      </div>
-      <% end %> -->
-
     </div>
+  <!-- END Main Content Area -->
 </div>
 </body>
 </html>
