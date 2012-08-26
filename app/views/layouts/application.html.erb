@@ -50,30 +50,38 @@
 </header> -->
 
 <!-- Show notices if any -->
-      <% flash.each do |name, msg| %>
-        <div class="ui fixed-top">
-          <div id="flash_<%= name %>" class="alert centered ui-alert ui-alert-<%= name == :notice ? "success" : name %>">
-              <strong><%= msg %></strong>
-            <a class="close" data-dismiss="alert">x</a>
-          </div>
-        </div>
-      <% end %>
+<% flash.each do |name, msg| %>
+  <div class="ui fixed-top">
+    <div id="flash_<%= name %>" class="alert centered ui-alert ui-alert-<%= name == :notice ? "success" : name %>">
+        <strong><%= msg %></strong>
+      <a class="close" data-dismiss="alert">x</a>
+    </div>
+  </div>
+<% end %>
 <!-- END Notices Area -->
 
 <!-- Body of Site -->
 
-<nav class="ui-nav">
 
-</nav>
+  <!-- Main UI Navigation -->
+  <nav class="ui-nav">
+    <div class="container">
+      <ul>
+        <li><%= link_to "My Courses", "#" %></li>
+        <li><%= link_to "My Courses", "#" %></li>
+        <li><%= link_to "My Courses", "#" %></li>
+      </ul>
+    </div>
+  </nav>
 
 <div class="container">
 
   <!-- Main Content Area -->
-    <div class="row">
-      <div class="span8 main-body">
-  			<%= yield %>
-      </div>
+  <div class="row">
+    <div class="span8 main-body">
+			<%= yield %>
     </div>
+  </div>
   <!-- END Main Content Area -->
 </div>
 </body>

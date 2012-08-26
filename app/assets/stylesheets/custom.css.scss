@@ -101,20 +101,21 @@ Also, the awesome features of SASS should be utilized when I have a chance to le
   -moz-border-radius-bottomleft: 20px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-}
-.omnibar .content {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-  color: #fff;
-  font: 14px Trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
-  width: 700px;
-  height: 36px;
-  float:left;
-  padding:8px 7px 0 10px;
-  display:block;
-}
 
-.omnibar ul {
-  list-style:none;
+  .content {
+    color: #fff;
+    font: 14px Trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
+    width: 700px;
+    height: 36px;
+    float:left;
+    padding:8px 7px 0 10px;
+    display:inherit;
+  }
+
+  ul {
+    list-style: none;
+  }
+
 }
 
 /* Center Section */
@@ -122,44 +123,41 @@ Also, the awesome features of SASS should be utilized when I have a chance to le
   font-weight: 4;
 }
 
-.content section {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-  display: block;
+.content {
+
+  #right-section, #right-section a {
+    padding-left:5px;
+    color:#fff;
+    text-decoration:none;
+    float:right;
+  }
+
+  #left-section {
+    float: left;
+  }
+
+  section a:hover {
+    text-decoration: underline;
+  }
+
 }
 
-.content #right-section, #right-section a {
-  padding-left:5px;
-  color:#fff;
-  text-decoration:none;
-  float:right;
-}
-
-.content #left-section {
-  float: left;
-}
-
-.content section a:hover {
-  text-decoration: underline;
+a span {
+  width:18px;
+  height:14px;
+  display:block;
+  float:left;
+  padding-right: 3px;
 }
 
 a span.eng {
   background: url(image_path('en.gif')) no-repeat;
-  background-position: center;
-  width:18px;
-  height:14px;
-  display:block;
-  float:left;
-  padding-right: 3px;
+  background-position: center;    
 }
 
 a span.esp {
   background: url(image_path('es.gif')) no-repeat;
-  background-position: center;
-  width:18px;
-  height:14px;
-  display:block;
-  float:left;
-  padding-right: 3px;
+  background-position: center;    
 }
 
 /* Lefthand dropdown Menu */
@@ -463,6 +461,12 @@ $success-light: #9CE38C;
   box-shadow:
     0 0 0 10px lighten($dark-grey, 35%),
     0 0 0 20px lighten($dark-grey, 60%);
+
+  ul {
+    text-decoration: none;
+    list-style: none;
+    color: #fff;
+  }
 }
 
 .module {

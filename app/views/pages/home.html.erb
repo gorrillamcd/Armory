@@ -71,56 +71,21 @@
 			<li id="quienes-somos"><%= link_to "Quienes Somos?", "#" %></li>
 		</ul>
 	</nav>
-	<!-- Not working yet; will fix later or might change for something else
-
-	<section id="subnav" class="pull-right">
-		<ul id="alumnos">
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link</a></li>
-		</ul>
-
-		<ul id="profesores">
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link</a></li>
-		</ul>
-
-		<ul id="noticias">
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link</a></li>
-		</ul>
-
-		<ul id="quienes-somos">
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link |</a></li>
-			<li><a href="#">A Link</a></li>
-		</ul>
-	</section> -->
 </div>
 
 <div class="container">
 
   <!-- Show notices if any -->
-    <div class="row">
-    	<div class="span4 offset4">
-	    		<% flash.each do |name, msg| %>
-            <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
-                <%= msg %>
-              <a class="close" data-dismiss="alert">x</a>
-            </div>
-				  <% end %>
-		  </div>
-    </div>
+	<div class="row">
+	    <div class="span4 offset4">
+		    <% flash.each do |name, msg| %>
+	        <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
+		        <%= msg %>
+		        <a class="close" data-dismiss="alert">x</a>
+	        </div>
+			<% end %>
+		</div>
+	</div>
   <!-- END Notices Area -->
 
   <!-- Main Content Area -->
