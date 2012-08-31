@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <% render 'layouts/shim' %>
 </head>
-<body>
+<body class="ui">
 
 <!-- Navigation -->
 <!--<header class="navbar navbar-fixed-top">
@@ -67,15 +67,14 @@
   <nav class="ui-nav">
     <div class="container">
       <ul>
-        <li><%= link_to "My Courses", "#" %></li>
-        <li><%= link_to "My Courses", "#" %></li>
-        <li><%= link_to "My Courses", "#" %></li>
+        <li><i class="icon-list icon-white pull-left"></i><%= link_to "My Courses", "#" %></li>
+        <li><%= link_to "Pickles", "#" %></li>
+        <li><%= link_to "Notifications", "#" %></li>
       </ul>
     </div>
   </nav>
 
 <div class="container">
-
   <!-- Main Content Area -->
   <div class="row">
     <div class="span8 main-body">

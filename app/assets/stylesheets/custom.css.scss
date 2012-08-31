@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "mixins";
 /* @license
  * MyFonts Webfont Build ID 2309205, 2012-06-13T15:05:21-0400
  * 
@@ -11,26 +12,6 @@
  * Webfont: Museo 700 by exljbris
  * URL: http://www.myfonts.com/fonts/exljbris/museo/700/
  * Copyright: Copyright (c) 2008 by Jos Buivenga/exljbris. All rights reserved.
- * Licensed pageviews: unspecified
- * 
- * Webfont: Museo 300 by exljbris
- * URL: http://www.myfonts.com/fonts/exljbris/museo/300/
- * Copyright: Copyright (c) 2008 by Jos Buivenga/exljbris. All rights reserved.
- * Licensed pageviews: unspecified
- * 
- * Webfont: Museo 500 by exljbris
- * URL: http://www.myfonts.com/fonts/exljbris/museo/500/
- * Copyright: Copyright (c) 2008 by Jos Buivenga/exljbris. All rights reserved.
- * Licensed pageviews: unspecified
- * 
- * Webfont: Museo Slab 500 by exljbris
- * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/500/
- * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
- * Licensed pageviews: unspecified
- * 
- * Webfont: Museo Slab 500 Italic by exljbris
- * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/500-italic/
- * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
  * Licensed pageviews: unspecified
  *
  * License: http://www.myfonts.com/viewlicense?type=web&buildid=2309205
@@ -51,10 +32,6 @@ section {
 }
 textarea {
   resize: vertical;
-}
-.plain {
-	text-decoration: none;
-  list-style: none;
 }
 .center h1 {
   margin-bottom: 10px;
@@ -88,29 +65,37 @@ Also, the awesome features of SASS should be utilized when I have a chance to le
 
 /* Omnibar Styles */
 .omnibar {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  @include box-sizing;
+  @include round-bottom-corners;
   background-color: #303030;
   border: 1px solid #9d9d9d;
+  color: #fff;
+  font: 14px Trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
   border-top: 0;
   width: 960px;
   height: 36px;
   display: block;
-  -webkit-border-bottom-right-radius: 20px;
-  -webkit-border-bottom-left-radius: 20px;
-  -moz-border-radius-bottomright: 20px;
-  -moz-border-radius-bottomleft: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
 
-  .content {
-    color: #fff;
-    font: 14px Trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
-    width: 700px;
-    height: 36px;
-    float:left;
+
+  #right-section {
+    float: left;
+    display:inline-block;
     padding:8px 7px 0 10px;
-    display:inherit;
+
+    a {
+      color:#fff;
+      text-decoration:none; 
+      float:right;
+      padding-left:5px;
+      &:hover { text-decoration: underline; }
+    }
   }
+  #left-section {
+    float: left;
+    display:inline-block;
+    padding:8px 15px 0 10px;
+  }
+
 
   ul {
     list-style: none;
@@ -119,28 +104,6 @@ Also, the awesome features of SASS should be utilized when I have a chance to le
 }
 
 /* Center Section */
-#campus-selection {
-  font-weight: 4;
-}
-
-.content {
-
-  #right-section, #right-section a {
-    padding-left:5px;
-    color:#fff;
-    text-decoration:none;
-    float:right;
-  }
-
-  #left-section {
-    float: left;
-  }
-
-  section a:hover {
-    text-decoration: underline;
-  }
-
-}
 
 a span {
   width:18px;
@@ -148,36 +111,41 @@ a span {
   display:block;
   float:left;
   padding-right: 3px;
-}
 
-a span.eng {
-  background: url(image_path('en.gif')) no-repeat;
-  background-position: center;    
-}
+  &.eng {
+    background: url(image_path('en.gif')) no-repeat;
+    background-position: center;
+  }
 
-a span.esp {
-  background: url(image_path('es.gif')) no-repeat;
-  background-position: center;    
+  &.esp {
+    background: url(image_path('es.gif')) no-repeat;
+    background-position: center;
+  }
 }
 
 /* Lefthand dropdown Menu */
 
 #dropdown-left {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-  -webkit-border-bottom-left-radius: 20px; -moz-border-radius-bottomleft: 20px; border-bottom-left-radius: 20px;
+  @include box-sizing;
+  @include round-any-corner(bottom, left);
   border-right: 1px solid #777;
   height: 36px;
+  padding:8px 7px 0 10px;
   float:left;
-  color: #fff;
-  font: 14px Trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
   text-decoration: none;
   display:block;
-  padding:8px 7px 0 10px;
-}
+  color: inherit;
 
-#dropdown-left:hover {
-  background-color: #fff;
-  color: #333;
+  &:hover {
+    background-color: #fff;
+    color: #333;    
+  }
+
+  .caret {
+    display:inline-block;
+    margin: 7px 0 0 0;
+  }
+
 }
 
 .open #dropdown-left {
@@ -185,71 +153,65 @@ a span.esp {
   color: #333;
 }
 
-#dropdown-left .caret {
-  display:inline-block;
-  margin: 7px 0 0 0;
-}
-
 #menu-left {
+  @include box-sizing;
   position:absolute;
   top:20px;
   padding:40px 10px 10px 10px;
   background-color: rgba(0,0,0,0.5);
   color: #fff;
-  z-index:-1;
   line-height: 1.5em;
-}
+  z-index: -1;
 
-#menu-left a {
-  text-decoration:none;
-  color:#fff;
-}
+  a{
+    text-decoration:none;
+    color:#fff;
+  }
 
-#menu-left p {
-  padding: 5px 15px 5px 0px;
-  display: block;
-  color: #aaa;
-}
+  p{
+    padding: 5px 15px 5px 0px;
+    display: block;
+    color: #aaa;
+  }
 
-#menu-left li > a:hover, #menu-left .active > a, #menu-left .active > a:hover {
-  color: #84bc5e;
-  background-color: #fff;
+  li > a:hover, .active > a, .active > a:hover {
+    color: #84bc5e;
+    background-color: #fff;
+  }
 }
 
 /* Righthand Dropdown Menu */
 #dropdown-right {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-  -webkit-border-bottom-right-radius: 20px;
-  -moz-border-radius-bottomright: 20px;
-  border-bottom-right-radius: 20px;
+  @include box-sizing;
+  @include round-any-corner(bottom, right);
   border-left: 1px solid #777;
-  height: 36px;
-  float:right;
+  padding:8px 7px 0 10px;
+  float:left;
+  height:36px;
   color: #fff;
   font: 14px trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
   text-decoration: none;
   display:block;
-  padding:8px 7px 0 10px;
-}
 
-#dropdown-right:hover {
-  background-color: #fff;
-  color: #333;
+  &:hover {
+    background-color: #fff;
+    color: #333;
+  }
+
+  .caret {
+    display:inline-block;
+    margin: 7px 0 0 0;    
+  }
+
 }
 
 .open #dropdown-right {
   background-color: #fff;
   color: #333;
-
-}
-
-#dropdown-right .caret {
-  display:inline-block;
-  margin: 7px 0 0 0;
 }
 
 #menu-right {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  @include box-sizing;
   display:block;
   position:absolute;
   top:20px;
@@ -259,44 +221,35 @@ a span.esp {
   background-color: rgba(0,0,0,0.5);
   color: #fff;
   z-index: -1;
-}
+  line-height: 1.5em;
 
-#menu-right label {
-  color: #fff;
-  text-indent: -9999px;
-  display:block;
-  height:0;
-  overflow:hidden;
+  label {
+    color: #fff;
+    text-indent: -9999px;
+    display:block;
+    height:0;
+    overflow:hidden;
+  }
+
+  a {
+    text-decoration:none;
+    color:#fff;
+  }
+
+  p {
+    padding: 5px 15px 5px 0px;
+    display: block;
+    color: #aaa;
+  }
+
+  li > a:hover, .active > a, .active > a:hover {
+    color: #84bc5e;
+    background-color: #fff;    
+  }
 }
 
 .open #menu-right {
   left: inherit;
-}
-
-#menu-right {
-  position:absolute;
-  top:20px;
-  padding:40px 10px 10px 10px;
-  background-color: rgba(0,0,0,0.5);
-  color: #fff;
-  z-index:-1;
-  line-height: 1.5em;
-}
-
-#menu-right a {
-  text-decoration:none;
-  color:#fff;
-}
-
-#menu-right p {
-  padding: 5px 15px 5px 0px;
-  display: block;
-  color: #aaa;
-}
-
-#menu-right li > a:hover, #menu-right .active > a, #menu-right .active > a:hover {
-  color: #84bc5e;
-  background-color: #fff;
 }
 
 /* End Omnibar Styles */
@@ -332,12 +285,12 @@ a span.esp {
   background: linear-gradient(top, #c32f2f 0%,#c32f2f 48%,#b42a2a 61%,#ad2525 66%,#ab2725 67%,#8c1a1a 88%,#851716 95%,#851718 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c32f2f', endColorstr='#851718',GradientType=0 ); /* IE6-9 */
   // END Background Gradients
-}
 
-#mainnav nav {
-  width:960px;
-  margin:0 auto;
-  height: 83px;
+  nav {
+    width:960px;
+    margin:0 auto;
+    height: 83px;
+  }
 }
 
 #logo-main {
@@ -346,7 +299,6 @@ a span.esp {
   height: 140px;
   text-indent: -9999px;
   float:left;
-  z-index: 1000;
 }
 
 #brand-name {
@@ -356,53 +308,54 @@ a span.esp {
   text-shadow: 0 -1px 0 #691111;
   display:block;
   padding:17px 25px 0 15px;
-}
 
-#brand-name:hover {
-  color: #3e0404;
-  text-shadow: 0 1px 0 #df3b3b;
+  &:hover {
+    color: #3e0404;
+    text-shadow: 0 1px 0 #df3b3b;
+  }
 }
 
 /* MainNav Menu */
 
-#mainnav nav ul {
+#mainnav ul {
   float:right;
   height:83px;
   overflow:hidden;
-}
 
-#mainnav ul li {
-  float:left;
-  display:block;
-  height:100%;
-  padding: 32px 7px 30px 7px;
-  list-style: none;
-  text-decoration: none;
-  font: 24px 'Franchise-bold', futura, sans-serif;
-  text-transform: uppercase;
-  color: #3e0404;
-  text-shadow: 0 1px 0 #df3b3b;
-}
+  li {
+    float:left;
+    display:block;
+    padding: 32px 7px 30px 7px;
+    list-style: none;
+    font: 24px 'Franchise-bold', futura, impact, sans-serif;
+    text-transform: uppercase;
+    color: #3e0404;
 
-#mainnav ul li a{
-  color: #3e0404;
-  text-shadow: 0 1px 0 #df3b3b;
-  text-decoration: none;
-  padding:inherit;
-}
+    a{
+      color: #3e0404;
+      text-shadow: 0 1px 0 #df3b3b;
+      text-decoration: none;
+      padding:inherit;
+    }
 
-#mainnav ul li:hover, #mainnav ul li:hover > a {
-  background-color: #3e0404;
-  color: #fff;
-  text-shadow: none;
-}
-
-#alumnos:hover{
-  display:inherit;
+    &:hover, &:hover > a{
+      background-color: #3e0404;
+      color: #fff;
+      text-shadow: none;      
+    }
+  }
 }
 
 /* ===== UI Styles ===== */
-$dark-grey: #222;
+$mainnav: rgb(32,55,89);
+$ui-bg: rgb(250,241,223);
+$light-blue: rgb(84,128,148);
+$light-purple: rgb(87,66,92);
+$dark-purple: rgb(61,54,82);
+
+.ui {
+  background-color: $ui-bg;
+}
 
 /* Notifications */
 /* These are used only within the UI. They are largely the same as bootstrap alerts, but
@@ -431,12 +384,7 @@ $success-light: #9CE38C;
   border: 1px solid $error;
   color: $error;
   text-shadow: 0 1px 0 #fff;
-  -webkit-border-bottom-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  @include round-bottom-corners(10px);
 }
 
 .ui .ui-alert-success {
@@ -444,44 +392,47 @@ $success-light: #9CE38C;
   border: 1px solid $success-dtrans;
   color: lighten($success-dark, 10%);
   text-shadow: 0 1px 0 lighten($success-light, 20%);
-  -webkit-border-bottom-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  @include round-bottom-corners(10px);
 }
 
+/* UI Nav Styles */
 .ui-nav {
   height: 100px;
   color: #FFF;
-  background:$dark-grey;
-  -webkit-box-shadow:0 0 0 10px lighten($dark-grey, 35%), 0 0 0 20px lighten($dark-grey, 60%);
-  -moz-box-shadow:0 0 0 10px lighten($dark-grey, 35%), 0 0 0 20px lighten($dark-grey, 60%);
+  background:$mainnav;
+  -webkit-box-shadow:0 0 0 10px lighten($mainnav, 20%),0 0 0 20px lighten($mainnav, 60%);
+  -moz-box-shadow:0 0 0 10px lighten($mainnav, 20%),0 0 0 20px lighten($mainnav, 60%);
   box-shadow:
-    0 0 0 10px lighten($dark-grey, 35%),
-    0 0 0 20px lighten($dark-grey, 60%);
+    0 0 0 10px lighten($mainnav, 20%),
+    0 0 0 20px lighten($mainnav, 60%);
 
   ul {
     text-decoration: none;
     list-style: none;
-    color: #fff;
+    padding: 45px 45px 45px 0px;
+    li a {
+      color: $ui-bg;
+      text-shadow: 0 1px 0 $dark-purple;
+      float: left;
+      padding-left: 20px;
+      font: 18px trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
+
+      &:hover {
+        color: #fff;
+      }
+    }
   }
 }
 
+/* UI Module Styles and Content Styles */
 .module {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  @include box-sizing;
 }
 
 .module-header {
   background-color: #303030;
-  -webkit-border-top-right-radius: 20px;
-  -webkit-border-top-left-radius: 20px;
-  -moz-border-radius-topright: 20px;
-  -moz-border-radius-topleft: 20px;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
   padding: 3px 20px;
+  @include round-top-corners;
 }
 
 .module-header h3 {
@@ -494,14 +445,9 @@ $success-light: #9CE38C;
 .module-body {
   color: #303030;
   background-color: #ddd;
-  -webkit-border-bottom-right-radius: 20px;
-  -webkit-border-bottom-left-radius: 20px;
-  -moz-border-radius-bottomright: 20px;
-  -moz-border-radius-bottomleft: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
   border: 1px solid #bbb;
   padding: 15px;
+  @include round-bottom-corners;
 }
 
 /* forms */
