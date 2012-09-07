@@ -1,42 +1,50 @@
-<div style="margin-top: 100px;">
-	<% case current_user.role %>
-		<% when "admin" %>
-		You're an admin!
-		<% when "staff" %>
-		You're a staff person!
-		<% when "teacher" %>
-		You're one of them teachers!
-		<% when "student" %>
-		
-		<div id="my-courses">
-			<% @courses.each_pair do |state, courses| %>
-				<% unless courses.blank? %>
+		<% case current_user.role %>
+			<% when "admin" %>
+			You're an admin!
+			<% when "staff" %>
+			You're a staff person!
+			<% when "teacher" %>
+			You're one of them teachers!
+			<% when "student" %>
+				<aside class="span4">
 					<div class="module" id="active-courses">
-						<div class="module-header">
-							<% if state == "active" %><h3>My Currrent Courses</h3>
-							<% elsif state == "pending" %><h3>Unpaid Courses</h3>
-							<% else %><h3>Other Courses</h3>
-							<% end %>
-						</div>
+					<h2>Active Courses</h2>
+					<% @courses.each_pair do |state, courses| %>
+						<% unless courses.blank? %>
+							<!--<div class="module" id="active-courses">
+								<div class="module-header">
+									<% if state == "active" %><h3>My Currrent Courses</h3>
+									<% elsif state == "pending" %><h3>Unpaid Courses</h3>
+									<% else %><h3>Other Courses</h3>
+									<% end %>
+								</div>
 
-						<div class="module-body">
+								<% courses.each do |course| %>
+									<p>
+										This is some test text, blahblahblah. I'm just typing about stuff and what not. I hope you don't find this boring or anything.<span class=""
+									</p>
+								<% end %>
+							</div> -->
 							<% courses.each do |course| %>
-								<p><%= course.name %></p>
-							<% end %>
-						</div>
-					</div>
-				<% else %>
-					<div class="module" id="active-courses">
-						<div class="module-header">
-							<h3>My Current Courses</h3>
-						</div>
+								<h3><%= course.name %></h3>
+								<div class="module-body">
+									<p>Next Assignment: Chapter 5</p>
 
-						<div class="module-body">
-							You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
-						</div>
+									<a class="btn btn-small" href="#">Go!</a>
+									<a class="btn btn-small" href="#">Course Details</a>
+									<span class="average">92</span>
+								</div>
+							<% end %>
+						<% else %>
+							<div class="module" id="no-courses">
+								<h3>My Current Courses</h3>
+								<p>
+									You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
+								</p>
+							</div>
+						<% end %>
+					<% end %>
 					</div>
-				<% end %>
-			<% end %>
-		</div>
-	<% end %>
-</div>
+				</aside>
+			<% # End student Case %>
+		<% end %>

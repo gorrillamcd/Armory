@@ -347,118 +347,124 @@ a span {
 }
 
 /* ===== UI Styles ===== */
-$mainnav: rgb(32,55,89);
-$ui-bg: rgb(250,241,223);
-$light-blue: rgb(84,128,148);
-$light-purple: rgb(87,66,92);
-$dark-purple: rgb(61,54,82);
+$mainnav: rgb(33,141,170);
+$ui-bg: rgb(240,240,240);
+$main-bg: rgb(255,255,255);
 
 .ui {
   background-color: $ui-bg;
-}
 
-/* Notifications */
-/* These are used only within the UI. They are largely the same as bootstrap alerts, but
-   are fixed to the top and centered, as well as partially transparent. */
+  .maincontent {
+    background-color: $main-bg;
+    padding: 12px;
+    box-shadow: 0 0 20px 0 #555;
+  }
 
-$notification-neutral: #FFF7F5;
-$notification-dark: #FF9F67;
-$error: #A84B3A;
-$success-dark: rgba(43,56,27,1);
-$success-dtrans: rgba(43,56,27,0.5);
-$success-light: #9CE38C;
+  header {
+    @include box-sizing;
+    width: 100%;
+    height: 100px;
+    background-color: $mainnav;
+    color: #fff;
+    font: 40px 'Museo-700';
+    // text-shadow: 0 1px 0 darken($mainnav, 35%);
+    padding: 40px 0 0 12px;
+  }
 
-.ui .ui-alert {
-  position:relative;
-  top:-5px;
-  width: 700px;
-  padding: 15px 15px 10px 15px;
-}
+    /* Notifications */
+  /* These are used only within the UI. They are largely the same as bootstrap alerts, but
+     are fixed to the top and centered, as well as partially transparent. */
 
-.ui-alert .close { // Resets the right attribute set by bootstrap
-  right:0px;
-}
+  $notification-neutral: #FFF7F5;
+  $notification-dark: #FF9F67;
+  $error: #A84B3A;
+  $success-dark: rgba(43,56,27,1);
+  $success-dtrans: rgba(43,56,27,0.5);
+  $success-light: #9CE38C;
 
-.ui .ui-alert-error {
-  background: lighten($error, 50%);
-  border: 1px solid $error;
-  color: $error;
-  text-shadow: 0 1px 0 #fff;
-  @include round-bottom-corners(10px);
-}
+  .ui-alert {
+    position:relative;
+    top:-5px;
+    width: 700px;
+    padding: 15px 15px 10px 15px;
 
-.ui .ui-alert-success {
-  background: lighten($success-dark, 60%);
-  border: 1px solid $success-dtrans;
-  color: lighten($success-dark, 10%);
-  text-shadow: 0 1px 0 lighten($success-light, 20%);
-  @include round-bottom-corners(10px);
-}
+    .close {right:0px;} // Resets the right attribute set by bootstrap
+  }
 
-/* UI Nav Styles */
-.ui-nav {
-  height: 100px;
-  color: #FFF;
-  background:$mainnav;
-  -webkit-box-shadow:0 0 0 10px lighten($mainnav, 20%),0 0 0 20px lighten($mainnav, 60%);
-  -moz-box-shadow:0 0 0 10px lighten($mainnav, 20%),0 0 0 20px lighten($mainnav, 60%);
-  box-shadow:
-    0 0 0 10px lighten($mainnav, 20%),
-    0 0 0 20px lighten($mainnav, 60%);
+  .ui-alert-error {
+    background: lighten($error, 50%);
+    border: 1px solid $error;
+    color: $error;
+    text-shadow: 0 1px 0 #fff;
+    @include round-bottom-corners(10px);
+  }
 
-  ul {
-    text-decoration: none;
-    list-style: none;
-    padding: 45px 45px 45px 0px;
-    li a {
-      color: $ui-bg;
-      text-shadow: 0 1px 0 $dark-purple;
-      float: left;
-      padding-left: 20px;
-      font: 18px trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
+  .ui-alert-success {
+    background: lighten($success-dark, 60%);
+    border: 1px solid $success-dtrans;
+    color: lighten($success-dark, 10%);
+    text-shadow: 0 1px 0 lighten($success-light, 20%);
+    @include round-bottom-corners(10px);
+  }
 
-      &:hover {
-        color: #fff;
+  /* UI Nav Styles */
+  .ui-nav {
+    @include box-sizing;
+    height: 50px;
+    color: #FFF;
+    background:#555;
+
+    ul {
+      text-decoration: none;
+      list-style: none;
+      padding: 18px 12px;
+      li {
+        a {
+          color: $ui-bg;
+          text-shadow: 0 1px 0 #000;
+          float: left;
+          padding-right: 20px;
+          font: 12px helvetica, verdana, arial, sans-serif;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+        i {
+          padding-right: 12px;
+        }
       }
+    }
+  }
+
+  /* UI Module Styles and Content Styles */
+  .module {
+    @include box-sizing;
+    @include round-corners(5px);
+    background-color: #fff;
+    border: 1px solid #bbb;
+    color: #303030;
+
+    .module-header {
+      padding: 3px 20px;
+      border-bottom: 1px solid #bbb;
+      background-color: #555;
+
+      h3 {
+        color: $ui-bg;
+        font: 25px 'Museo-700', helvetica, verdana, arial, sans-serif;
+      }
+    }
+
+    .module-body {
+      padding: 20px;
     }
   }
 }
 
-/* UI Module Styles and Content Styles */
-.module {
-  @include box-sizing;
-}
-
-.module-header {
-  background-color: #303030;
-  padding: 3px 20px;
-  @include round-top-corners;
-}
-
-.module-header h3 {
-  color: #fff;
-  font: 25px 'Franchise-bold', serif;
-  letter-spacing: 0.05em;
-  word-spacing: 0.2em;
-}
-
-.module-body {
-  color: #303030;
-  background-color: #ddd;
-  border: 1px solid #bbb;
-  padding: 15px;
-  @include round-bottom-corners;
-}
-
-/* forms */
-
-textarea {
-  height:80px;
-}
-
 /* Users Views */
 
-/* I'm playing with SASS here, but will cleanup the rest of my custom styles in the future */
+/* #TODO: Needs integration with new ui design and major improvement anyways. */
 
     /* Variables */
     $base-color: #4F8C32;

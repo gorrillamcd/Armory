@@ -8,48 +8,7 @@
   <% render 'layouts/shim' %>
 </head>
 <body class="ui">
-
-<!-- Navigation -->
-<!--<header class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-        <div class="container">
-          <%= link_to "IBCC en Linea", root_url, :id => "logo" %>
-          <nav>
-            <ul class="nav pull-right">
-              <li><%= link_to "Home", root_url %></li>
-              <li><%= link_to "Courses", courses_path %></li>
-              <% if user_signed_in? %><li><%= link_to "User Management", users_path %></li><% end %>
-              <li class="divider-vertical"></li>
-                <% if user_signed_in? %>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      Signed in as <strong><%= current_user.email %></strong>
-                      <b class="caret"></b>
-                    </a>
-                  <ul class="dropdown-menu">
-                      <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-                  </ul>
-                </li>
-                <% else %>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      Account
-                      <b class="caret"></b>
-                    </a>
-                  <ul class="dropdown-menu">
-                      <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                      <li><%= link_to "Login", new_user_session_path %></li>
-                  </ul>
-                </li>
-                <% end %>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-</header> -->
-
-<!-- Show notices if any -->
+<!-- Alternate Notifications Idea. WIP
 <% flash.each do |name, msg| %>
   <div class="ui fixed-top">
     <div id="flash_<%= name %>" class="alert centered ui-alert ui-alert-<%= name == :notice ? "success" : name %>">
@@ -58,30 +17,48 @@
     </div>
   </div>
 <% end %>
-<!-- END Notices Area -->
+-->
 
 <!-- Body of Site -->
 
+<!-- Main UI Navigation -->
+<nav class="ui-nav">
+  <div class="container">
+    <ul>
+      <li><i class="icon-list icon-white pull-left"></i><%= link_to "My Courses", "#" %></li>
+      <li><%= link_to "Pickles", "#" %></li>
+      <li><%= link_to "Notifications", "#" %></li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- Main UI Navigation -->
-  <nav class="ui-nav">
-    <div class="container">
-      <ul>
-        <li><i class="icon-list icon-white pull-left"></i><%= link_to "My Courses", "#" %></li>
-        <li><%= link_to "Pickles", "#" %></li>
-        <li><%= link_to "Notifications", "#" %></li>
-      </ul>
-    </div>
-  </nav>
+<header>
+  <div class="container">
+    Que onda Bob!
+  </div>
+</header>
 
 <div class="container">
-  <!-- Main Content Area -->
-  <div class="row">
-    <div class="span8 main-body">
-			<%= yield %>
+  <div class="maincontent">
+    <!-- Show notices if any -->
+    <div class="row">
+      <div class="span4 offset4">
+        <% flash.each do |name, msg| %>
+          <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
+            <%= msg %>
+            <a class="close" data-dismiss="alert">x</a>
+          </div>
+        <% end %>
+      </div>
     </div>
+    <!-- END Notices Area -->
+
+    <!-- Main Content Area -->
+    <div class="row">
+  			<%= yield %>
+    </div>
+    <!-- END Main Content Area -->
   </div>
-  <!-- END Main Content Area -->
 </div>
 </body>
 </html>
