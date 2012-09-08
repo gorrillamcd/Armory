@@ -55,6 +55,36 @@ $default_rounded_amount: 20px;
   @include round-corner-mozilla("#{$vert}#{$side}", $amount);
 }
 
+/* ===== Box-Shadow ===== */
+@mixin box-shadow($x, $y, $blur, $spread, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $x $y $blur $spread $color;
+    -moz-box-shadow:inset $x $y $blur $spread $color;
+    box-shadow:inset $x $y $blur $spread $color;
+  } @else {
+    -webkit-box-shadow: $x $y $blur $spread $color;
+    -moz-box-shadow: $x $y $blur $spread $color;
+    box-shadow: $x $y $blur $spread $color;
+  }
+}
+
+/* ===== Gradients ===== */
+
+@mixin linear-gradient($from, $fromstop, $to, $tostop, $direction:top) {
+  @if $direction==top     {background: -webkit-gradient(linear, left top,    left bottom, color-stop(0%,$from), color-stop($fromstop,$from), color-stop($tostop,$to));}
+  @if $direction==bottom  {background: -webkit-gradient(linear, left bottom, left top,    color-stop(0%,$from), color-stop($fromstop,$from), color-stop($tostop,$to));}
+  @if $direction==left    {background: -webkit-gradient(linear, left top,    right top,   color-stop(0%,$from), color-stop($fromstop,$from), color-stop($tostop,$to));}
+  @if $direction==right   {background: -webkit-gradient(linear, right top,   left top,    color-stop(0%,$from), color-stop($fromstop,$from), color-stop($tostop,$to));}
+
+  background: -webkit-linear-gradient($direction, $from $fromstop, $to $tostop);
+  background:    -moz-linear-gradient($direction, $from $fromstop, $to $tostop);
+  background:      -o-linear-gradient($direction, $from $fromstop, $to $tostop);
+  background:     -ms-linear-gradient($direction, $from $fromstop, $to $tostop);
+  background:         linear-gradient($direction, $from $fromstop, $to $tostop);
+
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+}
+
 /* ===== Misc Mixins ===== */
 @mixin box-sizing {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;

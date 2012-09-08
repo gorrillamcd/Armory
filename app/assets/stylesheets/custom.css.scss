@@ -354,65 +354,48 @@ $main-bg: rgb(255,255,255);
 .ui {
   background-color: $ui-bg;
 
-  .maincontent {
-    background-color: $main-bg;
-    padding: 12px;
-    box-shadow: 0 0 20px 0 #555;
-  }
+  /* Notifications */
+  /* Unused right now. For a Notifications style idea I had. WIP
 
-  header {
-    @include box-sizing;
-    width: 100%;
-    height: 100px;
-    background-color: $mainnav;
-    color: #fff;
-    font: 40px 'Museo-700';
-    // text-shadow: 0 1px 0 darken($mainnav, 35%);
-    padding: 40px 0 0 12px;
-  }
+    $notification-neutral: #FFF7F5;
+    $notification-dark: #FF9F67;
+    $error: #A84B3A;
+    $success-dark: rgba(43,56,27,1);
+    $success-dtrans: rgba(43,56,27,0.5);
+    $success-light: #9CE38C;
 
-    /* Notifications */
-  /* These are used only within the UI. They are largely the same as bootstrap alerts, but
-     are fixed to the top and centered, as well as partially transparent. */
+    .ui-alert {
+      position:relative;
+      top:-5px;
+      width: 700px;
+      padding: 15px 15px 10px 15px;
 
-  $notification-neutral: #FFF7F5;
-  $notification-dark: #FF9F67;
-  $error: #A84B3A;
-  $success-dark: rgba(43,56,27,1);
-  $success-dtrans: rgba(43,56,27,0.5);
-  $success-light: #9CE38C;
+      .close {right:0px;} // Resets the right attribute set by bootstrap
+    }
 
-  .ui-alert {
-    position:relative;
-    top:-5px;
-    width: 700px;
-    padding: 15px 15px 10px 15px;
+    .ui-alert-error {
+      background: lighten($error, 50%);
+      border: 1px solid $error;
+      color: $error;
+      text-shadow: 0 1px 0 #fff;
+      @include round-bottom-corners(10px);
+    }
 
-    .close {right:0px;} // Resets the right attribute set by bootstrap
-  }
-
-  .ui-alert-error {
-    background: lighten($error, 50%);
-    border: 1px solid $error;
-    color: $error;
-    text-shadow: 0 1px 0 #fff;
-    @include round-bottom-corners(10px);
-  }
-
-  .ui-alert-success {
-    background: lighten($success-dark, 60%);
-    border: 1px solid $success-dtrans;
-    color: lighten($success-dark, 10%);
-    text-shadow: 0 1px 0 lighten($success-light, 20%);
-    @include round-bottom-corners(10px);
-  }
+    .ui-alert-success {
+      background: lighten($success-dark, 60%);
+      border: 1px solid $success-dtrans;
+      color: lighten($success-dark, 10%);
+      text-shadow: 0 1px 0 lighten($success-light, 20%);
+      @include round-bottom-corners(10px);
+    }
+  */
 
   /* UI Nav Styles */
   .ui-nav {
     @include box-sizing;
     height: 50px;
     color: #FFF;
-    background:#555;
+    @include linear-gradient(rgb(60,60,60), 60%, rgb(33,33,33), 100%);
 
     ul {
       text-decoration: none;
@@ -437,27 +420,50 @@ $main-bg: rgb(255,255,255);
     }
   }
 
-  /* UI Module Styles and Content Styles */
-  .module {
+  header {
+    @include box-sizing;
+    width: 100%;
+    height: 100px;
+    background-color: $mainnav;
+    color: #fff;
+    font: 40px 'Museo-700';
+    padding: 40px 0 0 12px;
+  }
+
+  .maincontent {
     @include box-sizing;
     @include round-corners(5px);
-    background-color: #fff;
+    @include box-shadow(0,0,15px,0,#777);
+    background-color: $main-bg;
+    padding: 12px;
     border: 1px solid #bbb;
     color: #303030;
+    position:relative;
+    top:-12px;
+    z-index:99;
 
-    .module-header {
-      padding: 3px 20px;
-      border-bottom: 1px solid #bbb;
-      background-color: #555;
+    .module {
+      background-color: darken($ui-bg, 5%);
 
-      h3 {
-        color: $ui-bg;
-        font: 25px 'Museo-700', helvetica, verdana, arial, sans-serif;
+      h2{
+        @include box-shadow(0, -1px, 0, 0, #555, inset);
+        border-bottom: 1px solid #eee;
+        padding-bottom: -3px;
       }
-    }
+      // .module-header {
+      //   padding: 3px 20px;
+      //   border-bottom: 1px solid #bbb;
+      //   background-color: #555;
 
-    .module-body {
-      padding: 20px;
+      //   h3 {
+      //     color: $ui-bg;
+      //     font: 25px 'Museo-700', helvetica, verdana, arial, sans-serif;
+      //   }
+      // }
+
+      // .module-body {
+      //   padding: 20px;
+      // }
     }
   }
 }
