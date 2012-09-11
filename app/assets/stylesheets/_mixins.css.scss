@@ -85,6 +85,21 @@ $default_rounded_amount: 20px;
   filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
 }
 
+
+/* ===== Double-Border === */
+
+// Can be improved by adding size adjustments and using the "multiple box-shadow" method
+// Also has a glitch when using this mixin multiple times on the same element.
+// The "multiple box-shadow method" should fix that as well.
+
+@mixin double-border($color1, $color2, $side) {
+  @if $side==top { @include box-shadow(0, 1px, 0, 0, $color1, inset);}
+  @if $side==left {@include box-shadow(1px, 0, 0, 0, $color1, inset);}
+  @if $side==bottom {@include box-shadow(0, -1px, 0, 0, $color1, inset);}
+  @if $side==right {@include box-shadow(-1px, 0, 0, 0, $color1, inset);}
+  border-#{$side}: 1px solid $color2;
+}
+
 /* ===== Misc Mixins ===== */
 @mixin box-sizing {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;

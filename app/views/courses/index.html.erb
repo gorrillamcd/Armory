@@ -1,5 +1,5 @@
 <% title "IBCC en linea" %>
-
+<div class="span11 content">
   <h3>Available Courses</h3><br />
   <% for course in @courses %>
   <div id="courses">
@@ -21,5 +21,6 @@
     </ul>
   </div>
   <% end %>
-<hr />
-<p><%= link_to "New Course", new_course_path %></p>
+  <hr />
+  <p><%= link_to "New Course", new_course_path %></p>
+</div>
