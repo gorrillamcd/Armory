@@ -1,3 +1,4 @@
+<% sidebar true %>
 <div class="row">
 	<% case current_user.role %>
 		<% when "admin" %>
@@ -5,14 +6,18 @@
 			You're an admin!
 			</div>
 		<% when "staff" %>
-		You're a staff person!
+			<div class="span12 content">
+				You're a staff person!
+			</div>
 		<% when "teacher" %>
-		You're one of them teachers!
+			<div class="span12 content">
+				You're one of them teachers!
+			</div>
 		<% when "student" %>
 			<aside class="span4">
-				<div class="module" id="active-courses">
+				<div class="module">
 					<h2>My Courses</h2>
-					<div class="accordion">
+					<div class="accordion" id="active-courses">
 					<% @courses.each_pair do |state, courses| %>
 						<% unless courses.blank? %>
 							<% courses.each_with_index do |course, index| %>
@@ -25,11 +30,11 @@
 									elsif grade >= 80
 										type = "good"
 									else
-									  type = "neutral"
+									  type = "warn"
 									end %>
 							<div class="accordion-group">
 								<div class="accordion-header <%= type %>">
-									<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>">
+									<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>" data-parent="#active-courses">
 										<span><%= course.name %></span>
 										<small><%= completion %>%&nbsp;completed</small>
 									</div>
@@ -58,48 +63,180 @@
 					<% end %>
 					</div>
 				</div>
-				<!-- <div class="module" id="active-courses">
-					<h2>Active Courses</h2>
-					<div class="accordion">
-					<% @courses.each_pair do |state, courses| %>
-						<% unless courses.blank? %>
-							<% courses.each_with_index do |course, index| %>
-							<div class="accordion-group">
-								<div class="accordion-header">
-									<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>">
-										<span><%= course.name %></span>
-										<small>23%&nbsp;completed</small>
-									</div>
-								</div>
-								<div id="record<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
-									<div class="module-body">
-										<p>Next Assignment: <strong>Chapter 5</strong></p>
+				<div class="module">
+					<h2>Suggested Courses</h2>
+					<div class="accordion" id="suggested-courses">
 
-										<a class="btn btn-primary" href="#">Go!</a>
-										<a class="btn btn-info" href="#">Course Details</a>
-										<span class="average pull-right">92</span>
+						<div class="accordion-group">
+							<div class="accordion-header">
+								<div class="accordion-toggle" data-toggle="collapse" data-target="#romanos" data-parent="#suggested-courses">
+									<span>Romanos</span>
+								</div>
+							</div>
+							<div id="romanos" class="accordion-body collapse in">
+								<div class="module-body">
+									<p>Esta clase te da una vista profunda del libro de Romanos. Pablo explica la fundacion del evangelio en una manera clara...</p>
+									<div class="btn-group">
+										<a class="btn btn-small btn-primary pull-right" href="#">Unirse!</a>
+										<a class="btn btn-small btn-info pull-right" href="#">Datos del Curso</a>
 									</div>
 								</div>
 							</div>
-							<% end %>
-						<% else %>
-							<div class="module" id="no-courses">
-								<h3>My Current Courses</h3>
-								<p>
-									You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
-								</p>
+						</div>
+
+						<div class="accordion-group">
+							<div class="accordion-header">
+								<div class="accordion-toggle" data-toggle="collapse" data-target="#Ezequias" data-parent="#suggested-courses">
+									<span>Ezequias</span>
+								</div>
 							</div>
-						<% end %>
-					<% end %>
+							<div id="Ezequias" class="accordion-body collapse">
+								<div class="module-body">
+									<p>Esta clase te da una vista profunda del libro de Romanos. Pablo explica la fundacion del evangelio en una manera clara...</p>
+									<div class="btn-group">
+										<a class="btn btn-small btn-primary pull-right" href="#">Unirse!</a>
+										<a class="btn btn-small btn-info pull-right" href="#">Datos del Curso</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="accordion-group">
+							<div class="accordion-header">
+								<div class="accordion-toggle" data-toggle="collapse" data-target="#genesis" data-parent="#suggested-courses">
+									<span>Genesis</span>
+								</div>
+							</div>
+							<div id="genesis" class="accordion-body collapse">
+								<div class="module-body">
+									<p>Esta clase te da una vista profunda del libro de Romanos. Pablo explica la fundacion del evangelio en una manera clara...</p>
+									<div class="btn-group">
+										<a class="btn btn-small btn-primary pull-right" href="#">Unirse!</a>
+										<a class="btn btn-small btn-info pull-right" href="#">Datos del Curso</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="accordion-group">
+							<div class="accordion-header">
+								<div class="accordion-toggle" data-toggle="collapse" data-target="#galatas" data-parent="#suggested-courses">
+									<span>Galatas</span>
+								</div>
+							</div>
+							<div id="galatas" class="accordion-body collapse">
+								<div class="module-body">
+									<p>Esta clase te da una vista profunda del libro de Romanos. Pablo explica la fundacion del evangelio en una manera clara...</p>
+									<div class="btn-group">
+										<a class="btn btn-small btn-primary pull-right" href="#">Unirse!</a>
+										<a class="btn btn-small btn-info pull-right" href="#">Datos del Curso</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
-				</div> -->
+				</div>
 			</aside>
 			<article class="span8 content">
-				<div class="alert">This is an alert</div>
-				<div class="alert alert-success">This is success.</div>
-				<div class="alert alert-danger">Danger Will Robinson, Danger!</div>
-				<div class="alert alert-error">Is this different than danger?</div>
-				<div class="alert alert-info">This is for some benign info stuffs.</div>
+				<div id="announcements" class="carousel slide">
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+				    <div class="active item">
+				    	<%= image_tag(image_path('590x75.gif'), :alt => "") %>
+				    	<div class="carousel-caption">
+				    		<p>Stuff, just testing.</p>
+				    	</div>
+				    </div>
+				   	<div class="item">
+				    	<%= image_tag(image_path('590x75.gif'), :alt => "") %>
+				    	<div class="carousel-caption">
+				    		<p>More stuff blahblahblah</p>
+				    	</div>
+				    </div>
+				    <div class="item">
+				    	<%= image_tag(image_path('590x75.gif'), :alt => "") %>
+				    	<div class="carousel-caption">
+				    		<p>What is the airspeed velocity of a coconut-laiden swallow?</p>
+				    	</div>
+				    </div>
+				    <div class="item">
+				    	<%= image_tag(image_path('590x75.gif'), :alt => "") %>
+				    	<div class="carousel-caption">
+				    		<p>Is it African or European?</p>
+				    	</div>
+				    </div>
+				  </div>
+				  <!-- Carousel nav -->
+				  <a class="carousel-control left" href="#announcements" data-slide="prev">&lsaquo;</a>
+				  <a class="carousel-control right" href="#announcements" data-slide="next">&rsaquo;</a>
+				</div>
+
+				<section id="messages">
+					<h2>Mis Mensajes <small>Tienes 12 mensajes nuevos</small></h2>
+
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Unread</th>
+								<th>From:</th>
+								<th>Subject</th>
+								<th>Date Recieved</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr class="info">
+								<td>&rsaquo;</td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr class="info">
+								<td>&rsaquo;</td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr class="info">
+								<td>&rsaquo;</td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
 			</article>
 		<% # End student Case %>
 	<% end %>

@@ -26,6 +26,8 @@
   <div class="container">
     <ul>
       <li class="divider-vertical"></li>
+      <li><a href="#"><i class="icon-home icon-white"></i></a></li>
+      <li class="divider-vertical"></li>
       <li><%= link_to "My Courses", "#" %></li>
       <li class="divider-vertical"></li>
       <li><%= link_to "Grades & Reports", "#" %></li>
@@ -42,7 +44,7 @@
   </div>
 </header>
 
-<div class="container maincontent">
+<div class="container maincontent <%= content_for?(:sidebar) ? yield(:sidebar) : "" %>">
   <!-- Show notices if any -->
   <div class="row">
     <div class="span4 offset4">

@@ -24,8 +24,8 @@ module LayoutHelper
   end
 
   def sidebar(status) # disable the sidebar on certain pages (like the lesson show pages): Could be better :()
-      @show_sidebar = status
-      h(@show_sidebar)
+      style = "sidebar-true"
+      content_for(:sidebar) { h(style.to_s) } if status
   end
 
   def sidebar?

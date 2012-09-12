@@ -394,7 +394,6 @@ $main-bg: rgb(255,255,255);
     //   @include round-bottom-corners(10px);
     // }
 
-
   /* UI Nav Styles */
 
   /* === Colors === */
@@ -437,7 +436,7 @@ $dark-red: rgb(150,61,18);
           color: $ui-bg;
           text-shadow: 0 1px 0 #000;
           float: left;
-          padding: 15px 12px 17px 15px;
+          padding: 15px 12px 17px 12px;
           font: 14px helvetica, verdana, arial, sans-serif;
 
           &:hover, &:hover > a {
@@ -447,8 +446,9 @@ $dark-red: rgb(150,61,18);
             box-shadow: none;
           }
         }
+
         i {
-          padding-right: 12px;
+          margin-top: 3px;
         }
       }
     }
@@ -473,6 +473,15 @@ $dark-red: rgb(150,61,18);
     }
   }
 
+  .sidebar-true{
+    background: -webkit-gradient(linear, right top,left top,color-stop(0%,darken($ui-bg, 3%)), color-stop(33%,darken($ui-bg, 3%)),color-stop(33%,#ccc), color-stop(33.3%, #ccc), color-stop(33.3%, $main-bg),color-stop(100%, $main-bg));
+    background: -webkit-linear-gradient(left, darken($ui-bg, 3%) 33%, #ccc 33%, $main-bg 33.3%, $main-bg 100%);
+    background:    -moz-linear-gradient(left, darken($ui-bg, 3%) 33%, #ccc 33%, $main-bg 33.3%, $main-bg 100%);
+    background:      -o-linear-gradient(left, darken($ui-bg, 3%) 33%, #ccc 33%, $main-bg 33.3%, $main-bg 100%);
+    background:     -ms-linear-gradient(left, darken($ui-bg, 3%) 33%, #ccc 33%, $main-bg 33.3%, $main-bg 100%);
+    background:         linear-gradient(left, darken($ui-bg, 3%) 33%, #ccc 33%, $main-bg 33.3%, $main-bg 100%);
+  }
+
   .maincontent {
     // @include box-sizing;
     @include round-corners(5px);
@@ -488,11 +497,9 @@ $dark-red: rgb(150,61,18);
     aside {
 
       .module {
-        display:block;
-        height:100%;
-        background-color: darken($ui-bg, 3%);
+        // background-color: darken($ui-bg, 3%);
         padding: 12px;
-        border-right: 1px solid #ccc;
+        // border-right: 1px solid #ccc;
 
         h2 {
           text-shadow: 0 1px 0 #fff;
@@ -575,6 +582,12 @@ $dark-red: rgb(150,61,18);
           }
         }
 
+        .accordion-header {
+          background-color: #555;
+          color: #fff;
+          text-shadow: none;
+        }
+
         .fail { // For showing grades less than 60
           background-color: $red;
           color: #fff;
@@ -595,7 +608,6 @@ $dark-red: rgb(150,61,18);
           text-shadow: 0 -1px 0 $dark-green;
         }
 
-
         // .module-header {
         //   padding: 3px 20px;
         //   border-bottom: 1px solid #bbb;
@@ -610,6 +622,13 @@ $dark-red: rgb(150,61,18);
         // .module-body {
         //   padding: 20px;
         // }
+      }
+    }
+
+    article{
+      #announcements {
+        width: 590px;
+        height: 75px;
       }
     }
   }
