@@ -28,7 +28,7 @@
       <li class="divider-vertical"></li>
       <li><%= link_to "My Courses", "#" %></li>
       <li class="divider-vertical"></li>
-      <li><%= link_to "Pickles", "#" %></li>
+      <li><%= link_to "Grades & Reports", "#" %></li>
       <li class="divider-vertical"></li>
       <li><%= link_to "Notifications", "#" %></li>
       <li class="divider-vertical"></li>
@@ -42,27 +42,27 @@
   </div>
 </header>
 
-<div class="container">
-  <div class="maincontent">
-    <!-- Show notices if any -->
-    <div class="row">
-      <div class="span4 offset4">
-        <% flash.each do |name, msg| %>
-          <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
-            <%= msg %>
-            <a class="close" data-dismiss="alert">x</a>
-          </div>
-        <% end %>
-      </div>
+<div class="container maincontent">
+  <!-- Show notices if any -->
+  <div class="row">
+    <div class="span4 offset4">
+      <% flash.each do |name, msg| %>
+        <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
+          <%= msg %>
+          <a class="close" data-dismiss="alert">x</a>
+        </div>
+      <% end %>
     </div>
-    <!-- END Notices Area -->
-
-    <!-- Main Content Area -->
-    <div class="row">
-  			<%= yield %>
-    </div>
-    <!-- END Main Content Area -->
   </div>
+  <!-- END Notices Area -->
+
+  <!-- Main Content Area -->
+  <div class="row">
+  <div class="span12">
+			<%= yield %>
+  </div>
+  </div>
+  <!-- END Main Content Area -->
 </div>
 </body>
 </html>

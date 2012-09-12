@@ -1,15 +1,64 @@
-		<% case current_user.role %>
-			<% when "admin" %>
-			<div class="span12">
+<div class="row">
+	<% case current_user.role %>
+		<% when "admin" %>
+			<div class="span12 content">
 			You're an admin!
 			</div>
-			<% when "staff" %>
-			You're a staff person!
-			<% when "teacher" %>
-			You're one of them teachers!
-			<% when "student" %>
-				<aside class="span4">
-					<div class="module" id="active-courses">
+		<% when "staff" %>
+		You're a staff person!
+		<% when "teacher" %>
+		You're one of them teachers!
+		<% when "student" %>
+			<aside class="span4">
+				<div class="module" id="active-courses">
+					<h2>My Courses</h2>
+					<div class="accordion">
+					<% @courses.each_pair do |state, courses| %>
+						<% unless courses.blank? %>
+							<% courses.each_with_index do |course, index| %>
+							<%  # Just some code to simulate a production environment to better display the UI, will be removed once the real feature is written
+									grade = Random.rand(90+10)
+									completion = Random.rand(90+10)
+
+									if grade <= 45
+										type = "fail"
+									elsif grade >= 80
+										type = "good"
+									else
+									  type = "neutral"
+									end %>
+							<div class="accordion-group">
+								<div class="accordion-header <%= type %>">
+									<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>">
+										<span><%= course.name %></span>
+										<small><%= completion %>%&nbsp;completed</small>
+									</div>
+								</div>
+								<div id="record<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
+									<div class="module-body">
+										<p>Next Assignment: <strong>Chapter 5</strong></p>
+
+										<div class="btn-group">
+											<a class="btn btn-small btn-primary" href="#">Go!</a>
+											<a class="btn btn-small btn-info" href="#">Course Details</a>
+										</div>
+										<span class="average <%= type %> pull-right"><%= grade %></span>
+									</div>
+								</div>
+							</div>
+							<% end %>
+						<% else %>
+							<div class="module" id="no-courses">
+								<h3>My Current Courses</h3>
+								<p>
+									You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
+								</p>
+							</div>
+						<% end %>
+					<% end %>
+					</div>
+				</div>
+				<!-- <div class="module" id="active-courses">
 					<h2>Active Courses</h2>
 					<div class="accordion">
 					<% @courses.each_pair do |state, courses| %>
@@ -43,7 +92,15 @@
 						<% end %>
 					<% end %>
 					</div>
-					</div>
-				</aside>
-			<% # End student Case %>
-		<% end %>
+				</div> -->
+			</aside>
+			<article class="span8 content">
+				<div class="alert">This is an alert</div>
+				<div class="alert alert-success">This is success.</div>
+				<div class="alert alert-danger">Danger Will Robinson, Danger!</div>
+				<div class="alert alert-error">Is this different than danger?</div>
+				<div class="alert alert-info">This is for some benign info stuffs.</div>
+			</article>
+		<% # End student Case %>
+	<% end %>
+</div>
