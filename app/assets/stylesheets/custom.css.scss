@@ -521,12 +521,6 @@ $dark-red: rgb(150,61,18);
             margin-bottom: 5px;
             display:block;
 
-            &:hover {
-              background-color: #333;
-              text-shadow:none;
-              color: #fff;
-            }
-
             span {
               width:60%;
               font-size: 18px;
@@ -555,14 +549,15 @@ $dark-red: rgb(150,61,18);
           padding-bottom: 15px;
 
           .average {
-            display:block;
             @include round-corners(5px);
             margin-top: -50px;
-            padding:8px 10px 5px 10px;
+            padding:8px 10px;
             font: 36px "Franchise-bold", verdana, arial, sans-serif;
             letter-spacing: -1px;
             background-color: #9CE38C;
             color: #fff;
+            vertical-align: baseline;
+            text-align: center;
           }
 
           .fail {
@@ -586,12 +581,21 @@ $dark-red: rgb(150,61,18);
           background-color: #555;
           color: #fff;
           text-shadow: none;
+          &:hover {
+            background-color: #333;
+            text-shadow:none;
+            color: #fff;
+          }
         }
 
         .fail { // For showing grades less than 60
           background-color: $red;
           color: #fff;
           text-shadow: 0 -1px 0 $dark-red;
+
+          &:hover{
+            background-color: darken($red, 15%);
+          }
         }
 
 
@@ -599,6 +603,9 @@ $dark-red: rgb(150,61,18);
           background-color: $yellow;
           color: #fff;
           text-shadow: 0 1px 0 $dark-yellow;
+          &:hover{
+            background-color: darken($yellow, 10%);
+          }
         }
 
 
@@ -606,6 +613,9 @@ $dark-red: rgb(150,61,18);
           background-color: $medium-green;
           color: #fff;
           text-shadow: 0 -1px 0 $dark-green;
+          &:hover{
+            background-color: darken($medium-green, 15%);
+          }
         }
 
         // .module-header {
