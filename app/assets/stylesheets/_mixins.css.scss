@@ -71,6 +71,8 @@ $default_rounded_amount: 20px;
 /* ===== Gradients ===== */
 
 @mixin linear-gradient($from, $fromstop, $to, $tostop, $direction:top) {
+  background: $from; //Fallback for browsers that don't support gradients
+
   @if $direction==top     {background: -webkit-gradient(linear, left top,    left bottom, color-stop(0%,$from), color-stop($fromstop,$from), color-stop($tostop,$to));}
   @if $direction==bottom  {background: -webkit-gradient(linear, left bottom, left top,    color-stop(0%,$from), color-stop($fromstop,$from), color-stop($tostop,$to));}
   @if $direction==left    {background: -webkit-gradient(linear, left top,    right top,   color-stop(0%,$from), color-stop($fromstop,$from), color-stop($tostop,$to));}
@@ -87,6 +89,7 @@ $default_rounded_amount: 20px;
 
 
 /* ===== Double-Border === */
+// For easily making those cool 3d 1px lines on elements
 
 // Can be improved by adding size adjustments and using the "multiple box-shadow" method
 // Also has a glitch when using this mixin multiple times on the same element.

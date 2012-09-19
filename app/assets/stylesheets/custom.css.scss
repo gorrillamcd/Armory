@@ -366,12 +366,20 @@ a span {
 }
 
 /* ===== UI Styles ===== */
-$mainnav: rgb(33,141,170);
-$ui-bg: rgb(240,240,240);
-$main-bg: rgb(255,255,255);
+$mainnav:       rgb(33,141,170);
+$ui-bg:         rgb(240,240,240);
+$main-bg:       rgb(255,255,255);
+
+// Testing some different colors
+$greyblue:      rgb(229,234,235);
+$mediumblue:    rgb(49,128,147);
+$darkbluegrey:  rgb(36,48,50);
+$mediumgreen:   rgb(74,132,82);
+$mediumgrey:    rgb(119,133,136);
+$lightgrey:     rgb(230,235,236);
 
 .ui {
-  background-color: $ui-bg;
+  background-color: $lightgrey;
 
   /* Notifications */
   // Unused right now. For a Notifications style idea I had. WIP
@@ -427,8 +435,8 @@ $dark-red: rgb(150,61,18);
   .ui-nav {
     @include box-sizing;
     height: 50px;
-    color: #FFF;
-    @include linear-gradient(rgb(60,60,60), 60%, rgb(33,33,33), 100%);
+    color: $lightgrey;
+    @include linear-gradient($darkbluegrey, 60%, darken($darkbluegrey, 10%), 100%);
     overflow:hidden;
 
     ul {
@@ -438,8 +446,8 @@ $dark-red: rgb(150,61,18);
       .divider-vertical {
         height:50px;
         width:1px;
-        background-color: #111;
-        border-right: 1px solid #444;
+        background-color: darken($darkbluegrey, 10%);
+        border-right: 1px solid lighten($darkbluegrey, 7%);
         overflow:hidden;
       }
 
@@ -448,7 +456,7 @@ $dark-red: rgb(150,61,18);
         float: left;
 
         a {
-          color: $ui-bg;
+          color: $lightgrey;
           text-shadow: 0 1px 0 #000;
           float: left;
           padding: 15px 12px 17px 12px;
@@ -457,7 +465,7 @@ $dark-red: rgb(150,61,18);
           &:hover, &:hover > a {
             color: #fff;
             text-decoration: none;
-            @include linear-gradient(rgb(33,33,33), 50%, rgb(60,60,60), 100%);
+            @include linear-gradient(darken($darkbluegrey, 10%), 50%, $darkbluegrey, 100%);
             box-shadow: none;
           }
         }
