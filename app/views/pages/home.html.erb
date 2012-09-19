@@ -3,10 +3,9 @@
 
 <div class="fixed-top">
 	<nav class="omnibar centered">
-
 		<div class="dropdown">
 			<a id="dropdown-left" class="dropdown-toggle" data-toggle="dropdown" href="#">
-				<span class="caret"></span> plantel
+				<b class="caret"></b> plantel
 			</a>
 			<ul id="menu-left" class="dropdown-menu">
 				<li><a href="http://www.ibccmexico.com/" target="_blank">Ensenada, Baja California, Mexico</a></li>
@@ -15,50 +14,47 @@
 			</ul>
 		</div>
 
-    	<section id="left-section">
+    <section id="left-section">
     		Ensenada, Baja California, Mexico
 		</section>
 
-		<div class="pull-right">
-			
-			<section id="right-section">
-				<a href="#"><span class="eng"></span> English</a>
-				<a href="#"><span class="esp"></span> Espa&ntilde;ol</a>
-			</section>
+	  <div class="dropdown">
+	    <% unless user_signed_in? %>
+				<a id="dropdown-right" class="dropdown-toggle" data-toggle="dropdown" href="#">
+					login <b class="caret"></b>
+				</a>
+				<div id="menu-right" class="dropdown-menu pull-right">
+					<h4>Not Registered? <%= link_to "Sign up here.", new_user_registration_path %></h4>
 
-		    <div class="dropdown">
-		    <% unless user_signed_in? %>
-					<a id="dropdown-right" class="dropdown-toggle" data-toggle="dropdown" href="#">
-						login <span class="caret"></span>
-					</a>
-					<div id="menu-right" class="dropdown-menu pull-right">
-						<h4>Not Registered? <%= link_to "Sign up here.", new_user_registration_path %></h4>
+					<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-vertical"}) do |f| %>
+						<fieldset>
+						<%= f.input :email, :required => false, :autofocus => true, :placeholder => "Correo" %>
+						<%= f.input :password, :required => false, :placeholder => "Clave" %>
+						<%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %><br />
 
-						<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-vertical"}) do |f| %>
-							<fieldset>
-							<%= f.input :email, :required => false, :autofocus => true, :placeholder => "Correo" %>
-							<%= f.input :password, :required => false, :placeholder => "Clave" %>
-							<%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %><br />
-
-							<%= f.button :submit, "Sign in", :class => "btn btn-success pull-left" %>
-							<%= link_to "Forgot your password?", new_password_path('user')%>
-							</fieldset>
-						<% end %>
-					</div>
-				<% else %>
-					<a id="dropdown-right" class="dropdown-toggle" data-toggle="dropdown" href="#">
-						admin@awesome.com <span class="caret"></span>
-					</a>
-					<div id="menu-right" class="dropdown-menu pull-right">
-					<ul>
-						<li><%= link_to "Dashboard", dashboard_path %></li>
-						<li><%= link_to "Mi Cuenta", "#" %></li>
-						<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-					</ul>	
-					</div>
-				<% end %>
-			</div>
+						<%= f.button :submit, "Sign in", :class => "btn btn-success pull-left" %>
+						<%= link_to "Forgot your password?", new_password_path('user')%>
+						</fieldset>
+					<% end %>
+				</div>
+			<% else %>
+				<a id="dropdown-right" class="dropdown-toggle" data-toggle="dropdown" href="#">
+					admin@awesome.com <span class="caret"></span>
+				</a>
+				<div id="menu-right" class="dropdown-menu pull-right">
+				<ul>
+					<li><%= link_to "Dashboard", dashboard_path %></li>
+					<li><%= link_to "Mi Cuenta", "#" %></li>
+					<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+				</ul>	
+				</div>
+			<% end %>
 		</div>
+
+		<section id="languages">
+			<a href="#"><span class="eng"></span> English</a>
+			<a href="#"><span class="esp"></span> Espa&ntilde;ol</a>
+		</section>
 	</nav>
 </div>
 

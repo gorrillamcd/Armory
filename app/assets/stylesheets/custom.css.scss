@@ -57,7 +57,7 @@ textarea {
 // Several weights of the Museo font family are available for free from http://www.myfonts.com/
  @font-face {font-family: 'Museo-700';src: url(asset-path('233C55_1_0.eot', font));src: url(asset-path('233C55_1_0.eot', font)) format('embedded-opentype'),url(asset-path('233C55_1_0.woff', font)) format('woff'),url(asset-path('233C55_1_0.ttf', font)) format('truetype');}
 
- @font-face {font-family: 'Franchise-bold'; src: url(asset-path('Franchise-Bold.ttf', font)) format('truetype');}
+ @font-face {font-family: 'Franchise-bold'; src: url(asset-path('Franchise-Bold.ttf', font)) format('truetype');} // #TODO: Add other file types for Franchise font for browser compatibility
 
 /* ===== END @font-face Declarations ========== */
 
@@ -80,16 +80,27 @@ Also, the awesome features of SASS should be utilized when I have a chance to le
   height: 36px;
   display: block;
 
-
   #right-section {
-    float: left;
-    display:inline-block;
-    padding:8px 7px 0 10px;
+    width:auto;
+    // min-width: 230px;
+    // max-width: 500px;
+    float: right;
+    // overflow: hidden;
+    position:relative;
+  }
+
+  #languages {
+    float: right;
+    display:block;
+    padding:8px 7px 0 7px;
+    min-width: 144px;
+    height: 100%;
+    overflow:hidden;
 
     a {
       color:#fff;
       text-decoration:none; 
-      float:right;
+      float:left;
       padding-left:5px;
       &:hover { text-decoration: underline; }
     }
@@ -133,12 +144,12 @@ a span {
   @include box-sizing;
   @include round-any-corner(bottom, left);
   border-right: 1px solid #777;
-  height: 36px;
+  height: 35px;
   padding:8px 7px 0 10px;
-  float:left;
   text-decoration: none;
   display:block;
   color: inherit;
+  float:left;
 
   &:hover {
     background-color: #fff;
@@ -190,12 +201,15 @@ a span {
   @include round-any-corner(bottom, right);
   border-left: 1px solid #777;
   padding:8px 7px 0 10px;
-  float:left;
-  height:36px;
+  float:right;
+  min-width: 65px;
+  max-width: 450px;
+  height:35px;
   color: #fff;
   font: 14px trebuchet, "Trebuchet MS", futura, helvetica, verdana, arial, sans-serif;
   text-decoration: none;
   display:block;
+  overflow:hidden;
 
   &:hover {
     background-color: #fff;
@@ -204,7 +218,7 @@ a span {
 
   .caret {
     display:inline-block;
-    margin: 7px 0 0 0;    
+    margin: 7px 0 0 0;
   }
 
 }
@@ -331,9 +345,10 @@ a span {
     display:block;
     padding: 32px 7px 30px 7px;
     list-style: none;
-    font: 24px 'Franchise-bold', futura, impact, sans-serif;
+    font: 23px 'Franchise-bold', futura, impact, sans-serif;
     text-transform: uppercase;
     color: #3e0404;
+    // letter-spacing:-0.2em;
 
     a{
       color: #3e0404;
@@ -474,7 +489,7 @@ $dark-red: rgb(150,61,18);
   }
 
   .sidebar-true{
-    background: -webkit-gradient(linear, right top,left top,color-stop(0%,darken($ui-bg, 3%)), color-stop(33%,darken($ui-bg, 3%)),color-stop(33%,#ccc), color-stop(33.3%, #ccc), color-stop(33.3%, $main-bg),color-stop(100%, $main-bg));
+    background: -webkit-gradient(linear, left top,right top,color-stop(0%,darken($ui-bg, 3%)), color-stop(33%,darken($ui-bg, 3%)),color-stop(33%,#ccc), color-stop(33.3%, #ccc), color-stop(33.3%, $main-bg),color-stop(100%, $main-bg));
     background: -webkit-linear-gradient(left, darken($ui-bg, 3%) 33%, #ccc 33%, $main-bg 33.3%, $main-bg 100%);
     background:    -moz-linear-gradient(left, darken($ui-bg, 3%) 33%, #ccc 33%, $main-bg 33.3%, $main-bg 100%);
     background:      -o-linear-gradient(left, darken($ui-bg, 3%) 33%, #ccc 33%, $main-bg 33.3%, $main-bg 100%);
