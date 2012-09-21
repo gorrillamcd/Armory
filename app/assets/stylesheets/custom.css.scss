@@ -173,7 +173,7 @@ a span {
   position:absolute;
   top:20px;
   padding:40px 10px 10px 10px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   color: #fff;
   line-height: 1.5em;
   z-index: -1;
@@ -229,40 +229,87 @@ a span {
 }
 
 #menu-right {
-  @include box-sizing;
   display:block;
   position:absolute;
   top:20px;
   left: -9999px;
-  width:300px;
-  padding:40px 10px 10px 10px;
-  background-color: rgba(0,0,0,0.5);
+  padding-top:40px;
+  background-color: rgba(0,0,0,0.7);
   color: #fff;
   z-index: -1;
   line-height: 1.5em;
 
   label {
     color: #fff;
-    text-indent: -9999px;
-    display:block;
-    height:0;
-    overflow:hidden;
   }
 
   a {
-    text-decoration:none;
     color:#fff;
+    padding:0px;
   }
 
-  p {
-    padding: 5px 15px 5px 0px;
+  .boolean {
+    // background-color: rgba(0,0,0,0.8);
+    @include round-corners(5px);
+    // width: 30%;
+    float:left;
+    label {
+      margin-left:9px;
+      float:right;
+      font-weight:700;
+      text-shadow: 0 1px 0 #000;
+    }
+  }
+
+  h4 {
+    @include double-border(#777, #333, top);
+    padding-top:9px;
+    width:83%;
+  }
+
+  #sign-up {
     display: block;
-    color: #aaa;
+    float:left;
+    margin-left: 20px;
+    color: #fff;
+    font-weight:700;
+    padding-bottom:9px;
+    margin-bottom: 9px;
+    vertical-align: center;
+    width:80%;
+    @include double-border(#444, #999, bottom);
+
+    a {
+      padding:3px 15px;
+    }
+  }
+
+  input {
+    margin-bottom: 0px;
+  }
+
+  input[type="submit"], #forgot-password-link {
+    width: 83%;
+    margin-bottom:9px;
+    // margin-left:auto;
+    // margin-right:auto;
+  }
+
+  .add-on {
+    margin-left: -4px;
   }
 
   li > a:hover, .active > a, .active > a:hover {
     color: #84bc5e;
-    background-color: #fff;    
+    background-color: #fff;
+  }
+
+  ul {
+    margin-right:20px;
+
+    a {
+      padding:3px 15px;
+    }
   }
 }
 

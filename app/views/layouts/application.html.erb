@@ -48,7 +48,7 @@
 
   <!-- Main Content Area -->
   <div class="row">
-  <div class="span12">
+  <div class="span12 <%= content_for?(:sidebar) ? "" : "content" %>">
 			<%= yield %>
   </div>
   </div>
