@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "Armory" %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+
+<%= render 'layouts/omnibar' %> <!-- Toolbar at top of page with campus selection and login form -->
+
+<div id="headline">Alcanzando al mundo para Cristo!</div>
+
+<div id="mainnav">
+	<nav>
+		<div id="brand"><%= link_to "stuff", root_path, :id => "logo-main" %><h1 id="brand-name">Instituto Biblico<br />Capilla Calvario</h1></div>
+
+		<ul class="pull-right">
+			<li id="alumnos"><%= link_to "Alumnos", "#" %></li>
+			<li id="profesores"><%= link_to "Profesores y Personal", "#" %></li>
+			<li id="noticias"><%= link_to "Noticias", "#" %></li>
+			<li id="quienes-somos"><%= link_to "Quienes Somos?", "#" %></li>
+		</ul>
+	</nav>
+</div>
+
+<div class="container">
+
+  <!-- Show notices if any -->
+	<div class="row">
+	    <div class="span4 offset4">
+		    <% flash.each do |name, msg| %>
+	        <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
+		        <%= msg %>
+		        <a class="close" data-dismiss="alert">x</a>
+	        </div>
+			<% end %>
+		</div>
+	</div>
+  <!-- END Notices Area -->
+
+  <!-- Main Content Area -->
+		<%= yield %>
+	<!-- End Content Area -->
+</div>
+</body>
+</html>

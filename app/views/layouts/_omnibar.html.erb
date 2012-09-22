@@ -1,0 +1,71 @@
+<div class="fixed-top">
+	<nav class="omnibar centered">
+		<div class="dropdown">
+			<a id="dropdown-left" class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<b class="caret"></b> plantel
+			</a>
+			<ul id="menu-left" class="dropdown-menu span4">
+				<li><a href="http://www.ibccmexico.com/" target="_blank">Ensenada, Baja California, Mexico</a></li>
+				<li><a href="#">IBCC en linea</a></li>
+				<li><p>y habra mas en el futuro...</p></li>
+			</ul>
+		</div>
+
+    <section id="left-section">
+    		Ensenada, Baja California, Mexico
+		</section>
+
+	  <div class="dropdown">
+	    <% unless user_signed_in? %>
+				<a id="dropdown-right" class="dropdown-toggle" data-toggle="dropdown" href="#">
+					login <b class="caret"></b>
+				</a>
+				<div id="menu-right" class="dropdown-menu pull-right span4">
+					<span id="sign-up">Not Registered?
+							<%= link_to "Sign up now!", new_user_registration_path, :class => "btn btn-small btn-primary pull-right" %>
+					</span>
+
+					<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-vertical span4"}) do |f| %>
+						<fieldset>
+						<%= f.input :email, :wrapper => :append, :label => false do %>
+							<%= f.input_field :email, :required => false, :autofocus => true, :placeholder => "Correo" %>
+							<span class="add-on"><i class="icon-envelope"></i></span>
+						<% end %>
+						<%= f.input :password, :wrapper => :append, :label => false do %>
+							<%= f.input_field :password, :required => false, :autofocus => true, :placeholder => "Clave" %>
+							<span class="add-on"><i class="icon-asterisk"></i></span>
+						<% end %>
+						<%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %><br />
+
+						<%= f.button :submit, "Sign in", :class => "btn btn-success" %>
+						<h4><%= link_to "Forgot your password?", new_password_path('user'), :id => "forgot-password-link" %></h4>
+						</fieldset>
+					<% end %>
+				</div>
+			<% else %>
+				<a id="dropdown-right" class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<%= current_user.email %> <b class="caret"></b>
+				</a>
+				<div id="menu-right" class="dropdown-menu pull-right span4">
+				<ul>
+					<li><i class="icon-tasks pull-left"></i><%= link_to "Dashboard", dashboard_path %></li>
+					<li><i class="icon-user"></i><%= link_to "Mi Cuenta", edit_user_registration_path(current_user) %></li>
+					<li><i class="icon-off"></i><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+				</ul>	
+				</div>
+			<% end %>
+		</div>
+
+		<section id="languages">
+			<a href="#"><span class="eng"></span> English</a>
+			<a href="#"><span class="esp"></span> Espa&ntilde;ol</a>
+		</section>
+	</nav>
+	<script type="text/javascript">
+		$(function(){
+		  $('.dropdown form').on('click', function (e) {
+		    e.stopPropagation()
+		  });
+		});
+	</script>
+</div>
