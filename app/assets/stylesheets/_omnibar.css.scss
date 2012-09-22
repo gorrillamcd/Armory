@@ -226,13 +226,14 @@ a span {
 
   ul { // Dropdown Styles for lists of links
     margin-right:20px;
+    list-style:none;
 
     li > a:hover, .active > a, .active > a:hover {
       color: #84bc5e;
       background-color: #fff;
       
       [class^="icon-"], [class*=" icon-"]  { // Icons on hover should be dark
-        background-image: url(../img/glyphicons-halflings.png);
+        background-image: url(asset-path('glyphicons-halflings.png', image));
       }
     }
 
@@ -240,7 +241,8 @@ a span {
       padding:3px 15px;
 
       [class^="icon-"], [class*=" icon-"] {
-        background-image: url(../img/glyphicons-halflings-white.png);
+        background-image: url(asset-path('glyphicons-halflings-white.png', image));
+        margin-right: 9px;
         // Sets icons to white. Can't use Bootstrap's built-in because
         // it needs to change on hover and I don't feel like javascript today.
       }
@@ -251,5 +253,4 @@ a span {
 .open #menu-right {
   left: inherit; 
 }
-
 /* End Omnibar Styles */

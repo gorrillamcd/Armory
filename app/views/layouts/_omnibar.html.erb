@@ -48,9 +48,9 @@
 				</a>
 				<div id="menu-right" class="dropdown-menu pull-right span4">
 				<ul>
-					<li><i class="icon-tasks pull-left"></i><%= link_to "Dashboard", dashboard_path %></li>
-					<li><i class="icon-user"></i><%= link_to "Mi Cuenta", edit_user_registration_path(current_user) %></li>
-					<li><i class="icon-off"></i><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+					<li><%= link_to dashboard_path do %><i class="icon-list"></i> Dashboard<% end %></li>
+					<li><%= link_to edit_user_registration_path(current_user) do %><i class="icon-user"></i> Mi Cuenta<% end %></li>
+					<li><%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off"></i> Logout<% end %></li>
 				</ul>	
 				</div>
 			<% end %>
