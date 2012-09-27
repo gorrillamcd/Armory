@@ -9,7 +9,7 @@ This is currently under active development and is not ready to be used in Produc
 
 ##How to Help
 
-There's a lot that needs to be done to make this application happen. If you'd like to contribute, fork the repo and make a pull request with your changes. There's a [non-definitive TODO list](#todo) at the end of this readme.
+There's a lot that needs to be done to make this application happen. If you'd like to contribute, fork the repo and make a pull request with your changes. There's a [non-definitive TODO list](armory#todo) at the end of this readme.
 
 ###Contributing Code
 
@@ -37,15 +37,18 @@ While the TODO list is a good place to start, there's a few other things that sh
 Just some quick notes about working with the code:
 
 * Right now, I'm sticking with the gems I have unless there's a really good reason to switch. That means RSpec for testing, Paperclip for uploads, etc.
-* `Thin` is the server I plan on using for development and production. If you don't know, just do `gem install thin`, clone this repo and cd into the directory, then run `thin start`, it's that easy!
+* `Thin` is the server I plan on using for development and production. When you `bundle install` after cloning the repo, you should be able to do `rails s` to launch thin now instead of the default Webrick server.
 * The main roadmap for version 1 is fairly set in stone. It will be functional and secure, but might not have all the bells and whistles(autocomplete, multiple question-types, translation, etc) it could have, that's what version 2 is for.
-* This is free to be used by anyone but cannot be sold (will get a proper license up soon). That said, I will not add functionality for other scriptures(book of mormon, apocrapha, etc) or religions. If you'd like, fork the repository and you can add them yourself.
+* Version 1 will be very specific to ccbcmexico.com's needs. Versions afterwards will slowly become more generalized and customizable.
+* This is free to be used by anyone but cannot be sold (MIT License). That said, I will not add functionality for other scriptures(book of mormon, apocrapha, etc) or religions. You are able to fork the repository and add them if you like.
 
 #TODO
-[todo]: #
 
 * Write Tests for current and any further features (will use rspec/capybara)
-* Create Exam views and logic along with Questions and Answers
-* Finish user CRUD interface for admins to manage users
-* Code User Interface (already designed and looking sweet!; templates will probably come in v3.0)
-* Refactor and general code-cleanup
+* Create Exam views and logic along with Questions and Answers (the views/controller logic for creating exams and showing them are there, but not polished. take_exam action for a student to take an exam, is not started yet)
+* Get grading-funcionality working
+* Finish user CRUD interface for admins/staff to manage users
+* Complete student registration process and include payment functionality
+* Update lesson views and incorporate with exam views
+* Reports-funcionality for various roles (students can get transcripts, admins get student activity reports, etc. No comprehensive list of what reports are needed yet.)
+* Refactor and general code-cleanup before version 1 (after aforementioned todo items)
