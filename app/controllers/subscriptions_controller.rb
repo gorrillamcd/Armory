@@ -2,7 +2,10 @@ class SubscriptionsController < ApplicationController
 
 ### Controller Explanation ###
 #
-# The SubscriptionsController manages subscriptions/relationships between a student and a course. Each subscription should be unique with respect to the :user_id and :course_id. This controller doesn't interact with views directly, but is called when creating a subscription. Destroy is not used and will most likely either be modified to be a tombstone action or removed altogether.
+# The SubscriptionsController manages subscriptions/relationships between a student and a course.
+# Each subscription should be unique with respect to the :user_id and :course_id.
+# This controller doesn't interact with views directly, but is called when creating a subscription.
+# Destroy is not used and will most likely either be modified to be a tombstone action or removed altogether.
 #
 
 	before_filter :authenticate_user!
@@ -17,6 +20,6 @@ class SubscriptionsController < ApplicationController
 	end
 
 	def destroy
-		redirect_to root_url # TODO: finish this action later
+		redirect_to root_url # TODO: Finish the destroy action to unsubscribe from course.
 	end
 end

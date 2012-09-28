@@ -4,14 +4,6 @@ module LayoutHelper
     content_for(:title) { h(page_title.to_s) }
   end
 
-  # def has_courses?(user)
-  #   unless Subscription.where(:user_id => user.id).blank?
-  #     return false
-  #   else
-  #     return true
-  #   end
-  # end
-
   def humanize_state(state)
      case state
       when "pending"

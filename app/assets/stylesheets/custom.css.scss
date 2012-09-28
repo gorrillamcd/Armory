@@ -57,7 +57,17 @@ textarea {
 // Several weights of the Museo font family are available for free from http://www.myfonts.com/
  @font-face {font-family: 'Museo-700';src: url(asset-path('233C55_1_0.eot', font));src: url(asset-path('233C55_1_0.eot', font)) format('embedded-opentype'),url(asset-path('233C55_1_0.woff', font)) format('woff'),url(asset-path('233C55_1_0.ttf', font)) format('truetype');}
 
- @font-face {font-family: 'Franchise-bold'; src: url(asset-path('Franchise-Bold.ttf', font)) format('truetype');} // #TODO: Add other file types for Franchise font for browser compatibility
+ // @font-face {font-family: 'Franchise-bold'; src: url(asset-path('Franchise-Bold.ttf', font)) format('truetype');}
+
+ @font-face {
+    font-family: 'Franchise-bold';
+    src: url(asset-path('Franchise-Bold.eot', font));
+    src: url(asset-path('Franchise-Bold.eot', font)) format('embedded-opentype'),
+         url(asset-path('Franchise-Bold.woff', font)) format('woff'),
+         url(asset-path('Franchise-Bold.ttf', font)) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* ===== END @font-face Declarations ========== */
 
@@ -119,10 +129,11 @@ Also, the awesome features of SASS should be utilized when I have a chance to le
 #brand-name {
   float:left;
   font: 24px 'Museo-700', serif;
+  line-height: 1.1em;
   color: #f1d0c5;
   text-shadow: 0 -1px 0 #691111;
   display:block;
-  padding:17px 25px 0 15px;
+  padding:17px 20px 0 15px;
 
   &:hover {
     color: #3e0404;
@@ -140,9 +151,10 @@ Also, the awesome features of SASS should be utilized when I have a chance to le
   li {
     float:left;
     display:block;
-    padding: 32px 7px 30px 7px;
+    padding: 32px 5px 30px 5px;
     list-style: none;
-    font: 23px 'Franchise-bold', futura, impact, sans-serif;
+    font: 20px 'Franchise-bold', futura, impact, sans-serif;
+    line-height: 1em;
     text-transform: uppercase;
     color: #3e0404;
 
