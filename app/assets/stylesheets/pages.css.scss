@@ -1,3 +1,102 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* ===== Homepage Styles ============ */
+
+/*
+This section can be DRYed up a lot and simplified.
+I know there are unecessary classes and the selectors could be improved.
+*/
+
+@import "omnibar";
+
+#headline { // #TODO: Change #headline on different pages, add a special headline for IBCC en linea page with signup button
+  margin:0;
+  padding:0;
+  border:0;
+  width: 100%;
+  height: 457px;
+  background-color: #9d9d9d;
+  background: url(image_path('headline_andres.jpg')) no-repeat;
+  background-position: center;
+  display: block;
+  text-indent: -9999px;
+}
+
+/* Main Navigation */
+
+#mainnav {
+  width:100%;
+  height:83px;
+  position:relative;
+  border-top: solid 1px #691111;
+  border-bottom: solid 1px #691111;
+  // Background Gradients
+  background: #c32f2f; /* Old browsers */
+  background: -moz-linear-gradient(top, #c32f2f 0%, #c32f2f 48%, #b42a2a 61%, #ad2525 66%, #ab2725 67%, #8c1a1a 88%, #851716 95%, #851718 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c32f2f), color-stop(48%,#c32f2f), color-stop(61%,#b42a2a), color-stop(66%,#ad2525), color-stop(67%,#ab2725), color-stop(88%,#8c1a1a), color-stop(95%,#851716), color-stop(100%,#851718)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #c32f2f 0%,#c32f2f 48%,#b42a2a 61%,#ad2525 66%,#ab2725 67%,#8c1a1a 88%,#851716 95%,#851718 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #c32f2f 0%,#c32f2f 48%,#b42a2a 61%,#ad2525 66%,#ab2725 67%,#8c1a1a 88%,#851716 95%,#851718 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #c32f2f 0%,#c32f2f 48%,#b42a2a 61%,#ad2525 66%,#ab2725 67%,#8c1a1a 88%,#851716 95%,#851718 100%); /* IE10+ */
+  background: linear-gradient(top, #c32f2f 0%,#c32f2f 48%,#b42a2a 61%,#ad2525 66%,#ab2725 67%,#8c1a1a 88%,#851716 95%,#851718 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c32f2f', endColorstr='#851718',GradientType=0 ); /* IE6-9 */
+  // END Background Gradients
+
+  nav {
+    width:960px;
+    margin:0 auto;
+    height: 83px;
+  }
+}
+
+#logo-main {
+  background: url(image_path('logo-main.png')) no-repeat;
+  width: 140px;
+  height: 140px;
+  text-indent: -9999px;
+  float:left;
+}
+
+#brand-name {
+  float:left;
+  font: 24px 'Museo-700', serif;
+  line-height: 1.1em;
+  color: #f1d0c5;
+  text-shadow: 0 -1px 0 #691111;
+  display:block;
+  padding:17px 20px 0 15px;
+
+  &:hover {
+    color: #3e0404;
+    text-shadow: 0 1px 0 #df3b3b;
+  }
+}
+
+/* MainNav Menu */
+
+#mainnav ul {
+  float:right;
+  height:83px;
+  overflow:hidden;
+
+  li {
+    float:left;
+    display:block;
+    padding: 32px 5px 30px 5px;
+    list-style: none;
+    font: 20px 'Franchise-bold', futura, impact, sans-serif;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: #3e0404;
+
+    a{
+      color: #3e0404;
+      text-shadow: 0 1px 0 #df3b3b;
+      text-decoration: none;
+      padding:inherit;
+    }
+
+    &:hover, &:hover > a{
+      background-color: #3e0404;
+      color: #fff;
+      text-shadow: none;      
+    }
+  }
+}

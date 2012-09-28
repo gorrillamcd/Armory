@@ -1,0 +1,91 @@
+/* @license
+ * MyFonts Webfont Build ID 2309205, 2012-06-13T15:05:21-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Museo 700 by exljbris
+ * URL: http://www.myfonts.com/fonts/exljbris/museo/700/
+ * Copyright: Copyright (c) 2008 by Jos Buivenga/exljbris. All rights reserved.
+ * Licensed pageviews: unspecified
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2309205
+ * 
+ * © 2012 Bitstream Inc
+*/
+
+/* universal */
+// Some utility styles for convenience
+
+// html {
+//   overflow-y: scroll;
+// }
+// body {
+//   width: 100%;
+// }
+// section {
+//   overflow: auto;
+// }
+// textarea {
+//   resize: vertical;
+// }
+// .center h1 {
+//   margin-bottom: 10px;
+// }
+.centered { // Center an element
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+}
+.fixed-top { // Fix an element to the top
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1001;
+}
+.content { // Provide standard padding to an element that contains content #TODO: The .content class shouldn't be needed. Refactor to remove the need for this class.
+  @include box-sizing;
+  padding:12px;
+}
+
+/* ===== @font-face Declarations ========== */
+
+// Several weights of the Museo font family are available for free from http://www.myfonts.com/
+ @font-face {font-family: 'Museo-700';src: url(asset-path('233C55_1_0.eot', font));src: url(asset-path('233C55_1_0.eot', font)) format('embedded-opentype'),url(asset-path('233C55_1_0.woff', font)) format('woff'),url(asset-path('233C55_1_0.ttf', font)) format('truetype');}
+
+ @font-face {font-family: 'Franchise-bold';src: url(asset-path('Franchise-Bold.eot', font));src: url(asset-path('Franchise-Bold.eot', font)) format('embedded-opentype'),url(asset-path('Franchise-Bold.woff', font)) format('woff'),url(asset-path('Franchise-Bold.ttf', font)) format('truetype');font-weight: normal;font-style: normal;}
+
+/* ===== END @font-face Declarations ========== */
+
+/* Users Views */
+
+/* #TODO: Needs integration with new ui design and major improvement/refactor anyways. */
+
+    /* Variables */
+    $base-color: #4F8C32;
+    $grade: lighten($base-color, 40%);
+
+#grade {
+  background-color: $grade;
+  border: 1px solid darken($grade, 10%);
+  padding: 10px;
+}
+
+#grade-text {
+  color: #fff;
+}
+
+#gpa {
+  font-size: 3em;
+  letter-spacing: -1px;
+  font-weight: bold;
+  line-height:1;
+  text-shadow: 0 1px 0 #fff;
+  display: block;
+  color: darken($base-color, 20%);
+  padding-right: 15px;
+  padding-left: 5px;
+}
