@@ -24,6 +24,10 @@ Also, if you find a bug, but don't know/don't have time to make the change yours
 
 **Do you want to try out the application**, but don't have a development environment setup? Check the wiki for a tutorial of how to setup the dev environment (even for windows newbies!).
 
+************************
+Note: I do not track the font files with github due to licensing. In the stylesheets, I have included the links for downloading the files. They are all free to download.
+************************
+
 ###What needs doing?
 
 While the TODO list is a good place to start, there's a few other things that should be mentioned:
