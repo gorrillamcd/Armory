@@ -32,7 +32,7 @@ Note: I do not track the font files with github due to licensing. In the stylesh
 
 While the TODO list is a good place to start, there's a few other things that should be mentioned:
 
-1.  I'm just beginning in web development and learning Rails. Go easy on me but please don't hesitate to offer criticisms.
+1.  I'm just beginning in web development and learning Rails. Don't be mean about it but please don't hesitate to offer criticisms.
 2.  Refactoring! I know there are many aspects of the code that could be improved, so this would be a major help.
 3.  Testing: Every pull request should also include the appropriate tests. Tests for existing features will be written soon.
 
@@ -42,6 +42,7 @@ Just some quick notes about working with the code:
 
 * Right now, I'm sticking with the gems I have unless there's a really good reason to switch. That means RSpec for testing, Paperclip for uploads, etc.
 * `Thin` is the server I plan on using for development and production. When you `bundle install` after cloning the repo, you should be able to do `rails s` to launch thin now instead of the default Webrick server.
+* When coding a new feature, be sure to checkout a new branch for that feature before starting. Master should be kept stable and active development done in branches instead.
 * The main roadmap for version 1 is fairly set in stone. It will be functional and secure, but might not have all the bells and whistles(autocomplete, multiple question-types, translation, etc) it could have, that's what version 2 is for.
 * Version 1 will be very specific to ccbcmexico.com's needs. Versions afterwards will slowly become more generalized and customizable.
 * This is free to be used by anyone but cannot be sold (MIT License). That said, I will not add functionality for other scriptures(book of mormon, apocrapha, etc) or religions. You are able to fork the repository and add them if you like.
