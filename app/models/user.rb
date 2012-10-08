@@ -10,14 +10,14 @@ class User < ActiveRecord::Base
   has_many :courses, :through => :subscriptions, :uniq => true
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name
 
   # Constant containing roles for teh app. I might move this to the db later for more flexibility
   ROLES = %w[admin staff teacher student]
 
   # Validations
 
-  validates_presence_of :email, :role, :first_name, :last_name
+  validates_presence_of :email, :first_name, :last_name
 
   # Methods
 
@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     else
       return false
     end
+  end
+
+  def full_name
+      self.first_name+" "+self.last_name
   end
   
 end

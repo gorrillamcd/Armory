@@ -5,7 +5,7 @@ module LayoutHelper
   end
 
   def humanize_state(state)
-     case state
+    case state
       when "pending"
         raw "<small>You haven't paid yet for this course.</small>"
       when "active"
@@ -22,7 +22,7 @@ module LayoutHelper
 
   def sidebar?
     "span8" unless yield(@show_sidebar) == false
-  end 
+  end
 
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }
