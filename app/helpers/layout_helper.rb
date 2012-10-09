@@ -22,9 +22,10 @@ module LayoutHelper
 
   def welcome_text
     if user_signed_in?
-      @welcome_text = raw(t('application.welcome')+" "+current_user.full_name+", "+content_tag(:small, t('application.greeting')))
+      #@welcome_text = raw(t('application.welcome')+" "+current_user.full_name+", "+content_tag(:small, t('application.greeting')))
+      @welcome_text = raw([t('application.welcome'),current_user.full_name,content_tag(:small, t('application.greeting'))].join(" "))
     else
-      @welcome_text = t('application.welcome_to')+" "+t('application.name')
+      @welcome_text = [t('application.welcome_to'),t('application.name')].join(" ")
     end
   end
 
