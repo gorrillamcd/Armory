@@ -5,7 +5,7 @@
 	<% if @subscription.nil? %>
 		<%= button_to "Subscribe!", subscriptions_path(:course_id => @course.id), :class => 'btn btn-primary' %>
 	<% else %>
-		<%= humanize_state(@subscription.state) %>
+		<small><%= humanize_state(@subscription.state) %></small>
 	<% end %>
 	<br />
 </p>

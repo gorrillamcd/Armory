@@ -7,7 +7,7 @@ skip_authorization_check # TODO: Add authorization to this controller
 			case current_user.role
 
 				when "admin" 		# TODO: Expand admin dashboard to provide all needed info
-					@recent_users = User.limit(5).order("created_at DESC").group_by(&:role)
+					@recent_users = User.limit(5).order("created_at DESC").group_by(&:role) # TODO: Change occurences of group_by for it's ARel equivalent
 				when "staff"
 					return true 	# TODO: Add Staff Dashboard
 				when "teacher"

@@ -7,23 +7,32 @@ module LayoutHelper
   def humanize_state(state)
     case state
       when "pending"
-        raw "<small>You haven't paid yet for this course.</small>"
+        raw "You haven't paid yet for this course."
       when "active"
-        raw "<small>You're attending this course.</small>"
+        raw "You're attending this course."
       else
-        raw "<small>You have #{state} this course.</small>"
+        raw "You have #{state} this course."
     end
   end
 
   def sidebar(status) # disable the sidebar on certain pages (like the lesson show pages): Could be better :()
-      style = "sidebar-true"
-      content_for(:sidebar) { h(style.to_s) } if status
+    style = "sidebar-true"
+    content_for(:sidebar) { h(style.to_s) } if status
   end
 
-  def sidebar?
-    "span8" unless yield(@show_sidebar) == false
+  def welcome_text
+    if user_signed_in?
+      @welcome_text = raw(t('application.welcome')+" "+current_user.full_name+", "+content_tag(:small, t('application.greeting')))
+    else
+      @welcome_text = t('application.welcome_to')+" "+t('application.name')
+    end
   end
 
+  # def sidebar?
+  #   "span8" unless yield(@show_sidebar) == false
+  # end
+
+# Rails helpers
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }
   end

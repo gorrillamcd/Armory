@@ -18,8 +18,15 @@
 				<div class="module">
 					<h2>My Courses</h2>
 					<div class="accordion" id="active-courses">
-					<% @courses.each_pair do |state, courses| %>
-						<% unless courses.blank? %>
+					
+						<% if @courses.blank? %>
+							<div id="no-courses">
+								<p>
+									You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
+								</p>
+							</div>
+						<% else %>
+							<% @courses.each_pair do |state, courses| %>
 							<% courses.each_with_index do |course, index| %>
 							<%  # Just some code to simulate a production environment to better display the UI, will be removed once the real feature is written
 									grade = Random.rand(90+10)
@@ -32,33 +39,26 @@
 									else
 									  type = "warn"
 									end %>
-							<div class="accordion-group">
-								<div class="accordion-header <%= type %>">
-									<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>" data-parent="#active-courses">
-										<span><%= course.name %></span>
-										<small><%= completion %>%&nbsp;completed</small>
-									</div>
-								</div>
-								<div id="record<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
-									<div class="module-body">
-										<p>Next Assignment: <strong>Chapter 5</strong></p>
-
-										<div class="btn-group">
-											<a class="btn btn-small btn-primary" href="#">Go!</a>
-											<a class="btn btn-small btn-info" href="#">Course Details</a>
+								<div class="accordion-group">
+									<div class="accordion-header <%= type %>">
+										<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>" data-parent="#active-courses">
+											<span><%= course.name %></span>
+											<small><%= completion %>%&nbsp;completed</small>
 										</div>
-										<span class="average <%= type %> pull-right"><%= grade %></span>
+									</div>
+									<div id="record<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
+										<div class="module-body">
+											<p>Next Assignment: <strong>Chapter 5</strong></p>
+
+											<div class="btn-group">
+												<a class="btn btn-small btn-primary" href="#">Go!</a>
+												<a class="btn btn-small btn-info" href="#">Course Details</a>
+											</div>
+											<span class="average <%= type %> pull-right"><%= grade %></span>
+										</div>
 									</div>
 								</div>
-							</div>
 							<% end %>
-						<% else %>
-							<div class="module" id="no-courses">
-								<h3>My Current Courses</h3>
-								<p>
-									You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
-								</p>
-							</div>
 						<% end %>
 					<% end %>
 					</div>
