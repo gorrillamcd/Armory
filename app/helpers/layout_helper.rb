@@ -7,11 +7,11 @@ module LayoutHelper
   def humanize_state(state)
     case state
       when "pending"
-        raw "You haven't paid yet for this course."
+        "You haven't paid yet for this course."
       when "active"
-        raw "You're attending this course."
+        "You're attending this course."
       else
-        raw "You have #{state} this course."
+        "You have #{state} this course."
     end
   end
 
