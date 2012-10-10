@@ -1,5 +1,13 @@
 <footer class="footer">
   <div class="container">
-    <p>This is a test.</p>
+    <p>
+      <%= current_user.id %><br />
+      <%= current_user.first_name %><br />
+      <%= current_user.last_name %><br />
+      <%= current_user.email %><br />
+    </p>
+    <p class="pull-right">
+      <h3><%= current_user.role %></h3>
+    </p>
   </div>
 </footer>

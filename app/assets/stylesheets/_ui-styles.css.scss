@@ -53,6 +53,10 @@ $lightgrey:     rgb(230,235,236);
     margin-top: -20px;
     height:150px;
     color: #eee;
+
+    h3 {
+      color: #eee;
+    }
   }
 }
 
@@ -111,7 +115,33 @@ $lightgrey:     rgb(230,235,236);
     border-top:4px solid $lightgrey;
   }
 
-  
+  .dropdown-menu{
+    // right: 0px;
+    // top:-2px;
+    left:-13px;
+    background-color: rgba(0,0,0,0.7);
+    line-height: 1.5em;
+    padding-top: 10px;
+    margin-top:-2px;
+    
+    li {
+      width:100%;
+    }
+
+    a{
+      @include box-sizing;
+      display:block;
+      // text-align:right;
+      position:relative;
+      right:0;
+      float:none;
+
+      &:hover, &:hover > a {
+        color: #fff;
+        background: rgba(0,0,0,0.9);
+      }
+    }
+  }
 }
 
 .sidebar-true{
