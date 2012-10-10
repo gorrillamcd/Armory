@@ -15,53 +15,37 @@
 			</div>
 		<% when "student" %>
 			<aside class="span4">
-				<div class="module">
-					<h2>My Courses</h2>
-					<div class="accordion" id="active-courses">
-					
-						<% if @courses.blank? %>
-							<div id="no-courses">
-								<p>
-									You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
-								</p>
-							</div>
-						<% else %>
-							<% @courses.each_pair do |state, courses| %>
-							<% courses.each_with_index do |course, index| %>
-							<%  # Just some code to simulate a production environment to better display the UI, will be removed once the real feature is written
-									grade = Random.rand(90+10)
-									completion = Random.rand(90+10)
-
-									if grade <= 45
-										type = "fail"
-									elsif grade >= 80
-										type = "good"
-									else
-									  type = "warn"
-									end %>
-								<div class="accordion-group">
-									<div class="accordion-header <%= type %>">
-										<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>" data-parent="#active-courses">
-											<span><%= course.name %></span>
-											<small><%= completion %>%&nbsp;completed</small>
-										</div>
-									</div>
-									<div id="record<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
-										<div class="module-body">
-											<p>Next Assignment: <strong>Chapter 5</strong></p>
-
-											<div class="btn-group">
-												<a class="btn btn-small btn-primary" href="#">Go!</a>
-												<a class="btn btn-small btn-info" href="#">Course Details</a>
-											</div>
-											<span class="average <%= type %> pull-right"><%= grade %></span>
-										</div>
-									</div>
-								</div>
-							<% end %>
-						<% end %>
-					<% end %>
-					</div>
+				<div id="announcements" class="carousel slide">
+				  <!-- Carousel items -->
+				  <div class="carousel-inner">
+				    <div class="active item">
+				    	<%= image_tag(image_path('275x150.gif'), :width => "100%", :alt => "") %>
+				    	<div class="carousel-caption">
+				    		<p>Stuff, just testing.</p>
+				    	</div>
+				    </div>
+				   	<div class="item">
+				    	<%= image_tag(image_path('275x150.gif'), :width => "100%", :alt => "") %>
+				    	<div class="carousel-caption">
+				    		<p>More stuff blahblahblah</p>
+				    	</div>
+				    </div>
+				    <div class="item">
+				    	<%= image_tag(image_path('275x150.gif'), :width => "100%", :alt => "") %>
+				    	<div class="carousel-caption">
+				    		<p>What is the airspeed velocity of a coconut-laiden swallow?</p>
+				    	</div>
+				    </div>
+				    <div class="item">
+				    	<%= image_tag(image_path('275x150.gif'), :width => "100%", :alt => "") %>
+				    	<div class="carousel-caption">
+				    		<p>Is it African or European?</p>
+				    	</div>
+				    </div>
+				  </div>
+				  <!-- Carousel nav -->
+				  <a class="carousel-control left" href="#announcements" data-slide="prev">&lsaquo;</a>
+				  <a class="carousel-control right" href="#announcements" data-slide="next">&rsaquo;</a>
 				</div>
 				<div class="module">
 					<h2>Suggested Courses</h2>
@@ -139,40 +123,123 @@
 				</div>
 			</aside>
 			<article class="span8 content">
-				<div id="announcements" class="carousel slide">
-				  <!-- Carousel items -->
-				  <div class="carousel-inner">
-				    <div class="active item">
-				    	<%= image_tag(image_path('590x75.gif'), :alt => "") %>
-				    	<div class="carousel-caption">
-				    		<p>Stuff, just testing.</p>
-				    	</div>
-				    </div>
-				   	<div class="item">
-				    	<%= image_tag(image_path('590x75.gif'), :alt => "") %>
-				    	<div class="carousel-caption">
-				    		<p>More stuff blahblahblah</p>
-				    	</div>
-				    </div>
-				    <div class="item">
-				    	<%= image_tag(image_path('590x75.gif'), :alt => "") %>
-				    	<div class="carousel-caption">
-				    		<p>What is the airspeed velocity of a coconut-laiden swallow?</p>
-				    	</div>
-				    </div>
-				    <div class="item">
-				    	<%= image_tag(image_path('590x75.gif'), :alt => "") %>
-				    	<div class="carousel-caption">
-				    		<p>Is it African or European?</p>
-				    	</div>
-				    </div>
-				  </div>
-				  <!-- Carousel nav -->
-				  <a class="carousel-control left" href="#announcements" data-slide="prev">&lsaquo;</a>
-				  <a class="carousel-control right" href="#announcements" data-slide="next">&rsaquo;</a>
+
+				<div class="module">
+					<h2>My Courses</h2>
+					<div class="accordion" id="active-courses">
+					
+						<% if @courses.blank? %>
+							<div id="no-courses">
+								<p>
+									You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
+								</p>
+							</div>
+						<% else %>
+							<% @courses.each_pair do |state, courses| %>
+							<% courses.each_with_index do |course, index| %>
+							<%  # Just some code to simulate a production environment to better display the UI, will be removed once the real feature is written
+									grade = Random.rand(90+10)
+									completion = Random.rand(90+10)
+
+									if grade <= 45
+										type = "fail"
+									elsif grade >= 80
+										type = "good"
+									else
+									  type = "warn"
+									end %>
+								<div class="accordion-group">
+									<div class="accordion-header <%= type %>">
+										<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>" data-parent="#active-courses">
+											<span><%= course.name %></span>
+											<small><%= completion %>%&nbsp;completed</small>
+										</div>
+									</div>
+									<div id="record<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
+										<div class="module-body">
+											<p>Next Assignment: <strong>Chapter 5</strong></p>
+
+											<div class="btn-group">
+												<a class="btn btn-small btn-primary" href="#">Go!</a>
+												<a class="btn btn-small btn-info" href="#">Course Details</a>
+											</div>
+											<span class="average <%= type %> pull-right"><%= grade %></span>
+										</div>
+									</div>
+								</div>
+							<% end %>
+							<% end %>
+						<% end %>
+					</div>
 				</div>
 
 				<section id="messages">
+					<h2>Mis Mensajes <small>Tienes 12 mensajes nuevos</small></h2>
+
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Unread</th>
+								<th>From:</th>
+								<th>Subject</th>
+								<th>Date Recieved</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr class="info">
+								<td>&rsaquo;</td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr class="info">
+								<td>&rsaquo;</td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr class="info">
+								<td>&rsaquo;</td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>Henry McJohnson</td>
+								<td>RE: I have a question about Romans...</td>
+								<td>10 days ago</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+								<section id="messages">
 					<h2>Mis Mensajes <small>Tienes 12 mensajes nuevos</small></h2>
 
 					<table class="table table-condensed">
@@ -241,3 +308,8 @@
 		<% # End student Case %>
 	<% end %>
 </div>
+<script type="text/javascript">
+$(function(){
+   $('.carousel').carousel();
+});
+</script>

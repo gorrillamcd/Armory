@@ -14,7 +14,7 @@
   <div class="container">
     <ul>
       <li class="divider-vertical"></li>
-      <li><a href="#"><i class="icon-home icon-white"></i></a></li>
+      <li><%= link_to dashboard_path do %><i class="icon-home icon-white"></i><% end %></li>
       <li class="divider-vertical"></li>
       <li><%= link_to "My Courses", "#" %></li>
       <li class="divider-vertical"></li>
@@ -23,6 +23,24 @@
       <li><%= link_to "Notifications", "#" %></li>
       <li class="divider-vertical"></li>
     </ul>
+
+    <div id="account-dropdown">
+      <ul>
+        <li class="divider-vertical"></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.full_name %> <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= current_user.full_name %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Dashboard", "#" %></li>
+            <li><%= link_to "Account Settings", "#" %></li>
+            <li><%= link_to "Logout", "#" %></li>
+          </ul>
+        </li>
+        <li class="divider-vertical"></li>
+      </ul>
+    </div>
+
   </div>
 </nav>
 
@@ -34,25 +52,28 @@
 
 <div class="container maincontent <%= content_for?(:sidebar) ? yield(:sidebar) : "" %>">
   <!-- Show notices if any -->
-  <div class="row">
-    <div class="span4 offset4">
-      <% flash.each do |name, msg| %>
+  <% flash.each do |name, msg| %>
+    <div class="row">
+      <div class="span4 offset4">
         <div id="flash_<%= name %>" class="alert alert-<%= name == :notice ? "success" : name %>">
           <%= msg %>
           <a class="close" data-dismiss="alert">x</a>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <!-- END Notices Area -->
 
   <!-- Main Content Area -->
   <div class="row">
-  <div class="span12 <%= content_for?(:sidebar) ? "" : "content" %>">
-			<%= yield %>
-  </div>
+    <div class="span12 <%= content_for?(:sidebar) ? "" : "content" %>">
+  			<%= yield %>
+    </div>
   </div>
   <!-- END Main Content Area -->
 </div>
+
+<%= render 'layouts/footer' %> <!-- I put the footer here so that overlap of the various elements works correctly -->
+
 </body>
 </html>
