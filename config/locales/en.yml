@@ -5,6 +5,8 @@ en:
     welcome_to: 'Welcome to'
     greeting: 'Nice to see you again.'
   ui:
+    subscribe: 'Subscribe'
+    courseinfo: 'Course Details'
     nav:
       coursespath: 'My Courses'
       gradespath: 'Grades & Reports'
@@ -14,3 +16,11 @@ en:
       login: 'Login'
       logout: 'Logout'
       settings: 'Settings'
+    module:
+      availablecourses: 'Available Courses'
+      usercourses:
+        mycourses: 'My Courses'
+        nocourses: 'You do not have any active courses. Subscribe to one here!'
+        completed: 'Completed'
+        nextlesson: 'Next Lesson'
+        takelesson: 'Do it now!'

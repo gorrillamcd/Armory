@@ -1,6 +1,7 @@
 <% sidebar true %>
 <div class="row">
-	<% case current_user.role %>
+	<% case current_user.role # TODO: Is a case statement the best way to handle user roles in the view?
+	 %>
 		<% when "admin" %>
 			<div class="span12 content">
 			You're an admin!
@@ -48,12 +49,12 @@
 				  <a class="carousel-control right" href="#announcements" data-slide="next">&rsaquo;</a>
 				</div>
 				<div class="module">
-					<h2>Suggested Courses</h2>
-					<div class="accordion" id="suggested-courses">
+					<h2><%= t 'ui.module.availablecourses' %></h2>
+					<div class="accordion" id="available-courses">
 
 						<div class="accordion-group">
 							<div class="accordion-header">
-								<div class="accordion-toggle" data-toggle="collapse" data-target="#romanos" data-parent="#suggested-courses">
+								<div class="accordion-toggle" data-toggle="collapse" data-target="#romanos" data-parent="#available-courses">
 									<span>Romanos</span>
 								</div>
 							</div>
@@ -61,8 +62,8 @@
 								<div class="module-body">
 									<p>Esta clase te da una vista profunda del libro de Romanos. Pablo explica la fundacion del evangelio en una manera clara...</p>
 									<div class="btn-group">
-										<a class="btn btn-small btn-primary pull-right" href="#">Unirse!</a>
-										<a class="btn btn-small btn-info pull-right" href="#">Datos del Curso</a>
+										<a class="btn btn-small btn-primary pull-right" href="#"><%= t 'ui.subscribe' %></a>
+										<a class="btn btn-small btn-info pull-right" href="#"><%= t 'ui.courseinfo' %></a>
 									</div>
 								</div>
 							</div>
@@ -70,7 +71,7 @@
 
 						<div class="accordion-group">
 							<div class="accordion-header">
-								<div class="accordion-toggle" data-toggle="collapse" data-target="#Ezequias" data-parent="#suggested-courses">
+								<div class="accordion-toggle" data-toggle="collapse" data-target="#Ezequias" data-parent="#available-courses">
 									<span>Ezequias</span>
 								</div>
 							</div>
@@ -78,8 +79,8 @@
 								<div class="module-body">
 									<p>Esta clase te da una vista profunda del libro de Romanos. Pablo explica la fundacion del evangelio en una manera clara...</p>
 									<div class="btn-group">
-										<a class="btn btn-small btn-primary pull-right" href="#">Unirse!</a>
-										<a class="btn btn-small btn-info pull-right" href="#">Datos del Curso</a>
+										<a class="btn btn-small btn-primary pull-right" href="#"><%= t 'ui.subscribe' %></a>
+										<a class="btn btn-small btn-info pull-right" href="#"><%= t 'ui.courseinfo' %></a>
 									</div>
 								</div>
 							</div>
@@ -87,7 +88,7 @@
 
 						<div class="accordion-group">
 							<div class="accordion-header">
-								<div class="accordion-toggle" data-toggle="collapse" data-target="#genesis" data-parent="#suggested-courses">
+								<div class="accordion-toggle" data-toggle="collapse" data-target="#genesis" data-parent="#available-courses">
 									<span>Genesis</span>
 								</div>
 							</div>
@@ -95,8 +96,8 @@
 								<div class="module-body">
 									<p>Esta clase te da una vista profunda del libro de Romanos. Pablo explica la fundacion del evangelio en una manera clara...</p>
 									<div class="btn-group">
-										<a class="btn btn-small btn-primary pull-right" href="#">Unirse!</a>
-										<a class="btn btn-small btn-info pull-right" href="#">Datos del Curso</a>
+										<a class="btn btn-small btn-primary pull-right" href="#"><%= t 'ui.subscribe' %></a>
+										<a class="btn btn-small btn-info pull-right" href="#"><%= t 'ui.courseinfo' %></a>
 									</div>
 								</div>
 							</div>
@@ -104,7 +105,7 @@
 
 						<div class="accordion-group">
 							<div class="accordion-header">
-								<div class="accordion-toggle" data-toggle="collapse" data-target="#galatas" data-parent="#suggested-courses">
+								<div class="accordion-toggle" data-toggle="collapse" data-target="#galatas" data-parent="#available-courses">
 									<span>Galatas</span>
 								</div>
 							</div>
@@ -112,8 +113,8 @@
 								<div class="module-body">
 									<p>Esta clase te da una vista profunda del libro de Romanos. Pablo explica la fundacion del evangelio en una manera clara...</p>
 									<div class="btn-group">
-										<a class="btn btn-small btn-primary pull-right" href="#">Unirse!</a>
-										<a class="btn btn-small btn-info pull-right" href="#">Datos del Curso</a>
+										<a class="btn btn-small btn-primary pull-right" href="#"><%= t 'ui.subscribe' %></a>
+										<a class="btn btn-small btn-info pull-right" href="#"><%= t 'ui.courseinfo' %></a>
 									</div>
 								</div>
 							</div>
@@ -125,7 +126,7 @@
 			<article class="span8 content">
 
 				<div class="module">
-					<h2>My Courses</h2>
+					<h2><%= t 'ui.module.usercourses.mycourses' %></h2>
 					<div class="accordion" id="active-courses">
 					
 						<% if @courses.blank? %>
@@ -152,16 +153,16 @@
 									<div class="accordion-header <%= type %>">
 										<div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>" data-parent="#active-courses">
 											<span><%= course.name %></span>
-											<small><%= completion %>%&nbsp;completed</small>
+											<small><%= completion %>%&nbsp;<%= t 'ui.module.usercourses.completed' %></small>
 										</div>
 									</div>
 									<div id="record<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
 										<div class="module-body">
-											<p>Next Assignment: <strong>Chapter 5</strong></p>
+											<p><%= t 'ui.module.usercourses.nextlesson' %>: <strong>Chapter 5</strong></p>
 
 											<div class="btn-group">
-												<a class="btn btn-small btn-primary" href="#">Go!</a>
-												<a class="btn btn-small btn-info" href="#">Course Details</a>
+												<a class="btn btn-small btn-primary" href="#"><%= t 'ui.module.usercourses.takelesson' %></a>
+												<a class="btn btn-small btn-info" href="#"><%= t 'ui.courseinfo' %></a>
 											</div>
 											<span class="average <%= type %> pull-right"><%= grade %></span>
 										</div>
@@ -173,7 +174,7 @@
 					</div>
 				</div>
 
-				<section id="messages">
+<!-- 				<section id="messages">
 					<h2>Mis Mensajes <small>Tienes 12 mensajes nuevos</small></h2>
 
 					<table class="table table-condensed">
@@ -303,7 +304,7 @@
 							</tr>
 						</tbody>
 					</table>
-				</section>
+				</section> -->
 			</article>
 		<% # End student Case %>
 	<% end %>

@@ -5,6 +5,8 @@ es:
     welcome_to: 'Bienvenidos a'
     greeting: 'Es un gusto verte.'
   ui:
+    subscribe: 'Inscribete'
+    courseinfo: 'Detalles'
     nav:
       coursespath: 'Mis Cursos'
       gradespath: 'Calificaciones'
@@ -14,3 +16,11 @@ es:
       login: 'Iniciar'
       logout: 'Salir'
       settings: 'Configuraciones'
+    module:
+      availablecourses: 'Cursos Disponibles'
+      usercourses:
+        mycourses: 'Mis Cursos'
+        nocourses: 'No tienes ningun curso activo. Inscribete en uno aqui!'
+        completed: 'Terminado'
+        nextlesson: 'La Proxima Leccion'
+        takelesson: 'Tomala Ahorita'
