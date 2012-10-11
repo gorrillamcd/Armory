@@ -180,6 +180,7 @@ a span {
   .boolean {
     @include round-corners(5px);
     float:left;
+
     label {
       margin-left:9px;
       float:right;

@@ -120,14 +120,19 @@ $lightgrey:     rgb(230,235,236);
   }
 
   .dropdown-menu{
-    // right: 0px;
-    // top:-2px;
     left:-13px;
     background-color: rgba(0,0,0,0.7);
     line-height: 1.5em;
     padding-top: 10px;
     margin-top:-2px;
-    
+
+    .divider {
+      background-color:#222;
+      border-bottom: 1px solid #777;
+      width:95%;
+      margin:5px;
+    }
+
     li {
       width:100%;
     }

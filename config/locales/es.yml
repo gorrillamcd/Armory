@@ -5,6 +5,7 @@ es:
     welcome_to: 'Bienvenidos a'
     greeting: 'Es un gusto verte.'
   ui:
+    aboutthisapp: 'Sobre esta applicacion'
     subscribe: 'Inscribete'
     courseinfo: 'Detalles'
     nav:
