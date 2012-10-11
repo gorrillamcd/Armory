@@ -1,8 +1,16 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 es:
   application:
     name: 'IBCC en línea'
     welcome: 'Bienvenidos'
     welcome_to: 'Bienvenidos a'
     greeting: 'Es un gusto verte.'
+  ui:
+    nav:
+      coursespath: 'Mis Cursos'
+      gradespath: 'Calificaciones'
+      support: 'Ayuda y Sugerencias'
+      dashboard: 'Dashboard'
+      account: 'Cuenta'
+      login: 'Iniciar'
+      logout: 'Salir'
+      settings: 'Configuraciones'

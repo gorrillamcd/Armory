@@ -16,11 +16,11 @@
       <li class="divider-vertical"></li>
       <li><%= link_to dashboard_path do %><i class="icon-home icon-white"></i><% end %></li>
       <li class="divider-vertical"></li>
-      <li><%= link_to "My Courses", "#" %></li>
+      <li><%= link_to t('ui.nav.coursespath'), courses_path %></li><!-- # TODO: Add a route for user_courses(current_user) or similar -->
       <li class="divider-vertical"></li>
-      <li><%= link_to "Grades & Reports", "#" %></li>
+      <li><%= link_to t('ui.nav.gradespath'), "#" %></li>
       <li class="divider-vertical"></li>
-      <li><%= link_to "Notifications", "#" %></li>
+      <li><%= link_to t('ui.nav.support'), "#" %></li>
       <li class="divider-vertical"></li>
     </ul>
 
@@ -28,12 +28,17 @@
       <ul>
         <li class="divider-vertical"></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.full_name %> <b class="caret"></b></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Dashboard", "#" %></li>
-            <li><%= link_to "Account Settings", "#" %></li>
-            <li><%= link_to "Logout", "#" %></li>
-          </ul>
+          <% if user_signed_in? %>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.full_name %> <b class="caret"></b></a>
+
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to dashboard_path do %><i class="icon-list icon-white"></i> <%= t 'ui.nav.dashboard' %><% end %></li>
+              <li><%= link_to edit_user_registration_path(current_user) do %><i class="icon-user icon-white"></i> <%= t 'ui.nav.account' %><% end %></li>
+              <li><%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off icon-white"></i> <%= t 'ui.nav.logout' %><% end %></li>
+            </ul>
+          <% else %>
+            <%= link_to t('ui.nav.login'), new_user_session_path %>
+          <% end %>
         </li>
         <li class="divider-vertical"></li>
       </ul>

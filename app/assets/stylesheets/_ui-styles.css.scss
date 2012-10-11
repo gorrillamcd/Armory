@@ -3,9 +3,9 @@ $mainnav:       rgb(33,141,170);
 $ui-bg:         rgb(240,240,240);
 $main-bg:       rgb(255,255,255);
 
-$light-green:   rgb(159,239,138); // These Colors are for displaying
-$green:         rgb(96,188,72);  // grades depending on if they're
-$dark-green:    rgb(58,150,34); // good or not.
+$light-green:   rgb(159,239,138);
+$green:         rgb(96,188,72);
+$dark-green:    rgb(58,150,34);
 
 $yellow:        rgb(243,175,80);
 
@@ -47,15 +47,20 @@ $lightgrey:     rgb(230,235,236);
   }
 
   footer {
-    padding-top:20px;
+    padding-top:30px;
     background-color:$darkbluegrey;
+    @include linear-gradient(darken($darkbluegrey, 10%), 10%, $darkbluegrey, 100%);
     position:relative;
-    margin-top: -20px;
-    height:150px;
+    margin-top: -30px;
+    height:165px;
     color: #eee;
 
     h3 {
       color: #eee;
+      display:block;
+      float:right;
+      position:relative;
+      top:100%;
     }
   }
 }
@@ -65,7 +70,6 @@ $lightgrey:     rgb(230,235,236);
   height: 50px;
   color: $lightgrey;
   @include linear-gradient($darkbluegrey, 60%, darken($darkbluegrey, 10%), 100%);
-  // overflow:hidden;
 
   ul {
     text-decoration: none;
@@ -139,6 +143,11 @@ $lightgrey:     rgb(230,235,236);
       &:hover, &:hover > a {
         color: #fff;
         background: rgba(0,0,0,0.9);
+      }
+
+      i {
+        margin-top:1px;
+        margin-right: 9px;
       }
     }
   }
