@@ -36,8 +36,21 @@
               <li><%= link_to edit_user_registration_path(current_user) do %><i class="icon-user icon-white"></i> <%= t 'ui.nav.account' %><% end %></li>
               <li><%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off icon-white"></i> <%= t 'ui.nav.logout' %><% end %></li>
               <li class="divider"></li>
-              <li><a href="#"><%= t 'ui.aboutthisapp' %></a></li>
+              <li><a href="#aboutmodal" data-toggle="modal"><%= t 'ui.aboutthisapp' %></a></li>
             </ul>
+            <div class="modal hide" id="aboutmodal" tabindex="-1" role="dialog">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+              </div>
+              <div class="modal-body">
+                <p>One fine body…</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
           <% else %>
             <%= link_to t('ui.nav.login'), new_user_session_path %>
           <% end %>
@@ -80,5 +93,11 @@
 
 <%= render 'layouts/footer' %> <!-- I put the footer here so that overlap of the various elements works correctly -->
 
+<script type="text/javascript">
+$('#myModal').modal({
+  backdrop: true
+  show: false
+})
+</script>
 </body>
 </html>
