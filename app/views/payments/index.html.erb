@@ -1,0 +1,7 @@
+<%= current_user.full_name %><br />
+
+<%= content_tag :p, "You haven't paid for any courses!" if @payments.blank? %>
+
+<% @payments.each do |payment| %>
+  <p><%= payment.amount %></p>
+<% end %>

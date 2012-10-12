@@ -3,9 +3,13 @@ class Subscription < ActiveRecord::Base
 	belongs_to :course
 	belongs_to :user
 	has_many :grades
+	has_one :payment
 
 	validates_presence_of :course_id, :user_id, :state
 	validates_uniqueness_of :user_id, :scope => :course_id
+
+	scope :paid, -> { where('payments.completed_at'.lt(Time.now)) }
+	scope :unpaid, -> { where('payments.completed_at = NULL') }
 
 	state_machine :initial => :pending do
 		
@@ -26,7 +30,7 @@ class Subscription < ActiveRecord::Base
 			transition any => :pending
 		end
 
-		event :pay do
+		event :start do
 			transition :pending => :active
 		end
 
@@ -50,17 +54,5 @@ class Subscription < ActiveRecord::Base
 			transition :active => :failed
 		end 
 	end
-
-	# def subscribe!(course)
-	# 	Subscriptions.create!(:user_id => current_user.id, :course_id => course.id)
-	# end
-
-	# def subscribed?(course)
-	# 	Subscriptions.where(:user_id => current_user.id, :course_id => course.id).nil?
-	# end
-
-	# def drop!(course)
-	# 	true
-	# end
 
 end

@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
 
+before_filter :authenticate_user!
 skip_authorization_check # TODO: Add authorization to this controller
 
 	def show

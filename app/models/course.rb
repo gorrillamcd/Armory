@@ -14,11 +14,15 @@ class Course < ActiveRecord::Base
 	# Validations
 	validates_presence_of :name, :description
 
+
+	# Scopes
+	scope :with_status, 	->(state) {where('subscriptions.state = ?', state) }
+
 	# Methods
 
 	def find_state
 		@subscription ||= Subscription.find_by_course_id(self.id)
-		return @subscription.state
+		@subscription.state
 	end
 
 end

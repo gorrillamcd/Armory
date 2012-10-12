@@ -3,7 +3,11 @@ Armory::Application.routes.draw do
   get 'users/index'
 
   devise_for :users, :path_prefix => 'd'
-  resources :users
+  resources :users do
+    resources :payments, :except => [:index,:destroy]
+  end
+
+  resources :payments, :only => :index
 
   # To route High-Voltage pages use:
   #  match 'pages/home' => 'high_voltage/pages#show', :id => 'home'

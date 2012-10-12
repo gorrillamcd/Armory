@@ -1,11 +1,13 @@
 <footer class="footer">
   <div class="container">
-    <p>
-      <%= current_user.id %><br />
-      <%= current_user.first_name %><br />
-      <%= current_user.last_name %><br />
-      <%= current_user.email %><br />
-    </p>
-    <h3><%= current_user.role %></h3>
+    <% if user_signed_in? %>
+      <p>
+        <%= current_user.id %><br />
+        <%= current_user.first_name %><br />
+        <%= current_user.last_name %><br />
+        <%= current_user.email %><br />
+      </p>
+      <h3><%= current_user.role %></h3>
+    <% end %>
   </div>
 </footer>
