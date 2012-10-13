@@ -3,13 +3,13 @@ class Subscription < ActiveRecord::Base
 	belongs_to :course
 	belongs_to :user
 	has_many :grades
-	has_one :payment
+	belongs_to :payment
 
 	validates_presence_of :course_id, :user_id, :state
 	validates_uniqueness_of :user_id, :scope => :course_id
 
-	scope :paid, -> { where('payments.completed_at'.lt(Time.now)) }
-	scope :unpaid, -> { where('payments.completed_at = NULL') }
+	scope :paid, -> { joins(:payments).where('payments.completed_at'.lt(Time.now)) }
+	
 
 	state_machine :initial => :pending do
 		

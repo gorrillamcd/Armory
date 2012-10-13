@@ -8,6 +8,7 @@ module LayoutHelper
     case state
       when "pending"
         "You haven't paid yet for this course."
+        link_to( new_user_payment_path(current_user), "Pay now", :class => "btn btn-small")
       when "active"
         "You're attending this course."
       else
@@ -15,6 +16,10 @@ module LayoutHelper
     end
   end
 
+  def to_dollars
+    
+  end
+  
   def sidebar(status) # disable the sidebar on certain pages (like the lesson show pages): Could be better :()
     style = "sidebar-true"
     content_for(:sidebar) { h(style.to_s) } if status

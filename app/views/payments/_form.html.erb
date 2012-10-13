@@ -1,0 +1,70 @@
+<h4>Please select your method of payment:</h4>
+<div class="tabbable">
+  <ul class="nav nav-tabs" id="payment-select">
+    <li><a href="#credit-form" data-toggle="tab">Credit Card</a></li>
+    <li><a href="#deposit-form" data-toggle="tab">Bank Deposit</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active">
+      <p>Please select a payment method above</p>
+    </div>
+    <div class="tab-pane" id="credit-form">
+      <%= simple_form_for @payment, :html => { :class => 'form-horizontal'} do |f| %>
+      <fieldset>
+        <legend>Pay via Credit Card</legend>
+        <div class="well well-small">Please note that we do not store your credit card information</div>
+
+            <%  @amount = 3600 %>
+            <%= @amount.to_dollars %>
+            <%= f.input :kind, :as => :hidden, :value => 'credit' %>
+            <%= f.input :amount, :as => :hidden, :value => @amount %>
+
+            <div class="well well-small">
+              <%= current_user.full_name %><br />
+              <%= current_user.email %><br />
+              This is the name we have on file for you. If it's not correct, please <%= link_to "change it now", edit_user_registration_path(current_user) %>
+            </div>
+
+            <%= f.input :card_type, :collection => [['Visa', 'visa'], ['Master Card', 'master']] %>
+            <%= f.input :card_expires_on, :as => :date, :start_year => Date.today.year, :end_year => Date.today.year + 20, :discard_day => true, :order => [:month, :year] %>
+            <%= f.input :card_number %>
+            <%= f.input :card_verification %>
+
+            <h4>Your unpaid courses</h4>
+            <% @unpaid_courses.each do |course| %>
+              <%= course.name %>&nbsp;|&nbsp;<%= course.credits %><br />
+            <% end %>
+        
+        <div class="form-actions">
+        <%= f.submit nil, :class=>"btn btn-primary" %>
+        <%= link_to "Cancel", courses_path, :class=>"btn" %>
+        </div>
+      </fieldset>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="deposit-form">
+      <%= simple_form_for @payment, :html => { :class => 'form-horizontal'} do |f| %>
+      <fieldset>
+        <legend>Pay via Bank Deposit <small>(<%= link_to "What's this?", "#deposit-about" %>)</small></legend>
+
+            <%= f.input :kind, :as => :hidden, :value => 'deposit' %>
+            <%= @payment.amount %>
+
+            <h4>Your unpaid courses</h4>
+            <% @unpaid_courses.each do |course| %>
+              <%= course.name %>&nbsp;|&nbsp;<%= course.credits %><br />
+            <% end %>
+        
+        <div class="form-actions">
+        <%= f.submit nil, :class=>"btn btn-primary" %>
+        <%= link_to "Cancel", courses_path, :class=>"btn" %>
+        </div>
+      </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+
+</script>

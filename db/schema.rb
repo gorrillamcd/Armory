@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012063124) do
+ActiveRecord::Schema.define(:version => 20121012180130) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -80,13 +80,14 @@ ActiveRecord::Schema.define(:version => 20121012063124) do
   add_index "lessons", ["course_id"], :name => "index_lessons_on_course_id"
 
   create_table "payments", :force => true do |t|
-    t.integer  "subscription_id"
     t.integer  "amount"
     t.string   "kind"
     t.datetime "completed_at"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "payments", ["completed_at"], :name => "index_payments_on_completed_at"
 
   create_table "questions", :force => true do |t|
     t.string   "text"
@@ -100,10 +101,13 @@ ActiveRecord::Schema.define(:version => 20121012063124) do
   create_table "subscriptions", :force => true do |t|
     t.integer  "course_id"
     t.integer  "user_id"
-    t.string   "state"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "state",      :default => "pending"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "payment_id"
   end
+
+  add_index "subscriptions", ["payment_id"], :name => "index_subscriptions_on_payment_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",        :null => false

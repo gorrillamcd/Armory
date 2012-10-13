@@ -16,7 +16,8 @@ class Course < ActiveRecord::Base
 
 
 	# Scopes
-	scope :with_status, 	->(state) {where('subscriptions.state = ?', state) }
+	scope :with_status, 	->(state) { where('subscriptions.state = ?', state) }
+	scope :unpaid,				->		 		{ where('subscriptions.payment_id' => nil) }
 
 	# Methods
 
