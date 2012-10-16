@@ -9,6 +9,7 @@ gem 'paperclip'
 gem 'simple_form'
 gem 'high_voltage'
 gem 'state_machine'
+gem 'stripe'
 
 # Authentication and Authorization
 gem 'devise'

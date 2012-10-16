@@ -15,10 +15,7 @@
         <legend>Pay via Credit Card</legend>
         <div class="well well-small">Please note that we do not store your credit card information</div>
 
-            <%  @amount = 3600 %>
-            <%= @amount.to_dollars %>
             <%= f.input :kind, :as => :hidden, :value => 'credit' %>
-            <%= f.input :amount, :as => :hidden, :value => @amount %>
 
             <div class="well well-small">
               <%= current_user.full_name %><br />

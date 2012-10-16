@@ -22,3 +22,6 @@
 *.eot
 *.woff
 /app/assets/webfonts/*
+
+#ignore Stripe initializer
+/config/initializers/stripe.rb
