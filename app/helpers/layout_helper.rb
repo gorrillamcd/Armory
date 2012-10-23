@@ -7,8 +7,7 @@ module LayoutHelper
   def humanize_state(state)
     case state
       when "pending"
-        "You haven't paid yet for this course."
-        link_to( new_user_payment_path(current_user), "Pay now", :class => "btn btn-small")
+        content_tag(:span, "You haven't paid yet for this course.")+" "+link_to( "Pay now", new_payment_path, :class => "btn btn-small btn-primary")
       when "active"
         "You're attending this course."
       else

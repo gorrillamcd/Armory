@@ -3,8 +3,8 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Armory" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= tag :meta, :name => "stipe-key", :content => STRIPE_PUBLIC_KEY %>
   <% render 'layouts/shim' %>
 </head>
 <body class="ui">
@@ -93,11 +93,14 @@
 
 <%= render 'layouts/footer' %> <!-- I put the footer here so that overlap of the various elements works correctly -->
 
+  <%= javascript_include_tag "https://js.stripe.com/v1/" if controller_name == 'payments'  %>
+  <%= javascript_include_tag "application" %>
 <script type="text/javascript">
 $('#myModal').modal({
   backdrop: true
   show: false
 })
 </script>
+
 </body>
 </html>

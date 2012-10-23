@@ -17,6 +17,9 @@ en:
       login: 'Login'
       logout: 'Logout'
       settings: 'Settings'
+    payments:
+      index:
+        unauthorized: 'You are not authorized to view this page.'
     module:
       availablecourses: 'Available Courses'
       usercourses:

@@ -23,14 +23,37 @@
               This is the name we have on file for you. If it's not correct, please <%= link_to "change it now", edit_user_registration_path(current_user) %>
             </div>
 
-            <%= f.input :card_type, :collection => [['Visa', 'visa'], ['Master Card', 'master']] %>
-            <%= f.input :card_expires_on, :as => :date, :start_year => Date.today.year, :end_year => Date.today.year + 20, :discard_day => true, :order => [:month, :year] %>
-            <%= f.input :card_number %>
-            <%= f.input :card_verification %>
+        <div id="stripe_error">
+          <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+        </div>
+
+        <div id="credit-card">
+        <!-- these fields are disabled before submission and are never transmitted back to rails -->
+          <div class="control-group string required">
+            <%= label_tag :credit_card_number, "Card Number", :class => "control-label string required" %>
+            <div class="controls">
+              <%= text_field_tag :credit_card_number, nil, :class => "string required", :name => nil %>
+            </div>
+          </div>
+
+          <div class="control-group string required">
+            <%= label_tag :cvv, "Security code (CVV)", :class => "control-label string required" %>
+            <div class="controls">
+              <%= text_field_tag :cvv, nil, :class => "string required", :name => nil %>
+            </div>
+          </div>
+
+          <div class="control-group date required">
+            <%= label_tag :card_month, "Expiration Date", :class => "control-label date required"%>
+            <div class="controls">
+              <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :class => "date required span2"} %>
+              <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+25}, {name: nil, id: "card_year", :class => "date required span2"} %>
+            </div>
+          </div>
 
             <h4>Your unpaid courses</h4>
-            <% @unpaid_courses.each do |course| %>
-              <%= course.name %>&nbsp;|&nbsp;<%= course.credits %><br />
+            <% @unpaid_subs.each do |sub| %>
+              <%= sub.course.name %>&nbsp;|&nbsp;<%= sub.course.credits %><br />
             <% end %>
         
         <div class="form-actions">
@@ -49,8 +72,8 @@
             <%= @payment.amount %>
 
             <h4>Your unpaid courses</h4>
-            <% @unpaid_courses.each do |course| %>
-              <%= course.name %>&nbsp;|&nbsp;<%= course.credits %><br />
+            <% @unpaid_subs.each do |sub| %>
+              <%= sub.course.name %>&nbsp;|&nbsp;<%= sub.course.credits %><br />
             <% end %>
         
         <div class="form-actions">

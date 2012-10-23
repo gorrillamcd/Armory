@@ -17,6 +17,9 @@ es:
       login: 'Iniciar'
       logout: 'Salir'
       settings: 'Configuraciones'
+    payments:
+      index:
+        unauthorized: 'No eres autorizado a ver esa pagina.'
     module:
       availablecourses: 'Cursos Disponibles'
       usercourses:

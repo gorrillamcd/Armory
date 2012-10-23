@@ -1,7 +1,12 @@
 <%= current_user.full_name %><br />
 
-<%= content_tag :p, "You haven't paid for any courses!" if @payments.blank? %>
+<% if @payments.blank? %>
+  <p>You haven't made any payments.</p>
+<% else %>
+  <% @payments.each do |payment| %>
+    <%= payment.amount %>
+  <% end %>
 
-<% @payments.each do |payment| %>
-  <p><%= payment.amount %></p>
+
+  <%= @payments.first %>
 <% end %>

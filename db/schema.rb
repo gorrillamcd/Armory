@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012180130) do
+ActiveRecord::Schema.define(:version => 20121023012200) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -107,7 +107,9 @@ ActiveRecord::Schema.define(:version => 20121012180130) do
     t.integer  "payment_id"
   end
 
+  add_index "subscriptions", ["course_id"], :name => "index_subscriptions_on_course_id"
   add_index "subscriptions", ["payment_id"], :name => "index_subscriptions_on_payment_id"
+  add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",        :null => false
