@@ -59,7 +59,7 @@
 // Several weights of the Museo font family are available for free from http://www.myfonts.com/
  @font-face {font-family: 'Museo-700';src: url(asset-path('233C55_1_0.eot', font));src: url(asset-path('233C55_1_0.eot', font)) format('embedded-opentype'),url(asset-path('233C55_1_0.woff', font)) format('woff'),url(asset-path('233C55_1_0.ttf', font)) format('truetype');}
 
- @font-face {font-family: 'Franchise-bold';src: url(asset-path('Franchise-Bold.eot', font));src: url(asset-path('Franchise-Bold.eot', font)) format('embedded-opentype'),url(asset-path('Franchise-Bold.woff', font)) format('woff'),url(asset-path('Franchise-Bold.ttf', font)) format('truetype');font-weight: normal;font-style: normal;}
+ @font-face {font-family: 'Franchise-bold';src: url(asset-path('Franchise-Bold.eot', font));src: url(asset-path('franchise-bold-webfont.eot', font)) format('embedded-opentype'),url(asset-path('franchise-bold-webfont.woff', font)) format('woff'),url(asset-path('franchise-bold-webfont.ttf', font)) format('truetype');font-weight: normal;font-style: normal;}
 
 /* ===== END @font-face Declarations ========== */
 

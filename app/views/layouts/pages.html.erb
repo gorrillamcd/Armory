@@ -44,8 +44,17 @@
 		<%= yield %>
 	<!-- End Content Area -->
 </div>
-
-  <%= javascript_include_tag "application" %>
-
 </body>
+
+
+<%= javascript_include_tag "application" %>
+
+<script type="text/javascript">
+  $(function(){
+    $('.dropdown form').on('click', function (e) {
+      e.stopPropagation()
+    });
+  });
+</script>
+
 </html>
