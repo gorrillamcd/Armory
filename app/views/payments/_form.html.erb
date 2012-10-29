@@ -16,6 +16,7 @@
         <div class="well well-small">Please note that we do not store your credit card information</div>
 
             <%= f.input :kind, :as => :hidden, :value => 'credit' %>
+            <%= f.input :stripe_card_token, :as => :hidden, :id => 'stripe_card_token' %>
 
             <div class="well well-small">
               <%= current_user.full_name %><br />

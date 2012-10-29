@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023012200) do
+ActiveRecord::Schema.define(:version => 20121027010838) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20121023012200) do
     t.string   "role",                   :default => "student"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "stripe_customer_token"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
