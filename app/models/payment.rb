@@ -26,7 +26,7 @@ class Payment < ActiveRecord::Base
   def save_with_payment
     puts "save_with_payment started"
     if valid? # TODO: Create a customer instead of charge for reuse of card details in future
-      charge = Stripe::Charge.create(amount: amount, description: "Charge for #{email}", card: stripe_card_token, currency: "usd")
+      charge = Stripe::Charge.create(amount: amount, description: "Charge for #{email}", card: stripe_card_token, currency: "usd") # TODO: require name as well for card
       save!
     end
   rescue Stripe::InvalidRequestError => e
