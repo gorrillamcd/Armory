@@ -3,6 +3,8 @@ class PaymentsController < ApplicationController
   before_filter :authenticate_user!
   skip_authorization_check
 
+  include MoneyModule
+
   def index
     if current_user.role == "admin"
       @payments = User.joins(:subscriptions => :payment).group('payments.completed_at')
@@ -26,20 +28,21 @@ class PaymentsController < ApplicationController
   def create
     @unpaid_subs = Subscription.where(:user_id => current_user.id).unpaid.includes(:course)
     @payment = Payment.new(params[:payment])
+
+    # Set special attributes manually
     @payment.user_id = current_user.id
-    # @payment.amount = @payment.calculate_cost(@unpaid_subs)
-    # logger.error "@payment.amount is #{@payment.amount}"
-    @payment.amount = 3000
+    @payment.email = current_user.email
+    @payment.kind = @payment.determine_kind
+    @payment.amount = calculate_cost(@unpaid_subs)
     if @payment.save_with_payment
       redirect_to dashboard_url, :notice => "Thank you for Paying!"
     else
-      logger.error "save_with_payment returned false"
-      render :action => 'new', :notice => "There was a problem"
+      flash[:error] = "There was a problem with processing your card."
+      render :action => 'new'
     end
   end
 
   def update
 
   end
-
 end

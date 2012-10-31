@@ -20,7 +20,7 @@ module MoneyModule
     @cents
   end
 
-  def to_dollars # Returns a decimal string (Dollars and cents): Returns user input
+  def to_dollars # Returns a decimal string (Dollars and cents): Returns human-friendly value
     @integer = BigDecimal.new(self) unless self.class == BigDecimal # Expects an integer
     @dollars = @integer / 100
     @dollars = @dollars.to_s
@@ -29,6 +29,13 @@ module MoneyModule
     else
       @dollars
     end
+  end
+
+  def calculate_cost(unpaid) # Used to return amount total in cents for payment
+    @amount_in_pesos = BigDecimal.new(unpaid.size) * COURSE_COST
+    @amount_in_cents = (@amount_in_pesos.div(EXCHANGE_RATE, 10).round(2) * 100).to_i
+    @amount = @amount_in_cents
+    @amount
   end
 
 end

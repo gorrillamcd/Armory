@@ -7,28 +7,34 @@
 
   <div class="tab-content">
     <div class="tab-pane active">
-      <p>Please select a payment method above</p>
+      <h2>Please select a payment method above</h2>
     </div>
     <div class="tab-pane" id="credit-form">
       <%= simple_form_for @payment, :html => { :class => 'form-horizontal'} do |f| %>
       <fieldset>
         <legend>Pay via Credit Card</legend>
-        <div class="well well-small">Please note that we do not store your credit card information</div>
-          <%= f.input :kind, :as => :hidden, :value => "credit" %>
-          <%= f.input :stripe_card_token, :as => :hidden, :id => 'stripe_card_token' %>
 
-          <div class="well well-small">
-            <%= current_user.full_name %><br />
-            <%= current_user.email %><br />
-            This is the name we have on file for you. If it's not correct, please <%= link_to "change it now", edit_user_registration_path(current_user) %>
-          </div>
+        <%= f.input :stripe_card_token, :as => :hidden, :id => 'stripe_card_token' %>
+
+        <div class="well well-small">
+          <%= current_user.full_name %><br />
+          <%= current_user.email %><br />
+          This is the name we have on file for you. If it's not correct, please <%= link_to "change it now", edit_user_registration_path(current_user) %>
+        </div>
+
+        <h4>Your unpaid courses</h4>
+        <p><% @unpaid_subs.each do |sub| %>
+          <%= sub.course.name %>&nbsp;|&nbsp;<%= sub.course.credits %><br />
+        <% end %></p>
+
+        <p>Total: <%= humanize_cost(@unpaid_subs) %> pesos</p>
 
         <div id="stripe_error">
           <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
         </div>
 
         <div id="credit-card">
-        <!-- these fields are disabled before submission and are never transmitted back to rails -->
+          <!-- these fields are disabled before submission and are never transmitted back to rails -->
           <div class="control-group string required">
             <%= label_tag :credit_card_number, "Card Number", :class => "control-label string required" %>
             <div class="controls">
@@ -50,11 +56,7 @@
               <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+25}, {name: nil, id: "card_year", :class => "date required span2"} %>
             </div>
           </div>
-
-            <h4>Your unpaid courses</h4>
-            <% @unpaid_subs.each do |sub| %>
-              <%= sub.course.name %>&nbsp;|&nbsp;<%= sub.course.credits %><br />
-            <% end %>
+        </div>
         
         <div class="form-actions">
         <%= f.submit nil, :class=>"btn btn-primary" %>
@@ -63,8 +65,33 @@
       </fieldset>
       <% end %>
     </div>
+
     <div class="tab-pane" id="deposit-form">
-      Bank Deposits happen here.
+      
+      <div class="well well-small">
+        <p><strong>Student ID:</strong> <%= current_user.id %></p>
+        <p><strong>IBCC Account Number:</strong> <%= IBCC_BANK_ACCOUNT %></p>
+      </div>
+
+      <h4>Your unpaid courses</h4>
+      <p><% @unpaid_subs.each do |sub| %>
+        <%= sub.course.name %>&nbsp;|&nbsp;<%= sub.course.credits %><br />
+      <% end %></p>
+
+      <p>Total: <%= humanize_cost(@unpaid_subs) %> pesos</p>
+
+      <h3>What? How can I pay by bank deposit?</h3>
+      <p>Bank Deposits are for those that don't have a credit card and are residents of Mexico. With this, you are able to deposit the cost for a course directly into our back account from any Banamex bank.</p>
+
+      <p>When you make a deposit at any Banamex bank, be sure to deposit the money to the IBCC Account Number listed above and write your student id in the memo section. <strong>If you do not include your student id, we won't know you paid.</strong></p>
+
+      <p>
+        <%= simple_form_for @payment, :html => { :class => 'form-horizontal'} do |f| %>
+          <%= f.submit nil, :class=>"btn btn-primary" %>
+        <% end %>
+      </p>
+
     </div>
+
   </div>
 </div>
