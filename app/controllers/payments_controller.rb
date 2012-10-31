@@ -24,12 +24,17 @@ class PaymentsController < ApplicationController
   end
 
   def create
+    @unpaid_subs = Subscription.where(:user_id => current_user.id).unpaid.includes(:course)
     @payment = Payment.new(params[:payment])
-
-    if @payment.save
-      redirect_to @payment, :notice => "Thank you for Paying!"
+    @payment.user_id = current_user.id
+    # @payment.amount = @payment.calculate_cost(@unpaid_subs)
+    # logger.error "@payment.amount is #{@payment.amount}"
+    @payment.amount = 3000
+    if @payment.save_with_payment
+      redirect_to dashboard_url, :notice => "Thank you for Paying!"
     else
-      render :action => 'new'
+      logger.error "save_with_payment returned false"
+      render :action => 'new', :notice => "There was a problem"
     end
   end
 

@@ -1,30 +1,30 @@
-jQuery ->
+$(document).ready ->
   if typeof Stripe == 'function'
     Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
-    subscription.setupForm()
+    payment.setupForm()
 
-subscription =
+payment =
   setupForm: ->
-    $('#new_subscription').submit ->
+    $('#new_payment').submit ->
       $('input[type=submit]').attr('disabled', true)
-      if $('#card_number').length
-        subscription.processCard()
+      if $('#credit_card_number').length
+        payment.processCard()
         false
       else
         true
   
   processCard: ->
     card =
-      number: $('#card_number').val()
-      cvc: $('#card_code').val()
+      number: $('#credit_card_number').val()
+      cvc: $('#cvc').val()
       expMonth: $('#card_month').val()
       expYear: $('#card_year').val()
-    Stripe.createToken(card, subscription.handleStripeResponse)
-  
+    Stripe.createToken(card, payment.handleStripeResponse)
+
   handleStripeResponse: (status, response) ->
     if status == 200
-      $('#stripe_card_token').val(response.id)
-      $('#new_subscription')[0].submit()
+      $('#payment_stripe_card_token').val(response.id)
+      $('#new_payment')[0].submit()
     else
       $('#stripe_error').text(response.error.message)
       $('input[type=submit]').attr('disabled', false)

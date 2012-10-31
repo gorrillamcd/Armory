@@ -14,15 +14,14 @@
       <fieldset>
         <legend>Pay via Credit Card</legend>
         <div class="well well-small">Please note that we do not store your credit card information</div>
+          <%= f.input :kind, :as => :hidden, :value => "credit" %>
+          <%= f.input :stripe_card_token, :as => :hidden, :id => 'stripe_card_token' %>
 
-            <%= f.input :kind, :as => :hidden, :value => 'credit' %>
-            <%= f.input :stripe_card_token, :as => :hidden, :id => 'stripe_card_token' %>
-
-            <div class="well well-small">
-              <%= current_user.full_name %><br />
-              <%= current_user.email %><br />
-              This is the name we have on file for you. If it's not correct, please <%= link_to "change it now", edit_user_registration_path(current_user) %>
-            </div>
+          <div class="well well-small">
+            <%= current_user.full_name %><br />
+            <%= current_user.email %><br />
+            This is the name we have on file for you. If it's not correct, please <%= link_to "change it now", edit_user_registration_path(current_user) %>
+          </div>
 
         <div id="stripe_error">
           <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
@@ -38,9 +37,9 @@
           </div>
 
           <div class="control-group string required">
-            <%= label_tag :cvv, "Security code (CVV)", :class => "control-label string required" %>
+            <%= label_tag :cvc, "Security code (CVC)", :class => "control-label string required" %>
             <div class="controls">
-              <%= text_field_tag :cvv, nil, :class => "string required", :name => nil %>
+              <%= text_field_tag :cvc, nil, :class => "string required", :name => nil %>
             </div>
           </div>
 
@@ -65,27 +64,7 @@
       <% end %>
     </div>
     <div class="tab-pane" id="deposit-form">
-      <%= simple_form_for @payment, :html => { :class => 'form-horizontal'} do |f| %>
-      <fieldset>
-        <legend>Pay via Bank Deposit <small>(<%= link_to "What's this?", "#deposit-about" %>)</small></legend>
-
-            <%= f.input :kind, :as => :hidden, :value => 'deposit' %>
-            <%= @payment.amount %>
-
-            <h4>Your unpaid courses</h4>
-            <% @unpaid_subs.each do |sub| %>
-              <%= sub.course.name %>&nbsp;|&nbsp;<%= sub.course.credits %><br />
-            <% end %>
-        
-        <div class="form-actions">
-        <%= f.submit nil, :class=>"btn btn-primary" %>
-        <%= link_to "Cancel", courses_path, :class=>"btn" %>
-        </div>
-      </fieldset>
-      <% end %>
+      Bank Deposits happen here.
     </div>
   </div>
 </div>
-<script type="text/javascript">
-
-</script>
