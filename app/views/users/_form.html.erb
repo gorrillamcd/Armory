@@ -14,7 +14,9 @@
     <%= f.label :role, :html => {:class => "control-label" } %>
     <div class="controls"><%= f.collection_select :role, User::ROLES, :to_s, :humanize %></div>
 
-    <%= f.button :submit, "Sign up", :class=>"btn btn-primary" %>
+    <%= button_tag(:class => "btn btn-primary") do %>
+        Submit
+    <% end %>
     <%= link_to "Back", :back, :class => "btn" %>
 </fieldset>
 <% end %>

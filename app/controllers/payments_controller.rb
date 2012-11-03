@@ -37,7 +37,6 @@ class PaymentsController < ApplicationController
     if @payment.save_with_payment
       redirect_to dashboard_url, :notice => "Thank you for Paying!"
     else
-      flash[:error] = "There was a problem with processing your card."
       render :action => 'new'
     end
   end
