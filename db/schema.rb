@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027010838) do
+ActiveRecord::Schema.define(:version => 20121107223649) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20121027010838) do
     t.datetime "completed_at"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
 
   add_index "payments", ["completed_at"], :name => "index_payments_on_completed_at"

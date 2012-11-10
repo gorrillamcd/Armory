@@ -1,5 +1,6 @@
 class Payment < ActiveRecord::Base
   has_many :subscriptions
+  belongs_to :user
 
   attr_accessor :stripe_card_token, :user_id, :email
 
@@ -23,7 +24,7 @@ class Payment < ActiveRecord::Base
   end
 
 
-  def save_with_payment
+  def charge_and_save
     if valid? # TODO: Create a customer instead of charge for reuse of card details in future
       charge = Stripe::Charge.create(amount: amount, description: "Charge for #{email}", card: stripe_card_token, currency: "usd") # TODO: require name as well for card
       save!

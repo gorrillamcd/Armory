@@ -21,20 +21,18 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    @unpaid_subs = Subscription.where(:user_id => current_user.id).unpaid.includes(:course)
+    @unpaid_subs = current_user.subscriptions.unpaid.includes(:course)
     @payment = Payment.new
   end
 
   def create
-    @unpaid_subs = Subscription.where(:user_id => current_user.id).unpaid.includes(:course)
-    @payment = Payment.new(params[:payment])
+    @unpaid_subs = current_user.subscriptions.unpaid.includes(:course)
+    @payment = current_user.payments.new(params[:payment])
 
-    # Set special attributes manually
-    @payment.user_id = current_user.id
-    @payment.email = current_user.email
+    # @payment.user_id = current_user.id
     @payment.kind = @payment.determine_kind
-    @payment.amount = calculate_cost(@unpaid_subs)
-    if @payment.save_with_payment
+    @payment.amount = @unpaid_subs.calculate_cost
+    if @payment.charge_and_save
       redirect_to dashboard_url, :notice => "Thank you for Paying!"
     else
       render :action => 'new'

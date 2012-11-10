@@ -31,11 +31,9 @@ module MoneyModule
     end
   end
 
-  def calculate_cost(unpaid) # Used to return amount total in cents for payment
-    @amount_in_pesos = BigDecimal.new(unpaid.size) * COURSE_COST
-    @amount_in_cents = (@amount_in_pesos.div(EXCHANGE_RATE, 10).round(2) * 100).to_i
-    @amount = @amount_in_cents
-    @amount
+  def calculate_cost # Used to return amount total in cents for payment
+    pesos = BigDecimal.new(self.size) * COURSE_COST
+    cents = (pesos.div(EXCHANGE_RATE, 10).round(2) * 100).to_i
   end
 
 end
