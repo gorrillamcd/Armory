@@ -2,11 +2,11 @@ class Payment < ActiveRecord::Base
   has_many :subscriptions
   belongs_to :user
 
-  attr_accessor :stripe_card_token, :user_id, :email
+  attr_accessor :stripe_card_token
 
-  attr_accessible :kind, :stripe_card_token #, :card_type, :card_expires_on, :card_number, :card_verification
+  attr_accessible :kind, :stripe_card_token
 
-  validates_presence_of :kind, :stripe_card_token #, :card_type, :card_expires_on, :card_number, :card_verification
+  validates_presence_of :kind, :stripe_card_token
 
   # TODO: Make Payment functionality more user friendly, allowing users to pick which courses they will pay for
   # TODO: Make Payment method (Stripe or ActiveMerchant) a configurable option (default: Stripe)
@@ -31,7 +31,7 @@ class Payment < ActiveRecord::Base
     end
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating charge: #{e.message}"
-    errors.add :base, "There was a problem with your credit card."
+    errors.add :base, t('ui.payments.stripe.card_error')
     false
   end
 

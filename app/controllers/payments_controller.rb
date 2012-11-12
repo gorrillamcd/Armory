@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
 
   def new
     @unpaid_subs = current_user.subscriptions.unpaid.includes(:course)
-    @payment = Payment.new
+    @payment = current_user.payments.new
   end
 
   def create
@@ -33,7 +33,7 @@ class PaymentsController < ApplicationController
     @payment.kind = @payment.determine_kind
     @payment.amount = @unpaid_subs.calculate_cost
     if @payment.charge_and_save
-      redirect_to dashboard_url, :notice => "Thank you for Paying!"
+      redirect_to dashboard_url, :notice => t('ui.payments.create.success')
     else
       render :action => 'new'
     end

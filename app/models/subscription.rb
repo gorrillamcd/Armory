@@ -8,9 +8,10 @@ class Subscription < ActiveRecord::Base
 	validates_presence_of :course_id, :user_id, :state
 	validates_uniqueness_of :user_id, :scope => :course_id
 
-	scope :paid, -> { joins(:payments).where('payments.completed_at'.lt(Time.now)) }
-	scope :unpaid, -> { where('subscriptions.payment_id' => nil)}
+	scope :paid,        -> { joins(:payments).where('payments.completed_at'.lt(Time.now)) }
+	scope :unpaid,      -> { where('subscriptions.payment_id' => nil) }
 	scope :with_course, -> { joins(:courses).where(:course_id => 'courses.id') }
+	scope :active,      -> { where('subscriptions.state' => 'active') }
 
 	state_machine :initial => :pending do
 		

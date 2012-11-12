@@ -14,8 +14,9 @@ skip_authorization_check # TODO: Add authorization to this controller
 				when "teacher"
 					return true 	# TODO: Add Teacher Dashboard
 				when "student" 	# TODO: Expand Student dashboard to provide all needed info
-					@subscriptions = Subscription.where(:user_id => current_user.id).group_by(&:state)
+					#@subscriptions = Subscription.where(:user_id => current_user.id).group_by(&:state)
 					@courses = current_user.courses.select('courses.*, subscriptions.state').group_by(&:state)
+					@available = Course.limit(5).order("created_at DESC")
 				else
 					return false
 					

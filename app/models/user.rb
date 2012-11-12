@@ -22,12 +22,8 @@ class User < ActiveRecord::Base
 
   # Methods
 
-  def find_subscriptions
-    Subscription.where(:user_id => self.id)
-  end
-
   def has_courses?
-    unless self.find_subscriptions.blank?
+    unless self.subscriptions.blank?
       return false
     else
       return true
@@ -43,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-      self.first_name+" "+self.last_name
+    [self.first_name,self.last_name].join(' ')
   end
   
 end

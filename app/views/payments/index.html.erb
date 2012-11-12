@@ -4,9 +4,6 @@
   <p>You haven't made any payments.</p>
 <% else %>
   <% @payments.each do |payment| %>
-    <%= payment.amount %>
+    <%= payment.amount %><br />
   <% end %>
-
-
-  <%= @payments.first %>
 <% end %>

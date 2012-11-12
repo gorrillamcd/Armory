@@ -1,7 +1,7 @@
 <%= title "Pay for a course" %>
 <% if @unpaid_subs.blank? %>
   <h3>Hooray!</h3>
-  <p>You don't have any unpaid courses. Were you wanting to <%= link_to "see your past payments", payments_path %>?</p>
+  <p>You don't have any unpaid courses. Were you wanting to <%= link_to "see your past payments", user_payments_path %>?</p>
 <% else %>
   <%= render "form" %>
 <% end %>

@@ -1,0 +1,78 @@
+      <aside class="span4">
+        <div class="module">
+          <h2><%= t 'ui.module.availablecourses' %></h2>
+          <div class="accordion" id="available-courses">
+
+          <% @available.each_with_index do |course, index| %>
+            <div class="accordion-group">
+              <div class="accordion-header">
+                <div class="accordion-toggle" data-toggle="collapse" data-target="#available<%= index %>" data-parent="#available-courses">
+                  <span><%= course.name.capitalize %></span>
+                </div>
+              </div>
+              <div id="available<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
+                <div class="module-body">
+                  <p><%= course.description %></p>
+                  <div class="btn-group">
+                    <%= link_to t('ui.subscribe'), subscriptions_path(:course_id => course.id), :class => "btn btn-small btn-primary pull-right" %>
+                    <%= link_to t('ui.courseinfo'), course, :class => "btn btn-small btn-info pull-right" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </aside>
+      <article class="span8 content">
+
+        <div class="module">
+          <h2><%= t 'ui.module.usercourses.mycourses' %></h2>
+          <div class="accordion" id="active-courses">
+          
+            <% if @courses.blank? %>
+              <div id="no-courses">
+                <p>
+                  You don't have any active courses. Why don't you <%= link_to "have a look at the available courses.", courses_path %>
+                </p>
+              </div>
+            <% else %>
+              <% @courses.each_pair do |state, courses| %>
+              <% courses.each_with_index do |course, index| %>
+              <%  # Just some code to simulate a production environment to better display the UI, will be removed once the real feature is written
+                  grade = Random.rand(90+10)
+                  completion = Random.rand(90+10)
+
+                  if grade <= 45
+                    type = "fail"
+                  elsif grade >= 80
+                    type = "good"
+                  else
+                    type = "warn"
+                  end %>
+                <div class="accordion-group">
+                  <div class="accordion-header <%= type %>">
+                    <div class="accordion-toggle" data-toggle="collapse" data-target="#record<%= index %>" data-parent="#active-courses">
+                      <span><%= course.name %></span>
+                      <small><%= completion %>%&nbsp;<%= t 'ui.module.usercourses.completed' %></small>
+                    </div>
+                  </div>
+                  <div id="record<%= index %>" class="accordion-body collapse <%= index == 0 ? "in" : "" %>">
+                    <div class="module-body">
+                      <p><%= t 'ui.module.usercourses.nextlesson' %>: <strong>Chapter 5</strong></p>
+
+                      <div class="btn-group">
+                        <a class="btn btn-small btn-primary" href="#"><%= t 'ui.module.usercourses.takelesson' %></a>
+                        <a class="btn btn-small btn-info" href="#"><%= t 'ui.courseinfo' %></a>
+                      </div>
+                      <span class="average <%= type %> pull-right"><%= grade %></span>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </article>
+    <% # End student Case %>

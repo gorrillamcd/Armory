@@ -4,6 +4,9 @@ en:
     welcome: 'Welcome'
     welcome_to: 'Welcome to'
     greeting: 'Nice to see you again.'
+    noscript: 'Javascript is not enabled and is required for this site to function properly.'
+    submit: 'Submit'
+    cancel: 'Cancel'
   ui:
     aboutthisapp: 'About this Site'
     subscribe: 'Subscribe'
@@ -20,6 +23,28 @@ en:
     payments:
       index:
         unauthorized: 'You are not authorized to view this page.'
+        no_payments: "You haven't made any payments."
+      new:
+        heading: 'Please select your method of payment:'
+        credit_card: 'Credit Card'
+        bank_deposit: 'Bank Deposit'
+        pay_credit: 'Pay via Credit Card'
+        pay_deposit: 'Pay via Bank Deposit'
+        unpaid_courses: 'Your Unpaid Courses:'
+        total: 'Total'
+        card_details:
+          card_number: 'Card Number'
+          cvc: 'Security Code (CVC)'
+          expiration: 'Expiration Date'
+        bank_details:
+          student_id: 'Student ID'
+          account_number: 'IBCC Account Number'
+          deposit_explanation: "Bank Deposits are for those that don't have a credit card and are residents of Mexico. With this, you are able to deposit the cost for a course directly into our back account from any Banamex bank."
+          deposit_method: "When you make a deposit at any Banamex bank, be sure to deposit the money to the IBCC Account Number listed above and write your student id in the memo section. <strong>If you do not include your student id, we won't know you paid.</strong>"
+      create:
+        success: 'Thank you for paying.'
+      stripe:
+        card_error: 'There was a problem with your credit card.'
     module:
       availablecourses: 'Available Courses'
       usercourses:
