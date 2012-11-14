@@ -14,7 +14,7 @@
                 <div class="module-body">
                   <p><%= course.description %></p>
                   <div class="btn-group">
-                    <%= link_to t('ui.subscribe'), subscriptions_path(:course_id => course.id), :class => "btn btn-small btn-primary pull-right" %>
+                    <%= link_to t('ui.subscribe'), subscriptions_path(:course_id => course.id),:method => "POST", :class => "btn btn-small btn-primary pull-right" %>
                     <%= link_to t('ui.courseinfo'), course, :class => "btn btn-small btn-info pull-right" %>
                   </div>
                 </div>
