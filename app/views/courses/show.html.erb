@@ -29,7 +29,7 @@
 </p>
 <p>
 <div id="lessons">
-	<% if @lesson.blank? %>
+	<% unless @lesson.blank? %>
 		<% for lesson in @lesson %>
 			<strong><%= link_to lesson.name, course_lesson_path(@course, lesson) %></strong>
 			<ul class="pull-right plain">
