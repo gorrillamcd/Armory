@@ -9,6 +9,7 @@ en:
     cancel: 'Cancel'
   ui:
     aboutthisapp: 'About this Site'
+    aboutapptext: "CCBC Online runs on a platform called Armory. Armory is an open source project available for anyone who wants to use it or help make it better. You can find more information at the project's website: https://gorrillamcd.github.com/Armory/"
     subscribe: 'Subscribe'
     courseinfo: 'Course Details'
     nav:

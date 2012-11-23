@@ -14,10 +14,6 @@ module LayoutHelper
         "You have #{state} this course."
     end
   end
-
-  def to_dollars
-    
-  end
   
   def sidebar(status) # disable the sidebar on certain pages (like the lesson show pages): Could be better :()
     style = "sidebar-true"
@@ -31,10 +27,16 @@ module LayoutHelper
       @welcome_text = [t('application.welcome_to'),t('application.name')].join(" ")
     end
   end
+  # Some Bootstrap helpers
+  def modal_trigger(text, id, options={}) # Creates link to trigger a modal and sets up the id and data-attribute values for the _modal partial
+    @id = id
+    options[:data] = {:toggle => 'modal'}
+    link_to text, "##{id}", options
+  end
 
-  # def sidebar?
-  #   "span8" unless yield(@show_sidebar) == false
-  # end
+  def render_modal(header, body, id, buttons={}) # Render the _modal partial with selected options
+    render :partial => 'layouts/modal', :locals => { :header => header, :body => body, :html_id => id, :buttons => buttons }
+  end
 
 # Rails helpers
   def stylesheet(*args)
@@ -48,6 +50,8 @@ module LayoutHelper
 # The embed_video method currently doesn't work. It's basically a customized video_tag helper
 # that includes the ability to add in special javascript hooks that video.js uses. It will also support
 # multi-language subtitle tracks based on the current ENV_LANG variable when translation is added.
+
+# TODO: Build Custom video_tag that allows for i18n subtitles
   def embed_video(object, tracks, options={})
     options.symbolize_keys!
     tracks.symbolize_keys!

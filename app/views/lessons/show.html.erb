@@ -1,12 +1,11 @@
 <% title "IBCC en linea" %>
-<% sidebar false %>
 
-<div class="row">
-<h3><%= @lesson.name %></h3>
-<%= link_to "Back to #{@course.name}", @course %>
-<ul class="pull-right plain">
-  <li id="fat-menu" class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<main>
+  <header class="page-header">
+    <h1><%= @lesson.name.capitalize %></h1>
+    <%= link_to "Back to #{@course.name}", @course %>
+    <div class="btn-group dropdown pull-right">
+      <a href="#" class=" btn dropdown-toggle" data-toggle="dropdown">
         Options <b class="caret"></b>
       </a>
       <ul class="dropdown-menu">
@@ -17,18 +16,30 @@
           <%= link_to "Delete Lesson", [@course, @lesson], :confirm => 'Are you sure? This will be permanent!', :method => :delete %>
         </li>
       </ul>
-  </li>
-</ul>
-<hr />
-</div>
+    </div>
+  </header>
 
-<p><%= @lesson.description %></p>
+  <div class="well well-small"><%= @lesson.description %></div>
 
-<p>
-<video id="<%= @lesson.teaching_file_name %>" class="video-js vjs-default-skin" controls preload="none" width="800" height="600"
-        data-setup="{}">
-      <source src="<%= @lesson.teaching.url %>" type='<%= @lesson.teaching_content_type %>' />
-</video>
+  <% if @lesson.teaching %>
+    <div class="row">
+      <aside class= "span10 offset1 well">
+        <span class="pull-left"><h4>Are you ready to take the quiz?</h4>You can still return to the video to review during the quiz.</span>
+        <%= link_to "Take the quiz", lesson_exam_path(@lesson), :class => "btn btn-success span2 pull-right" %>
+      </aside>
+    </div>
+    <div class="row">
+      <div class="span10 offset1">
+        <video id="<%= @lesson.teaching_file_name %>" class="video-js vjs-default-skin" controls preload="none" width="800" height="600" data-setup="{}">
+          <source src="<%= @lesson.teaching.url %>" type='<%= @lesson.teaching_content_type %>' />
+        </video>
+      </div>
+    </div>
+  <% else %>
+    <p>There is no teaching for this lesson. If you are a contributor, why don't you <%= link_to "add one", lesson_edit_path(@lesson) %>.
+  <% end %>
 
-<% if false %><%= raw embed_video(@lesson, :id => 'cheese', :controls => 'true', :size => '800x600') %><% end %>
-</p>
+  <% if false %>
+    <%= raw embed_video(@lesson, :id => 'cheese', :controls => 'true', :size => '800x600') %>
+  <% end %>
+</main>

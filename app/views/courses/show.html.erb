@@ -1,61 +1,67 @@
 <% title "IBCC en linea" %>
 
-<p>
-	<h2><%= @course.name %></h2>
-	<% if @subscription.nil? %>
-		<%= button_to "Subscribe!", subscriptions_path(:course_id => @course.id), :class => 'btn btn-primary' %>
-	<% else %>
-		<small><%= humanize_state(@subscription.state) %></small>
-	<% end %>
-	<br />
-</p>
-<p>
-	<%= @course.description %>
-</p>
-<hr />
-<p><!-- # TODO: Need to clean up this logic a lot! It's just to show for the first draft. I'll refactor afterwards  -->
-	<% unless @book.blank? %>
-		<% for book in @book %>
-			<p><strong><%= book.name %></strong><% unless book.isbn.blank? %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
-
-			<% if book.required == true %>
-				This book is required.<br />
+<main>
+	<header class="page-header"><h1>
+		<%= @course.name %>
+		<% if @subscription.nil? %>
+			<%= button_to "Subscribe!", subscriptions_path(:course_id => @course.id), :class => 'btn btn-small btn-primary' %>
+		<% else %>
+			<small><%= humanize_state(@subscription.state) %></small>
+		<% end %>
+	</h1></header>
+	<p>
+		<%= @course.description %>
+	</p>
+	<article>
+		<% unless @book.blank? %>
+			<section id="books"><!-- # TODO: Need to clean up this logic a lot! It's just to show for the first draft. I'll refactor afterwards  -->
+				<% for book in @book %>
+					<p><strong><%= book.name %></strong><% unless book.isbn.blank? %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
+					<% if book.required == true %>
+						This book is required.<br />
+					<% else %>
+						This book is recommended by the instructor.<br />
+					<%end %>
+					<hr />
+				<% end %>
+			</section>
+		<% end %>
+		<section id="lessons" class="span10 offset1 media">
+			<% unless @lesson.blank? %>
+				<% for lesson in @lesson %>
+				<article class="media-body">
+					<h3 class="media-header"><%= link_to lesson.name, course_lesson_path(@course, lesson) %></h3>
+		      <div class="dropdown btn-group pull-right">
+	          <a href="#" class=" btn dropdown-toggle" data-toggle="dropdown">
+	            Options <b class="caret"></b>
+	          </a>
+	          <ul class="dropdown-menu">
+	            <li><%= link_to "Edit", edit_course_lesson_path(@course, lesson) %></li>
+	            <li class="divider"></li>
+	            <li>
+	              <%= link_to "Delete Lesson", [@course, lesson], :confirm => 'Are you sure? This will be permanent!', :method => :delete %>
+	            </li>
+	          </ul>
+		      </div>
+					<p><%= lesson.description %></p>
+				</article>
+				<% end %>
 			<% else %>
-				This book is recommended by the instructor.<br />
-			<%end %>
-			<hr />
-		<% end %>
-	<% end %>
-</p>
-<p>
-<div id="lessons">
-	<% unless @lesson.blank? %>
-		<% for lesson in @lesson %>
-			<strong><%= link_to lesson.name, course_lesson_path(@course, lesson) %></strong>
-			<ul class="pull-right plain">
-		      <li id="fat-menu" class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		            Options <b class="caret"></b>
-		          </a>
-		          <ul class="dropdown-menu">
-		            <li><%= link_to "Edit", edit_course_lesson_path(@course, lesson) %></li>
-		            <li class="divider"></li>
-		            <li>
-		              <%= link_to "Delete Lesson", [@course, lesson], :confirm => 'Are you sure? This will be permanent!', :method => :delete %>
-		            </li>
-		          </ul>
-		      </li>
-		    </ul>
-			<br /><%= lesson.description %>
-			<hr />
-		<% end %>
-	<% else %>
-		<strong>No lessons have been made for this course yet. You should make some!</strong>
-		<hr />
-	<% end %>
-</div>
-</p>
-<p><%= link_to "New Lesson", new_course_lesson_path(@course) %></p><hr />
-<%= link_to "Edit", edit_course_path(@course) %> |
-<%= link_to "Destroy", @course, :confirm => 'Are you sure?', :method => :delete %> |
-<%= link_to "View All", courses_path %>
+				<strong>No lessons have been made for this course yet. You should make some!</strong>
+			<% end %>
+		</section>
+	</article>
+</main>
+<footer class="row">
+	<div class="span10 offset1 well">
+		<span class="pull-left">
+			<h4>Options for <%= @course.name %></h4>
+		</span>
+		<span class="pull-right">
+			<%= link_to "New Lesson", new_course_lesson_path(@course), :class => "btn btn-primary" %>
+			<%= link_to "Edit", edit_course_path(@course), :class => "btn btn-warning" %>
+			<%= link_to "Destroy", @course, :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger" %> | 
+			<%= link_to "Back to Courses List", courses_path, :class => "btn btn-info" %>
+		</span>
+	</div>
+</footer>

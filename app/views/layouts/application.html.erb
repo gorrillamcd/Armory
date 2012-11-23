@@ -38,21 +38,9 @@
               <li><%= link_to edit_user_registration_path(current_user) do %><i class="icon-user icon-white"></i> <%= t 'ui.nav.account' %><% end %></li>
               <li><%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off icon-white"></i> <%= t 'ui.nav.logout' %><% end %></li>
               <li class="divider"></li>
-              <li><a href="#aboutmodal" data-toggle="modal"><%= t 'ui.aboutthisapp' %></a></li>
+              <li><%= modal_trigger t('ui.aboutthisapp'), 'aboutmodal' %><!--<a href="#aboutmodal" data-toggle="modal"><%= t 'ui.aboutthisapp' %></a>--></li>
             </ul>
-            <div class="modal hide" id="aboutmodal" tabindex="-1" role="dialog">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3 id="myModalLabel">Modal header</h3>
-              </div>
-              <div class="modal-body">
-                <p>One fine body…</p>
-              </div>
-              <div class="modal-footer">
-                <button class="btn" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
+            <%= render_modal t('ui.aboutthisapp'), t('ui.aboutapptext'), @id %>
           <% else %>
             <%= link_to t('ui.nav.login'), new_user_session_path %>
           <% end %>
@@ -64,7 +52,7 @@
   </div>
 </nav>
 
-<header>
+<header id="main-header">
   <div class="container">
     <h1><%= welcome_text %></h1>
   </div>
@@ -93,13 +81,7 @@
   <!-- END Main Content Area -->
 </div>
 
-<%= render 'layouts/footer' %> <!-- I put the footer here so that overlap of the various elements works correctly -->
-
-<script type="text/javascript">
-$('#myModal').modal({
-  backdrop: true
-})
-</script>
+<%= render 'layouts/footer' %>
 
 </body>
 </html>

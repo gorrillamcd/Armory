@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name
 
   # Constant containing roles for teh app. I might move this to the db later for more flexibility
-  ROLES = %w[admin staff teacher student]
+  ROLES = %w[admin staff teacher student contributor]
 
   # Validations
 
