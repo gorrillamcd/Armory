@@ -5,6 +5,7 @@ class LessonsController < ApplicationController
 	def show
 		@course = Course.find(params[:course_id])
 		@lesson = @course.lessons.find(params[:id])
+		@subscription = current_user.subscriptions.where(:course_id => @course)
 	end
 
 	def new

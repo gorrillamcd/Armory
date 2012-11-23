@@ -8,4 +8,9 @@ class GradesController < ApplicationController
     end
   end
 
+  def new
+    @exam = Exam.find_by_id(params[:exam_id])
+    @grade = @exam.grade.new
+  end
+
 end
