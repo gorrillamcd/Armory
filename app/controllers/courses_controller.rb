@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
 	def show
 		#@course = Course.find(params[:id])
 		@lesson = @course.lessons
-		@book = @course.books
+		@books = @course.books
 		@subscription = @course.subscriptions.where(:user_id => current_user.id).first
 	end
 

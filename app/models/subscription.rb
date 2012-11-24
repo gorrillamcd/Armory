@@ -23,9 +23,10 @@ class Subscription < ActiveRecord::Base
 		# :completed =>		For when the student completes with a passing grade
 		# :failed =>		For when the student completes with a failing grade
 		# :inactive =>		Currently unused
-
+		#
 		# For info on the helpers to access/update these states, check out the docs for state_machine at
 		# http://rdoc.info/github/pluginaweek/state_machine/master/frames
+		#
 		##################################
 
 		event :subscribe do

@@ -7,7 +7,7 @@ class Exam < ActiveRecord::Base
   has_one :grade
   has_many :questions
 
-  accepts_nested_attributes_for :grade
+  # accepts_nested_attributes_for :grade
   accepts_nested_attributes_for :questions, :allow_destroy => true
 
 end

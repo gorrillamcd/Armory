@@ -19,6 +19,7 @@ class Ability
 			when "student"
 				can :read, Course
 				can :read, Lesson
+			# when "contributor" TODO: Add contributor role for those that work on content only
 			else
 				can :read, Course
 				can :read, Pages

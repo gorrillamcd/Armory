@@ -22,14 +22,8 @@ Armory::Application.routes.draw do
     resources :exams
   end
 
-  resources :subscriptions
-    resources :exams do
-      resources :grades, :except => [:index]
-    end
+  resources :subscriptions, :only => [:create, :update] do
+    resources :grades, :only => [:create, :update]
   end
-
-  resources :grades, :except => [:new, :create, :edit, :update]
-
-  resources :subscriptions, :only => [:create, :update]
 
 end

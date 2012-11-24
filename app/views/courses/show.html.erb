@@ -13,9 +13,9 @@
 		<%= @course.description %>
 	</p>
 	<article>
-		<% unless @book.blank? %>
+		<% unless @books.blank? %>
 			<section id="books"><!-- # TODO: Need to clean up this logic a lot! It's just to show for the first draft. I'll refactor afterwards  -->
-				<% for book in @book %>
+				<% for book in @books %>
 					<p><strong><%= book.name %></strong><% unless book.isbn.blank? %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
 					<% if book.required == true %>
 						This book is required.<br />

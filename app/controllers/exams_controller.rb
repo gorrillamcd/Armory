@@ -7,9 +7,8 @@ class ExamsController < ApplicationController
 		@exam = Exam.find(params[:id])
 	end
 
-	def take_exam # Special action for a student taking the exam specified
-
-	end
+	# def take_exam # Special action for a student taking the exam specified
+	# end
 
 	def new
 		@lesson = Lesson.find(params[:lesson_id])
