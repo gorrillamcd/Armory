@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
 	def create
 		@course = Course.find(params[:course_id])
 		Subscription.create!( :user_id => current_user.id, :course_id => params[:course_id])
-		redirect_to @course # TODO: change this redirect to payment module for paying for a class
+		redirect_to new_user_payment_path(current_user)
 		flash[:notice] = "You're now subscribed to #{@course.name}! WooHoo!"
 	end
 

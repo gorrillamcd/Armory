@@ -1,0 +1,12 @@
+<%= simple_form_for @grade, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend>Exam for <%= @lesson.name.capitalize %></legend>
+
+    
+
+    <div class="form-actions">
+      <%= f.submit "Create Exam", :class => "btn btn-primary" %>
+      <%= link_to "Cancel", @lesson, :class=>"btn" %>
+    </div>
+  </fieldset>
+<% end %>

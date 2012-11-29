@@ -18,12 +18,14 @@ Armory::Application.routes.draw do
     resources :books
   end
 
-  resources :lessons do
+  resources :lessons, :only => [] do
     resources :exams
   end
 
   resources :subscriptions, :only => [:create, :update] do
-    resources :grades, :only => [:create, :update]
+    resources :grades, :except => [:index, :destroy, :show]
   end
+
+  # match '/grade_exam/:exam_id/:subscription_id' => 'grades#create', :as => 'take_exam', :via => :post
 
 end

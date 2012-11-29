@@ -4,6 +4,7 @@ class Exam < ActiveRecord::Base
   attr_accessible :kind, :weight, :questions_attributes, :grades_attributes
 
   belongs_to :lesson
+  belongs_to :course
   has_one :grade
   has_many :questions
 

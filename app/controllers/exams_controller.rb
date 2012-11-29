@@ -4,6 +4,7 @@ class ExamsController < ApplicationController
 
 	def show
 		@lesson = Lesson.find(params[:lesson_id])
+		# @subscription = @lesson.course.subscriptions.where(:user_id => current_user.id).first
 		@exam = Exam.find(params[:id])
 	end
 
@@ -12,12 +13,12 @@ class ExamsController < ApplicationController
 
 	def new
 		@lesson = Lesson.find(params[:lesson_id])
-		@exam = Exam.new
+		@exam = @lesson.build_exam
 	end
 
 	def create
 		@lesson = Lesson.find(params[:lesson_id])
-		@exam = Exam.new(params[:exam])
+		@exam = @lesson.build_exam(params[:exam])
 
 	    if @exam.save
 	      redirect_to lesson_exam_path(@lesson, @exam), notice: "Successfully created exam."

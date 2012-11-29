@@ -6,7 +6,7 @@ class LessonsController < ApplicationController
 		@course = Course.find(params[:course_id])
 		@lesson = Lesson.find(params[:id])
 		@subscription = current_user.subscriptions.where(:course_id => @course).first
-		@exam = Exam.where(:lesson_id => params[:id]).first
+		@exam = @lesson.exam
 	end
 
 	def new
@@ -16,7 +16,7 @@ class LessonsController < ApplicationController
 
 	def create
 		@course = Course.find(params[:course_id])
-		@lesson = @course.lessons.create(params[:lesson])
+		@lesson = @course.lessons.new(params[:lesson])
 		if @lesson.save
 			redirect_to new_lesson_exam_path(@lesson)
 			flash[:notice] = "Successfully created lesson. Now you can make the quiz to go with it!"

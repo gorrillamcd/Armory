@@ -5,12 +5,12 @@
     <h1><%= @lesson.name.capitalize %></h1>
     <%= link_to "Back to #{@course.name}", @course %>
     <div class="btn-group dropdown pull-right">
-      <a href="#" class=" btn dropdown-toggle" data-toggle="dropdown">
+      <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
         Options <b class="caret"></b>
       </a>
       <ul class="dropdown-menu">
         <li><%= link_to "Edit", edit_course_lesson_path(@course, @lesson) %></li>
-        <li><%= link_to "Add Quiz", new_lesson_exam_path(@lesson) %>
+        <li><%= link_to "Add Exam", new_lesson_exam_path(@lesson) %>
         <li class="divider"></li>
         <li>
           <%= link_to "Delete Lesson", [@course, @lesson], :confirm => 'Are you sure? This will be permanent!', :method => :delete %>
@@ -22,12 +22,21 @@
   <div class="well well-small"><%= @lesson.description %></div>
 
   <% if @lesson.teaching %>
-    <div class="row">
-      <aside class= "span10 offset1 well">
-        <span class="pull-left"><h4>Are you ready to take the quiz?</h4>You can still return to the video to review during the quiz.</span>
-        <%= link_to "Take the quiz", lesson_exam_path(@lesson), :class => "btn btn-success span2 pull-right" %>
-      </aside>
-    </div>
+    <% if @lesson.exam %>
+      <div class="row">
+        <aside class= "span10 offset1 well">
+          <span class="pull-left"><h4>Are you ready to take the quiz?</h4>You can still return to the video to review during the quiz.</span>
+          <%= link_to "Take the quiz", new_subscription_grade_path(@subscription, :exam_id => @exam.id), :class => "btn btn-success span3 pull-right" %>
+        </aside>
+      </div>
+    <% else %>
+      <div class="row">
+        <aside class="span10 offset1 well">
+          <p class="pull-left">You should always have an exam to go with the lesson's teaching.<br />If you are a contributor, you can add one now.</p> <%= link_to "Add Exam to #{@lesson.name}", new_lesson_exam_path(@lesson), :class => "btn btn-info pull-right span3" %>
+        </aside>
+      </div>
+    <% end %>
+
     <div class="row">
       <div class="span10 offset1">
         <video id="<%= @lesson.teaching_file_name %>" class="video-js vjs-default-skin" controls preload="none" width="800" height="600" data-setup="{}">
@@ -35,8 +44,11 @@
         </video>
       </div>
     </div>
-  <% else %>
-    <p>There is no teaching for this lesson. If you are a contributor, why don't you <%= link_to "add one", lesson_edit_path(@lesson) %>.
+  <% elsif !@lesson.teaching %>
+    <p>There is no teaching for this lesson. If you are a contributor, you can add one. <%= link_to "Edit #{@lesson.name} to add Teaching", edit_course_lesson_path(@course, @lesson), :class => "btn btn-primary btn-small" %>.</p>
+    <% if !@lesson.exam %>
+      <p>You should also add an exam to test the students after a lesson. <%= link_to "Add Exam to #{@lesson.name}", new_lesson_exam_path(@lesson), :class => "btn btn-info btn-small" %></p>
+    <% end %>
   <% end %>
 
   <% if false %>

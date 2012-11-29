@@ -38,6 +38,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def student?
+    if self.role == 'student'
+      return true
+    else
+      return false
+    end
+  end
+
   def full_name
     [self.first_name,self.last_name].join(' ')
   end
