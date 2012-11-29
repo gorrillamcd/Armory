@@ -14,9 +14,9 @@ class SubscriptionsController < ApplicationController
 
 	def create
 		@course = Course.find(params[:course_id])
-		Subscription.create!( :user_id => current_user.id, :course_id => params[:course_id])
+		Subscription.create!(:user_id => current_user.id, :course_id => params[:course_id])
 		redirect_to @course
-		flash[:notice] = "You're now subscribed to #{@course.name}! WooHoo!"
+		flash[:notice] = t('ui.subscriptions.create.success', :name => @course.name)
 	end
 
 	def destroy

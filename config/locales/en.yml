@@ -46,6 +46,13 @@ en:
         success: 'Thank you for paying.'
       stripe:
         card_error: 'There was a problem with your credit card.'
+    subscriptions:
+      create:
+        success: "You're now subscribed to %{name}."
+        failure: "Failed to subscribe to %{name}. Please try again."
+      destroy:
+        success: "You have unsubscribed from %{name}."
+        failure: "Failed to unsubscribe from %{name}."
     module:
       availablecourses: 'Available Courses'
       usercourses:
@@ -54,7 +61,6 @@ en:
         completed: 'Completed'
         nextlesson: 'Next Lesson'
         takelesson: 'Do it now!'
-# Not really necessary to include the English local for ActiveRecord, but they were uneven
   date:
     abbr_day_names:
     - Sun
