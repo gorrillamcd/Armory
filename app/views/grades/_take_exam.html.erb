@@ -1,12 +1,21 @@
-<%= simple_form_for @grade, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for [@subscription, @grade], :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
     <legend>Exam for <%= @lesson.name.capitalize %></legend>
 
-    
+    <ol>
+      <% @questions.each do |question| %>
+        <%= simple_fields_for :questions do |builder| %>
+            <li>
+              <p><%= question.text %></p>
+              <%= f.input :answer, :collection => question.answers, :as => :radio_buttons %>
+            </li>
+        <% end %>
+      <% end %>
+    </ol>
 
     <div class="form-actions">
-      <%= f.submit "Create Exam", :class => "btn btn-primary" %>
-      <%= link_to "Cancel", @lesson, :class=>"btn" %>
+      <%= f.submit "Submit Exam", :class => "btn btn-primary" %>
+      <%= link_to "Cancel", lesson_exam_path(@lesson, @exam), :class=>"btn" %>
     </div>
   </fieldset>
 <% end %>

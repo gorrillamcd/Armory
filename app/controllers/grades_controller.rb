@@ -1,4 +1,6 @@
 class GradesController < ApplicationController
+  
+  skip_authorization_check
 
   def show
     if params[:exam_id]
