@@ -4,10 +4,9 @@
 
     <ol>
       <% @questions.each do |question| %>
-        <%= simple_fields_for :questions do |builder| %>
+        <%= simple_fields_for "questions[#{question.id}]" do |builder| %>
             <li>
-              <p><%= question.text %></p>
-              <%= f.input :answer, :collection => question.answers, :as => :radio_buttons %>
+              <%= builder.input :answer, :collection => question.answers, :as => :radio_buttons, :label => question.text %>
             </li>
         <% end %>
       <% end %>

@@ -18,4 +18,21 @@ class GradesController < ApplicationController
     @grade = @exam.build_grade
   end
 
+  def create
+    @exam = Exam.find_by_id(params[:exam_id]).includes(:questions => :answers)
+    @subscription = Subscription.find_by_id(params[:subscription_id])
+    @grade = @subscription.grades.new
+    @correct_answers = 
+    
+    @grade.average_grade = calculate_grade(params[:questions])
+    @grade.exam_id = @exam.id
+
+    if @grade.save
+      redirect_to subscription_grade_path(@subscription, @grade), :notice => "You completed the exam!"
+    else
+      render :new
+    end
+
+  end
+
 end
