@@ -5,22 +5,36 @@ class Grade < ActiveRecord::Base
   attr_accessor :answer
 
   ## Grading Methods ##
+  #  For the following methods, qid = "question id" and aid = "answer id", hsh = "hash"
 
-  def calculate_grade(correct_answer_ids, questions)
-    # TODO: finish calculate_grade method on Grade model
-    total = self.count
-    correct = self.correct!
-    average = correct / total
+  def calculate_grade(correct_answers, responses)
+    responses = Grade.isolate_responses(responses)
+    total = correct_answers.length.to_f
+    puts total
+    correct = Grade.correct!(correct_answers, responses)
+    puts correct
+    average = (correct / total) * 100
   end
 
-  def correct!
-    correct_answers = {}
-    self.each do |answer|
-      if answer.correct
-        correct_answers << answer
+  def self.correct!(correct_answers, responses) # Returns number of correct answers
+    responses.each do |response|
+      response.each_pair do |qid, aid|
+        unless correct_answers.include?(aid)
+          responses.delete(qid)
+        end
       end
     end
-    correct_answers
+    responses.length.to_f
+  end
+
+  def self.isolate_responses(input) # Clean up hash to make it easier to manipulate
+    responses = Array.new
+    input.each do |qid, answer|
+      answer.each_value do |aid|
+        responses << {qid=>aid}
+      end
+    end
+    responses
   end
 
 end

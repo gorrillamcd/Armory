@@ -26,7 +26,7 @@
       <div class="row">
         <aside class= "span10 offset1 well">
           <span class="pull-left"><h4>Are you ready to take the quiz?</h4>You can still return to the video to review during the quiz.</span>
-          <%= link_to "Take the quiz", new_subscription_grade_path(@subscription, :exam_id => @exam.id), :class => "btn btn-success span3 pull-right" %>
+          <%= link_to "Take the quiz", new_subscription_exam_grade_path(@subscription, @exam), :class => "btn btn-success span3 pull-right" %>
         </aside>
       </div>
     <% else %>

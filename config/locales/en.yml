@@ -53,6 +53,10 @@ en:
       destroy:
         success: "You have unsubscribed from %{name}."
         failure: "Failed to unsubscribe from %{name}."
+    grades:
+      take_exam:
+        success: "You passed the exam."
+        failure: "You failed the exam."
     module:
       availablecourses: 'Available Courses'
       usercourses:

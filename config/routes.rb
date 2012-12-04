@@ -23,7 +23,9 @@ Armory::Application.routes.draw do
   end
 
   resources :subscriptions, :only => [:create, :update] do
-    resources :grades, :except => [:index, :destroy, :show]
+    resources :exams, :only => [] do
+      resources :grades, :except => [:destroy]
+    end
   end
 
   # match '/grade_exam/:exam_id/:subscription_id' => 'grades#create', :as => 'take_exam', :via => :post

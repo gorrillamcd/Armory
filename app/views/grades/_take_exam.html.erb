@@ -1,4 +1,4 @@
-<%= simple_form_for [@subscription, @grade], :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for [@subscription, @exam, @grade], :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
     <legend>Exam for <%= @lesson.name.capitalize %></legend>
 
@@ -6,7 +6,7 @@
       <% @questions.each do |question| %>
         <%= simple_fields_for "questions[#{question.id}]" do |builder| %>
             <li>
-              <%= builder.input :answer, :collection => question.answers, :as => :radio_buttons, :label => question.text %>
+              <%= builder.input :answer, collection: question.answers, as: :radio_buttons, label_method: :text, value_method: :id, label: question.text %>
             </li>
         <% end %>
       <% end %>
