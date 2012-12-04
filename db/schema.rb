@@ -92,9 +92,9 @@ ActiveRecord::Schema.define(:version => 20121107223649) do
 
   create_table "questions", :force => true do |t|
     t.string   "text"
+    t.integer  "exam_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "exam_id"
   end
 
   add_index "questions", ["exam_id"], :name => "index_questions_on_exam_id"

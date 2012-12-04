@@ -1,48 +1,50 @@
-development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: armory_development
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
-test:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: armory_test
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
-production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: armory_production
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
 # development:
-#   adapter: pg #postgresql
-#   encoding: unicode
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
 #   database: armory_development
 #   pool: 5
-#   username: armory
+#   username: root
 #   password:
-
+#   socket: /var/run/mysqld/mysqld.sock
 # test:
-#   adapter: pg #postgresql
-#   encoding: unicode
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
 #   database: armory_test
 #   pool: 5
-#   username: armory
+#   username: root
 #   password:
-
+#   socket: /var/run/mysqld/mysqld.sock
 # production:
-#   adapter: pg #postgresql
-#   encoding: unicode
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
 #   database: armory_production
 #   pool: 5
+#   username: root
+#   password:
+#   socket: /var/run/mysqld/mysqld.sock
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: armory_development
+  pool: 5
+  username: armory
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: armory_test
+  pool: 5
+  username: armory
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: armory_production
+  pool: 5
+  username: armory
+  password: G*y8ITo
