@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'unicorn'
 
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 gem 'paperclip'
 gem 'simple_form'
