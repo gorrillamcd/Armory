@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'mysql2'
-# gem 'thin'
 gem 'json'
 gem 'jquery-rails'
 # gem 'pg'
@@ -21,8 +20,9 @@ gem 'cancan'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :development do
-    gem 'libnotify' # for linux notifications
-    # gem 'growl' # For Mac growl notifications
+  gem 'thin' # WEBbrick is too slow
+  gem 'libnotify' # for linux notifications
+  # gem 'growl' # For Mac growl notifications
 end
 
 group :development, :test do
