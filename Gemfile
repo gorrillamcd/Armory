@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'mysql2'
-gem 'thin'
+# gem 'thin'
 gem 'json'
 gem 'jquery-rails'
 # gem 'pg'
-# gem 'unicorn'
+gem 'unicorn'
+
+gem 'capistrano'
 
 gem 'paperclip'
 gem 'simple_form'
