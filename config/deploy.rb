@@ -10,7 +10,7 @@ set :use_sudo, false
 
 set :scm, "git"
 set :github_user, "gorrillamcd"
-set :repository, "git@github.com:#{github_user}/#{application}.git"
+set :repository, "git@github.com:#{github_user}/Armory.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
