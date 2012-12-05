@@ -6,4 +6,4 @@ stdout_path "#{root}/log/unicorn.log"
 
 listen "/tmp/unicorn.armory.sock"
 worker_processes 2
-timeout 30
+timeout 120
