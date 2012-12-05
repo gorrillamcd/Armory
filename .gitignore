@@ -25,3 +25,5 @@
 
 #ignore Stripe initializer
 /config/initializers/stripe.rb
+
+/config/database.yml
