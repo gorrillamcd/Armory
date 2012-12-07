@@ -1,50 +1,56 @@
-development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: armory_development
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
-test:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: armory_test
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
-production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: armory_production
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+### MySQL Configuration ###
+### Note that the socket has been modified from the default value to work on my Debian Development
+### computer. It might need to be changed to run on other systems. Postgresql is preferred.
 # development:
-#   adapter: postgresql
-#   encoding: unicode
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
 #   database: armory_development
 #   pool: 5
-#   username: armory
+#   username: root
 #   password:
-
+#   socket: /var/run/mysqld/mysqld.sock
 # test:
-#   adapter: postgresql
-#   encoding: unicode
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
 #   database: armory_test
 #   pool: 5
-#   username: armory
+#   username: root
 #   password:
-
+#   socket: /var/run/mysqld/mysqld.sock
 # production:
-#   adapter: postgresql
-#   encoding: unicode
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
 #   database: armory_production
 #   pool: 5
-#   username: armory
-#   password: G*y8ITo
+#   username: root
+#   password:
+#   socket: /var/run/mysqld/mysqld.sock
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: armory_development
+  pool: 5
+  host: localhost
+  username: armory
+  password: armory_password
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: armory_test
+  pool: 5
+  host: localhost
+  username: armory
+  password: armory_password
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: armory_production
+  pool: 5
+  host: localhost
+  username: armory
+  password: G*y8ITo

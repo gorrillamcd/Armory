@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107223649) do
+ActiveRecord::Schema.define(:version => 20121207195236) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20121107223649) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.string   "teacher"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20121107223649) do
 
   create_table "lessons", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.integer  "course_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20121107223649) do
   add_index "payments", ["completed_at"], :name => "index_payments_on_completed_at"
 
   create_table "questions", :force => true do |t|
-    t.string   "text"
+    t.text     "text"
     t.integer  "exam_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
