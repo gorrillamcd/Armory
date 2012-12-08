@@ -15,12 +15,14 @@ There's a lot that needs to be done to make this application happen. If you'd li
 
 Contributing code is **easy**:
 
-* Fork the repository
-* Make the change you want to incorporate
-* Make a pull request
-* It will then be incorporated or not
+* Fork it
+* Create your feature branch (`git checkout -b my-new-feature`)
+* Make changes and ensure they pass the testing suite
+* Commit your changes (`git commit -am 'Add some feature'`)
+* Push to the branch (`git push origin my-new-feature`)
+* Create new Pull Request
 
-Also, if you find a bug, but don't know how or don't have time to make the change yourself, post an issue on the issues page.
+Also, if you find a bug, but don't know how or don't have time to make the change yourself, [post an issue](https://github.com/gorrillamcd/Armory/issues).
 
 **Do you want to try out the application**, but don't have a development environment setup? [Check out the wiki for a tutorial of how to setup the dev environment (even for windows newbies!).](https://github.com/gorrillamcd/Armory/wiki/Setting-up-the-Dev-Environment)
 
