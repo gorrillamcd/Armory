@@ -10,17 +10,15 @@ class Grade < ActiveRecord::Base
   def calculate_grade(correct_answers, responses)
     responses = Grade.isolate_responses(responses)
     total = correct_answers.length.to_f
-    puts total
     correct = Grade.correct!(correct_answers, responses)
-    puts correct
     average = (correct / total) * 100
   end
 
   def self.correct!(correct_answers, responses) # Returns number of correct answers
     responses.each do |response|
-      response.each_pair do |qid, aid|
+      response.each_value do |aid|
         unless correct_answers.include?(aid)
-          responses.delete(qid)
+          responses.delete(response)
         end
       end
     end

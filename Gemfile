@@ -25,6 +25,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :development do
   gem 'thin' # WEBbrick is too slow
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'libnotify' # for linux notifications
   # gem 'growl' # For Mac growl notifications
 end
