@@ -1,0 +1,12 @@
+# Iptables Rules
+*filter
+:INPUT DROP [38869:9967378]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [13565:3339331]
+:fail2ban-ssh - [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p tcp -m multiport --dports 22 -j fail2ban-ssh
+-A fail2ban-ssh -j RETURN
+
+# Allow services here
+-A INPUT -p tcp --dport 80 -i eth0 -j ACCEPT
