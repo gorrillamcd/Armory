@@ -1,26 +1,29 @@
 <% title "IBCC en linea" %>
-<div class="span11 content">
-  <h3>Available Courses</h3><br />
-  <% for course in @courses %>
-    <div id="courses">
-    <hr />
-      <strong><%= link_to course.name, course %></strong>
-      <ul class="pull-right plain">
-        <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Options <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Edit", edit_course_path(course) %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Delete Course", course, :confirm => 'Are you sure? This will be permanent!', :method => :delete %>
-              </li>
-            </ul>
-        </li>
-      </ul>
-    </div>
-  <% end %>
+
+<main>
+  <header class="page-header">
+    <h3>Available Courses</h3>
+  </header>
+  <section class="span10 offset1 media">
+    <% for course in @courses %>
+      <aside class="media-object pull-right">
+        <div class="dropdown btn-group">
+          <a href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            Options <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Edit", edit_course_path(course) %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Delete Course", course, :confirm => 'Are you sure? This will be permanent!', :method => :delete %>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <article class="media-body">
+        <h3 class="media-header"><%= link_to course.name, course %></h3>
+      </article>
+    <% end %>
+  </section>
   <hr />
   <p><%= link_to "New Course", new_course_path %></p>
-</div>
