@@ -35,7 +35,8 @@ GEM
       coderay
       erubis
     binding_of_caller (0.6.8)
-    bootstrap-sass (2.0.2)
+    bootstrap-sass (2.2.1.1)
+      sass (~> 3.2)
     builder (3.0.0)
     cancan (1.6.7)
     capistrano (2.13.5)
@@ -166,7 +167,7 @@ GEM
     rubyzip (0.9.7)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
-    sass (3.1.15)
+    sass (3.2.3)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -219,7 +220,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 2.0.0)
+  bootstrap-sass (~> 2.2.1.1)
   cancan
   capistrano
   capybara
