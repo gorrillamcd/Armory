@@ -44,7 +44,7 @@
         </video>
       </div>
     </div>
-  <% elsif !@lesson.teaching %>
+  <% else %>
     <p>There is no teaching for this lesson. If you are a contributor, you can add one. <%= link_to "Edit #{@lesson.name} to add Teaching", edit_course_lesson_path(@course, @lesson), :class => "btn btn-primary btn-small" %>.</p>
     <% if !@lesson.exam %>
       <p>You should also add an exam to test the students after a lesson. <%= link_to "Add Exam to #{@lesson.name}", new_lesson_exam_path(@lesson), :class => "btn btn-info btn-small" %></p>

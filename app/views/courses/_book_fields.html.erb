@@ -1,11 +1,11 @@
 <legend>Required/Recommended Texts for this course:</legend>
 
-<%= form.simple_fields_for :books do |fa| %>
-	<%= fa.input :name %>
-	<%= fa.input :isbn %>
-	<%= fa.input :required, :hint => "Is this a required text to complete the course?" %>
-	
-	<!-- Actions for Adding and Removing Book Fields dynamically -->
-	<%= fa.input :_destroy, :as => :hidden %>
-	<%= link_to "Remove", page_path('comingsoon'), :class => "remove_fields" %>
-<% end %>
+<fieldset>
+  <%= f.input :name %>
+  <%= f.input :isbn %>
+  <%= f.input :required, :hint => "Is this a required text to complete the course?" %>
+
+  <!-- Actions for Adding and Removing Book Fields dynamically -->
+  <%= f.input :_destroy, :as => :hidden %>
+  <%= link_to "Remove", page_path('comingsoon'), :class => "remove_fields" %>
+</fieldset>

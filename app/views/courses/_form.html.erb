@@ -1,12 +1,19 @@
 <%= title "#{controller.action_name.capitalize} Course" %>
-<%= simple_form_for @course, :html => { :class => 'form-horizontal'} do |f| %>
+<%= simple_form_for @course, :html => { :class => 'form-horizontal span10'} do |f| %>
 <fieldset>
-  <legend><%= controller.action_name.capitalize %> Course</legend>
+  <legend><%= controller.action_name.capitalize+" "+t('application.models.course.one') %></legend>
 
-      <%= f.input :name %>
-      <%= f.input :description %>
+      <%= f.input :name do %>
+        <%= f.input_field :name, :class => 'span6' %>
+      <% end %>
+      <%= f.input :description do %>
+        <%= f.input_field :description, :class => 'span6', :rows => '5' %>
+      <% end %>
 
-  <%= render 'book_fields', :form => f %>
+  <%= f.simple_fields_for :books do |builder| %>
+    <%= render 'book_fields', :f => builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Books", f, :books, :class => 'btn btn-success' %>
   
   <div class="form-actions">
   <%= f.submit nil, :class=>"btn btn-primary" %>

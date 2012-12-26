@@ -1,4 +1,18 @@
 en:
+  activerecord:
+    models:
+      course:
+        one: 'Course'
+        other: 'Courses'
+      exam:
+        one: 'Exam'
+        other: 'Exams'
+      question:
+        one: 'Question'
+        other: 'Questions'
+      answer:
+        one: 'Answer'
+        other: 'Answers'
   application:
     name: 'CCBC Online'
     welcome: 'Welcome'

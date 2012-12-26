@@ -1,4 +1,18 @@
 es:
+  activerecord:
+    models:
+      course:
+        one: 'Curso'
+        other: 'Cursos'
+      exam:
+        one: 'Examen'
+        other: 'Examenes'
+      question:
+        one: 'Pregunta'
+        other: 'Preguntas'
+      answer:
+        one: 'Respuesta'
+        other: 'Respuestas'
   application:
     name: 'IBCC en línea'
     welcome: 'Bienvenidos'
@@ -7,6 +21,10 @@ es:
     noscript: 'Javascript is not enabled and is required for this site to function properly.'
     submit: 'Submit'
     cancel: 'Cancel'
+    models:
+      course:
+        one: 'Curso'
+        other: 'Cursos'
   ui:
     aboutthisapp: 'Sobre esta applicacion'
     aboutapptext: "CCBC Online runs on a platform called Armory. Armory is an open source project available for anyone who wants to use it or help make it better. You can find more information at the project's website: https://gorrillamcd.github.com/Armory/"

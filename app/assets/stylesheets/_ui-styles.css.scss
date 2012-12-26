@@ -23,6 +23,18 @@ $lightgrey:     rgb(230,235,236);
 
 .ui {
   background-color: $lightgrey;
+  font: 14px;
+  h1 {
+    font-size: 32px; 
+    small {
+      font-size: 25px;
+    }
+  }
+  h2 { font-size: 25px; }
+  h3 { font-size: 20px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 14px; }
   // padding-bottom: 138px;
 
   #main-header {
@@ -178,6 +190,53 @@ $lightgrey:     rgb(230,235,236);
     top:-12px;
     z-index:2;
     overflow:hidden;
+
+    .course-list {
+      background-color: $greyblue;
+      @include round-corners(5px);
+      border: 1px solid darken($greyblue, 5%);
+      padding: 1em 2em;
+
+      .row {
+        margin-left: -30px;
+        width: 90%;
+      }
+
+      .dropdown-menu {
+        margin-left: -30px;
+      }
+
+      .media {
+        border-bottom: 4px solid darken($greyblue, 5%);
+        border-right: 2px solid darken($greyblue, 5%);
+        background-color: lighten($greyblue, 8%);
+        padding: 0 1em;
+        color: #006699;
+        overflow: visible;
+
+        &:hover {
+          background-color: lighten($greyblue, 2%);
+          color: darken($greyblue, 63%);
+        }
+      }
+
+      .media-body {
+        display: block;
+        width: 80%;
+
+        .course-desc {
+          display: block;
+          color: #333;
+          width: 70%;
+          margin-top: 1.5em;
+          vertical-align: center;
+        }
+      }
+
+      .media-object {
+        margin-top: 15px;
+      }
+    }
 
     section {
       margin-bottom: 1em;
