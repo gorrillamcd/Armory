@@ -25,9 +25,9 @@ $lightgrey:     rgb(230,235,236);
   background-color: $lightgrey;
   font: 14px;
   h1 {
-    font-size: 32px; 
+    font-size: 29px; 
     small {
-      font-size: 25px;
+      font-size: 22px;
     }
   }
   h2 { font-size: 25px; }
@@ -36,6 +36,8 @@ $lightgrey:     rgb(230,235,236);
   h5 { font-size: 16px; }
   h6 { font-size: 14px; }
   // padding-bottom: 138px;
+
+  .indent1 { padding-left: 2em; }
 
   #main-header {
     @include box-sizing;

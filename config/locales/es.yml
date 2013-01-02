@@ -39,6 +39,14 @@ es:
       login: 'Iniciar'
       logout: 'Salir'
       settings: 'Configuraciones'
+    books:
+      header: 'Libros Requiridos'
+      required:
+        word: 'Requirido'
+        phrase: 'Este libro esta requirido.'
+      not_required:
+        word: 'Recomendado'
+        phrase: 'Este libro esta recomendado.'
     payments:
       index:
         unauthorized: 'No eres autorizado a ver esa pagina.'

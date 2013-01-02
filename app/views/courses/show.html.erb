@@ -15,15 +15,18 @@
 	<article>
 		<% unless @books.blank? %>
 			<section id="books"><!-- # TODO: Need to clean up this logic a lot! It's just to show for the first draft. I'll refactor afterwards  -->
-				<% for book in @books %>
-					<p><strong><%= book.name %></strong><% unless book.isbn.blank? %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
-					<% if book.required == true %>
-						This book is required.<br />
-					<% else %>
-						This book is recommended by the instructor.<br />
-					<%end %>
-					<hr />
-				<% end %>
+				<header><h3><%= t("ui.books.header") %></h3></header>
+				<div class="indent1">
+					<% @books.each do |book| %>
+						<p><strong><%= book.name %></strong><% unless book.isbn.blank? %> | <small>ISBN: <%= book.isbn %></small><% end %></p>
+						<% if book.required == true %>
+							This book is required.<br />
+						<% else %>
+							This book is recommended by the instructor.<br />
+						<%end %>
+						<hr />
+					<% end %>
+				</div>
 			</section>
 		<% end %>
 		<section id="lessons" class="span10 offset1 media">
